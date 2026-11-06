@@ -1,0 +1,991 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta charset="utf-8">
+<title>Portfolio Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+/* layout: H · 数字化分层 — full-bleed light stage, rotary menu left, bust bottom-right,
+   mesh layer wiped away by a blue scan line, then the girl says hi and watches the menu */
+:root{
+  --ground:#E7E8EB; --ink:#111216; --ink-2:#4A4D57; --ink-3:#6A6D76; --ink-4:#8A8D96; --ink-5:#9A9DA6;
+  --accent:#3B5BFD;
+  --display:"Archivo","Noto Sans SC",system-ui,sans-serif;
+  --mono:"JetBrains Mono","Noto Sans SC",ui-monospace,monospace;
+  --cjk:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--display)}
+a{color:var(--accent)}a:hover{color:#1F3BD1}
+
+main{position:relative;width:100%;height:100%;min-height:760px;overflow:hidden;
+  background:radial-gradient(85% 80% at 70% 42%,#F8F8F9 0%,#EAEBEE 50%,#D8DADF 100%)}
+.grid-bg{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(17,18,22,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(17,18,22,.045) 1px,transparent 1px);background-size:120px 120px}
+
+/* figure */
+.fig{position:absolute;right:3%;bottom:0;height:94%;aspect-ratio:1/1;max-width:62%}
+.fig canvas{position:absolute;inset:0;width:100%;height:100%;display:block;
+  -webkit-mask-image:linear-gradient(90deg,#000 84%,transparent 99%);mask-image:linear-gradient(90deg,#000 84%,transparent 99%)}
+.xr-mask{-webkit-mask-image:url(first.webp);mask-image:url(first.webp);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.xr-grid{background-image:linear-gradient(rgba(59,91,253,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(59,91,253,.55) 1px,transparent 1px);background-size:7px 7px}
+.xr-layer{position:absolute;inset:0;pointer-events:none}
+.xr-layer img{position:absolute;inset:0;width:100%;height:100%;display:block;filter:grayscale(1) contrast(1.5) brightness(1.18)}
+.xr-line{position:absolute;top:-2%;bottom:0;left:0;width:1px;background:var(--accent);box-shadow:0 0 14px 1px var(--accent);opacity:0;pointer-events:none}
+.xr-line span{position:absolute;left:8px;top:0;white-space:nowrap;font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--accent)}
+@keyframes xr-clip{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
+@keyframes xr-line{0%{left:0;opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes xr-out{0%,95%{opacity:1}100%{opacity:0}}
+@keyframes xr-in{0%,95%{opacity:0}100%{opacity:1}}
+.go .xr-layer{animation:xr-clip 2.8s cubic-bezier(.65,0,.35,1) .5s 1 both}
+.go .xr-line{animation:xr-line 2.8s cubic-bezier(.65,0,.35,1) .5s 1 both}
+.xr-out{opacity:1}.xr-in{opacity:0}
+.go .xr-out{animation:xr-out 3.3s linear 1 both}
+.go .xr-in{animation:xr-in 3.3s linear 1 both}
+.waiting .xr-layer{opacity:0}
+
+.hud{position:absolute;right:-1%;top:10%;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-2)}
+.hud .row{display:flex;gap:10px;padding-left:58px}
+.hud .row:first-child{padding-left:0;align-items:center}
+.hud .val{color:var(--ink)}
+.swap{position:relative}
+.swap .xr-in{position:absolute;left:0;top:0;white-space:nowrap}
+.mode{color:var(--accent)}
+@keyframes xr-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.pulse{animation:xr-pulse 1.6s ease-in-out infinite}
+.dot{width:6px;height:6px;border-radius:50%;align-self:center;background:var(--accent)}
+
+/* header */
+header{position:absolute;left:0;right:0;top:0;padding:32px 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+.brand .glyph{width:26px;height:26px;border:1.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.brand .glyph i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.brand b{font-size:12px;font-weight:600;letter-spacing:.32em}
+.brand small{display:block;margin-top:3px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#5A5D66}
+.meta-top{display:flex;gap:48px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3)}
+.meta-top .col{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.meta-top .col span:last-child{color:var(--ink)}
+.lang{display:flex;gap:6px}
+.lang a{text-decoration:none;color:var(--ink-3)}.lang a[aria-current="true"]{color:var(--ink);font-weight:500}
+
+/* left rail */
+.ticks{position:absolute;left:48px;top:18%;bottom:18%;width:10px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.ticks span{display:block;height:1px;width:5px;background:var(--ink-5)}
+.ticks span:nth-child(5n+1){width:10px}
+.rail-mark{position:absolute;left:40px;top:50%;width:24px;height:2px;background:var(--accent);pointer-events:none}
+.mid-line{position:absolute;left:0;width:46%;top:50%;height:1px;background:linear-gradient(90deg,rgba(17,18,22,.14) 70%,transparent);pointer-events:none}
+
+/* rotary menu */
+nav{position:absolute;left:96px;top:50%;height:0;width:44%;z-index:2;outline:none}
+nav:focus-visible .item.active button{outline:2px solid var(--accent);outline-offset:6px}
+.item{position:absolute;left:0;top:0;white-space:nowrap;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
+.item .line{display:flex;align-items:baseline;gap:18px}
+.item .num{width:22px;font-family:var(--mono);font-size:11px;color:var(--ink-4)}
+.item button{all:unset;cursor:pointer;font-stretch:118%;font-weight:800;letter-spacing:-.02em;line-height:.95;color:var(--ink-5);font-size:clamp(20px,2vw,26px)}
+.item button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.item .cn{font-family:var(--cjk);font-size:12px;letter-spacing:.3em;color:var(--ink-4)}
+.item.near button{font-size:clamp(28px,3vw,40px);color:var(--ink-3)}
+.item.active button{font-size:clamp(56px,6.4vw,96px);color:var(--ink)}
+.item.active .num{color:var(--accent)}
+.item.active .cn{color:var(--ink)}
+.enter{display:flex;align-items:center;gap:16px;margin:18px 0 0 40px}
+.enter a{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 18px;border:1px solid var(--ink);border-radius:999px;text-decoration:none;color:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.18em;transition:background .2s,color .2s}
+.enter a:hover,.enter a:focus-visible{background:var(--ink);color:#F8F8F9;outline:none}
+.enter .meta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:#5A5D66}
+
+/* footer */
+footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-2);z-index:3}
+.mouse{position:relative;width:14px;height:22px;border:1.3px solid var(--ink-2);border-radius:8px}
+.mouse i{position:absolute;left:50%;top:4px;width:2px;height:5px;margin-left:-1px;background:var(--ink-2)}
+.f-left,.f-right,.legend{display:flex;align-items:center;gap:14px}
+.f-right{gap:18px}
+.legend{gap:8px}
+.sw{width:10px;height:10px}
+.sw.render{background:#D9D9DC;border:1px solid var(--ink-4)}
+.sw.mesh{border:1px solid var(--accent)}
+
+.toast{position:absolute;left:96px;bottom:84px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink);background:rgba(248,248,249,.85);border:1px solid rgba(17,18,22,.12);padding:9px 14px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;pointer-events:none;z-index:4}
+.toast.show{opacity:1;transform:none}
+
+@media (max-width:760px){
+  .fig{right:-35%;opacity:.55;max-width:none}
+  .hud,.meta-top{display:none}
+  nav{left:24px}
+  header{padding:24px}
+  footer{left:24px;right:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .go .xr-layer,.go .xr-line,.go .xr-out,.go .xr-in,.pulse,.item{animation:none!important;transition:none!important}
+  .go .xr-layer{opacity:0}.go .xr-out{opacity:0}.go .xr-in{opacity:1}
+}
+
+/* ===================== ABOUT：卡片翻面 ===================== */
+#about{position:fixed;inset:0;z-index:20;background:radial-gradient(90% 85% at 60% 45%,#F4F5F7 0%,#ECEDEF 55%,#E1E3E7 100%);color:var(--ink);
+  visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display)}
+#about.open{visibility:visible}
+.ab-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);pointer-events:none}
+.ab-cols span{border-left:1px solid rgba(17,18,22,.05)}
+.ab-top{position:absolute;left:0;right:0;top:0;padding:32px 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}
+.ab-back{font:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink);background:none;border:1px solid rgba(17,18,22,.25);border-radius:999px;padding:9px 14px;cursor:pointer;display:inline-flex;gap:10px;align-items:center}
+.ab-back:hover,.ab-back:focus-visible{background:var(--ink);color:#F4F5F7;outline:none}
+.ab-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2)}
+.ab-label span{color:var(--ink-5)}
+.ab-name{position:absolute;left:2vw;bottom:5vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;
+  font-size:min(30vw,52vh);line-height:.8;letter-spacing:-.02em;display:flex;pointer-events:none;z-index:1}
+.ab-name .clip{display:inline-block;overflow:hidden;padding:0 .06em .08em 0;margin-right:-.06em}
+.ab-name .ch{display:inline-block;transform:translateY(110%)}
+.ab-info{position:absolute;right:48px;top:120px;width:min(320px,28vw);z-index:3}
+.ab-info .rule{height:1px;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+.ab-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0 11px;border-bottom:1px solid rgba(17,18,22,.14);opacity:0}
+.ab-row dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-3)}
+.ab-row dt small{display:block;font-family:var(--cjk);letter-spacing:.2em;margin-top:3px;color:var(--ink-4)}
+.ab-row dd{margin:0;text-align:right;font-size:13.5px;line-height:1.5}
+.ab-row dd small{display:block;font-family:var(--cjk);font-size:11px;color:var(--ink-3)}
+.ab-row .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
+.ab-bio{margin:22px 0 18px;font-size:13px;line-height:1.75;opacity:0}
+.ab-bio span{display:block;color:var(--ink-3);font-family:var(--cjk);font-size:12.5px;margin-top:6px}
+.ab-works{font:inherit;font-size:13px;font-weight:500;background:none;border:0;padding:0 0 4px;border-bottom:1px solid var(--ink);color:var(--ink);cursor:pointer;display:inline-flex;gap:14px;align-items:center;opacity:0}
+.ab-works small{font-family:var(--cjk);font-weight:400;color:var(--ink-3)}
+.ab-works:hover,.ab-works:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+
+.ab-stage{position:absolute;left:57%;top:47%;width:min(22vw,330px,38vh);aspect-ratio:.72;transform:translate(-50%,-50%);perspective:1400px;z-index:2}
+.card{position:absolute;inset:0;transform-style:preserve-3d;cursor:grab;touch-action:none;outline:none;will-change:transform}
+.card:active{cursor:grabbing}
+.card:focus-visible .face{box-shadow:0 0 0 2px var(--accent),0 30px 60px rgba(17,18,22,.25)}
+.face{position:absolute;inset:0;border-radius:14px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 30px 60px rgba(17,18,22,.22),0 6px 14px rgba(17,18,22,.12)}
+.front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.front .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,transparent 22%,transparent 55%,rgba(8,10,20,.72) 100%)}
+.holo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;
+  background:linear-gradient(115deg,#ff2a8a,#ff9a1f,#ffe81a,#22f0a0,#18b8ff,#7b3bff,#ff2a8a);background-size:260% 260%}
+.glare{position:absolute;inset:0;pointer-events:none;mix-blend-mode:soft-light;background:radial-gradient(60% 45% at var(--gx,30%) var(--gy,20%),rgba(255,255,255,.85),transparent 70%)}
+.inset{position:absolute;inset:8px;border:1px solid rgba(255,255,255,.35);border-radius:9px;pointer-events:none}
+.ftop{position:absolute;left:18px;right:18px;top:16px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:rgba(255,255,255,.85)}
+.fbot{position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff}
+.fbot b{display:block;font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-size:clamp(26px,2.6vw,40px);line-height:1}
+.fbot small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.2em;margin-top:6px;opacity:.9}
+.fbot .age{text-align:right;font-family:var(--mono);font-size:8px;letter-spacing:.2em}
+.fbot .age em{display:block;font-style:normal;font-size:18px;letter-spacing:0;margin-top:2px}
+.back{transform:rotateY(180deg);background:linear-gradient(150deg,#141a3a 0%,#2a1430 45%,#0f2a2c 100%);color:#e9ebf3}
+.back .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:18px 18px}
+.back .mono{position:absolute;left:0;right:0;top:24%;text-align:center;font-family:"Instrument Serif",serif;font-size:clamp(56px,6vw,92px);line-height:1}
+.back .rows{position:absolute;left:18px;right:18px;top:58%;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em}
+.back .rows div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.back .rows span{opacity:.6}
+.back .bars{position:absolute;left:18px;right:18px;bottom:16px;height:26px;display:flex;align-items:stretch;gap:2px}
+.back .bars i{display:block;background:#e9ebf3}
+.ab-hint{position:absolute;left:57%;transform:translateX(-50%);top:calc(47% + min(22vw,330px,38vh) / .72 / 2 + 26px);white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);opacity:0}
+@media (max-width:760px){
+  .ab-stage{left:50%;top:38%;width:min(56vw,38vh)}
+  .ab-hint{left:50%;top:auto;bottom:24vh}
+  .ab-info{left:24px;right:24px;width:auto;top:auto;bottom:20px;display:none}
+  .ab-name{font-size:34vw;bottom:auto;top:58%}
+  .ab-label{left:24px;top:96px}
+  .ab-top{padding:24px}
+}
+
+/* ===================== WORKS：three.js 玻璃 + 弧形银幕（连续滑动） ===================== */
+#works{position:fixed;inset:0;z-index:20;background:#EDEEF0;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display)}
+#works.open{visibility:visible}
+#wkGL{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:none}
+.wk-top{position:absolute;left:0;right:0;top:0;padding:32px 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:4}
+.wk-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3;pointer-events:none}
+.wk-label span{color:var(--ink-4)}
+.wk-title{position:absolute;left:4.5vw;bottom:14vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;
+  font-size:clamp(64px,9.2vw,156px);line-height:.86;letter-spacing:-.02em;color:#fff;mix-blend-mode:difference;pointer-events:none;white-space:nowrap;z-index:3;will-change:transform,opacity,filter}
+.wk-meta{position:absolute;left:4.6vw;bottom:7.5vh;display:flex;gap:22px;align-items:baseline;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);z-index:4}
+.wk-meta .name{font-family:var(--display);font-size:14px;letter-spacing:0;color:var(--ink)}
+.wk-view{font:inherit;font-family:var(--display);font-size:13px;letter-spacing:0;font-weight:500;background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 3px;color:var(--ink);cursor:pointer}
+.wk-view:hover,.wk-view:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+.wk-prog{position:absolute;right:48px;bottom:7.5vh;display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-4);z-index:4}
+.wk-prog .cur{color:var(--ink)}
+.wk-track{position:relative;width:200px;height:1px;background:rgba(17,18,22,.16)}
+.wk-track i{position:absolute;left:0;top:0;height:1px;width:40px;background:var(--ink);will-change:transform}
+.wk-track button{position:absolute;top:-21px;width:40px;height:44px;margin-left:-20px;background:none;border:0;padding:0;cursor:pointer}
+.wk-track button:focus-visible{outline:2px solid var(--accent);outline-offset:-10px}
+.wk-hint{position:absolute;right:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-4);z-index:3;pointer-events:none;text-align:right;line-height:1.9}
+.wk-cursor{position:absolute;left:0;top:0;width:78px;height:78px;margin:-39px 0 0 -39px;border:1px solid rgba(17,18,22,.28);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ink);pointer-events:none;z-index:5;
+  background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);will-change:transform;opacity:0;transition:opacity .3s}
+#works.open .wk-cursor.on{opacity:1}
+.wk-nogl{position:absolute;inset:0;display:none;place-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-3)}
+@media (max-width:760px){
+  .wk-top{padding:24px}.wk-label{left:24px;top:96px}.wk-hint{display:none}
+  .wk-meta{left:24px;right:24px}.wk-prog{right:24px;bottom:auto;top:96px}.wk-track{width:110px}
+  .wk-cursor{display:none}#wkGL{cursor:auto}
+}
+</style>
+
+<main id="main" class="waiting">
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="fig" id="fig">
+    <canvas id="c" width="1280" height="1280" role="img" aria-label="3D 仿生人女孩。开场打招呼，鼠标移到左侧菜单时她会看过去"></canvas>
+    <div class="xr-layer" aria-hidden="true">
+      <img src="first.webp" alt="" id="firstImg">
+      <div class="xr-mask" style="position:absolute;inset:0;background:rgba(59,91,253,.22);mix-blend-mode:multiply"></div>
+      <div class="xr-mask" style="position:absolute;inset:0"><div class="xr-grid" style="position:absolute;inset:0;opacity:.35"></div></div>
+    </div>
+    <div class="xr-line" aria-hidden="true"><span>◂ RENDER · MESH ▸</span></div>
+
+    <div class="hud" aria-hidden="true">
+      <div class="row"><span style="width:48px;height:1px;background:var(--ink-4)"></span><span>SUBJECT</span><span class="val">ANDROID / <span id="hudNum">02</span></span></div>
+      <div class="row"><span>LAYER</span><span class="val swap"><span class="xr-out">MESH → SKIN</span><span class="xr-in">SKIN · FINAL</span></span></div>
+      <div class="row"><span>MODE</span><span class="mode swap"><span class="xr-out">DIGITIZING</span><span class="xr-in" id="modeText">ONLINE</span></span><span class="dot pulse"></span></div>
+    </div>
+  </div>
+
+  <header>
+    <a class="brand" href="#" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <div class="meta-top">
+      <div class="col"><span>INDEX</span><span id="idxText">02 / 05</span></div>
+      <div class="col"><span>RENDER</span><span>DAZ G9 · IRAY</span></div>
+      <div class="lang"><a href="#" aria-current="true">中</a><span>/</span><a href="#">EN</a></div>
+    </div>
+  </header>
+
+  <div class="ticks" aria-hidden="true" id="ticks"></div>
+  <div class="rail-mark" aria-hidden="true"></div>
+  <div class="mid-line" aria-hidden="true"></div>
+
+  <nav aria-label="主菜单，上下滚动或方向键选择" id="nav" tabindex="0"></nav>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <footer>
+    <div class="f-left"><span class="mouse" aria-hidden="true"><i class="pulse"></i></span><span>SCROLL · 滚动选择</span><span style="color:var(--ink-5)">/</span><span>CLICK · 进入</span></div>
+    <div class="f-right">
+      <span class="legend"><span class="sw render"></span>RENDER</span>
+      <span class="legend"><span class="sw mesh xr-grid"></span>MESH</span>
+    </div>
+  </footer>
+</main>
+
+<section id="about" aria-label="关于 Ella" aria-hidden="true">
+  <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="ab-top">
+    <a class="brand" href="#" id="abLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <button class="ab-back" type="button" id="abBack">← BACK · 返回</button>
+  </div>
+  <div class="ab-label">(01) — ABOUT · 关于<br><span>PROFILE / 2026</span></div>
+
+  <h1 class="ab-name" aria-label="Ella"><span class="clip"><span class="ch">E</span></span><span class="clip"><span class="ch">l</span></span><span class="clip"><span class="ch">l</span></span><span class="clip"><span class="ch">a</span></span></h1>
+
+  <div class="ab-stage">
+    <div class="card" id="card" tabindex="0" role="button" aria-label="Ella 的个人卡片。拖动旋转，点击或按回车翻面">
+      <div class="face front">
+        <img src="about/ella.webp" alt="Ella 的照片">
+        <div class="shade"></div>
+        <div class="holo" id="holo"></div>
+        <div class="glare" id="glare"></div>
+        <div class="inset"></div>
+        <div class="ftop"><span>No.01</span><span>◂ PORTFOLIO</span></div>
+        <div class="fbot"><div><b>Ella</b><small>3D CHARACTER ARTIST</small></div><div class="age">AGE<em>24</em></div></div>
+      </div>
+      <div class="face back" aria-hidden="true">
+        <div class="grid"></div>
+        <div class="holo" id="holoB" style="mix-blend-mode:overlay;opacity:.35"></div>
+        <div class="inset"></div>
+        <div class="ftop"><span>PROFILE</span><span>No.01</span></div>
+        <div class="mono">E</div>
+        <div class="rows"><div><span>NAME</span>ELLA</div><div><span>AGE</span>24</div><div><span>MAIL</span>[YOUR@EMAIL]</div></div>
+        <div class="bars" id="bars"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ab-hint" id="abHint">← 拖动 DRAG &nbsp;/&nbsp; 点击翻面 CLICK TO FLIP</div>
+
+  <div class="ab-info">
+    <div class="rule"></div>
+    <dl style="margin:0">
+      <div class="ab-row"><dt>NAME<small>姓名</small></dt><dd>Ella</dd></div>
+      <div class="ab-row"><dt>AGE<small>年龄</small></dt><dd>24</dd></div>
+      <div class="ab-row"><dt>ROLE<small>职业</small></dt><dd>3D Character Artist<small>3D 角色艺术家</small></dd></div>
+      <div class="ab-row"><dt>STATUS<small>状态</small></dt><dd><span class="live"></span>Open to work<small>可接项目</small></dd></div>
+    </dl>
+    <p class="ab-bio">I'm Ella, a 3D character artist who builds digital humans in Daz and Iray.<span>我是 Ella，一名用 Daz 和 Iray 塑造数字人物的 3D 角色艺术家。</span></p>
+    <button class="ab-works" type="button" id="abWorks">See my works <small>查看作品</small> <span aria-hidden="true">→</span></button>
+  </div>
+</section>
+
+<script>
+(() => {
+const main = document.getElementById("main");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ===================== 滚轮菜单（H 版） ===================== */
+const MENU = [
+  { en: "ABOUT",      cn: "关于",    meta: "PROFILE · 个人简介" },
+  { en: "WORKS",      cn: "作品",    meta: "SELECTED PROJECTS · 2024–2026" },
+  { en: "CHARACTERS", cn: "3D 角色", meta: "3D CHARACTER DESIGN" },
+  { en: "MOTION",     cn: "动态",    meta: "ANIMATION · REEL" },
+  { en: "CONTACT",    cn: "联系",    meta: "MAIL · SOCIAL" }
+];
+const nav = document.getElementById("nav");
+let idx = 1;
+const els = MENU.map((d, i) => {
+  const item = document.createElement("div"); item.className = "item";
+  const line = document.createElement("div"); line.className = "line";
+  const num = document.createElement("span"); num.className = "num"; num.textContent = String(i + 1).padStart(2, "0");
+  const btn = document.createElement("button"); btn.type = "button"; btn.textContent = d.en;
+  btn.addEventListener("click", () => { if (i === idx) enter(i); else setIdx(i); });
+  const cn = document.createElement("span"); cn.className = "cn"; cn.textContent = d.cn;
+  line.append(num, btn, cn);
+  const row = document.createElement("div"); row.className = "enter"; row.hidden = true;
+  const a = document.createElement("a"); a.href = "#";
+  const p = document.createElement("span"); p.className = "dot pulse"; a.append(p, document.createTextNode("ENTER"));
+  a.addEventListener("click", e => { e.preventDefault(); enter(i); });
+  const meta = document.createElement("span"); meta.className = "meta"; meta.textContent = d.meta;
+  row.append(a, meta);
+  item.append(line, row);
+  nav.append(item);
+  return { item, btn, row };
+});
+function layout(){
+  const n = MENU.length;
+  els.forEach((e, i) => {
+    let k = i - idx; if (k > n / 2) k -= n; if (k < -n / 2) k += n;
+    const a = Math.abs(k);
+    const y = k === 0 ? -48 : k * 84 + (k > 0 ? 22 : -60);
+    e.item.style.transform = `translateY(${y}px)`;
+    e.item.style.opacity = a === 0 ? 1 : a === 1 ? .62 : .22;
+    e.item.classList.toggle("active", k === 0);
+    e.item.classList.toggle("near", a === 1);
+    e.row.hidden = k !== 0;
+    e.btn.setAttribute("aria-current", k === 0 ? "true" : "false");
+  });
+  const t = String(idx + 1).padStart(2, "0");
+  document.getElementById("idxText").textContent = `${t} / 05`;
+  document.getElementById("hudNum").textContent = t;
+}
+function setIdx(i){ idx = (i + MENU.length) % MENU.length; layout(); }
+layout();
+const ticks = document.getElementById("ticks");
+for (let i = 0; i < 21; i++) ticks.append(document.createElement("span"));
+let lastWheel = 0;
+main.addEventListener("wheel", e => {
+  e.preventDefault();
+  const now = Date.now();
+  if (now - lastWheel < 450 || Math.abs(e.deltaY) < 8) return;
+  lastWheel = now; setIdx(idx + (e.deltaY > 0 ? 1 : -1));
+}, { passive: false });
+nav.addEventListener("keydown", e => {
+  if (e.key === "ArrowDown"){ setIdx(idx + 1); e.preventDefault(); }
+  if (e.key === "ArrowUp"){ setIdx(idx - 1); e.preventDefault(); }
+  if (e.key === "Enter"){ enter(idx); e.preventDefault(); }
+});
+let toastT = 0;
+function enter(i){
+  if (MENU[i].en === "ABOUT"){ openAbout(); return; }
+  if (MENU[i].en === "WORKS" && window.__works){ window.__works.open(); return; }
+  const t = document.getElementById("toast");
+  t.textContent = `示例：这里会进入「${MENU[i].cn}」页面`;
+  t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+/* ===================== 人物 ===================== */
+const canvas = document.getElementById("c"), ctx = canvas.getContext("2d");
+const firstImg = document.getElementById("firstImg");
+const modeText = document.getElementById("modeText");
+let D = null, hi = [], look = [];
+const loadImg = src => new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = src; });
+
+function drawImg(img, a = 1){ if (!img) return; ctx.globalAlpha = a; ctx.drawImage(img, 0, 0, canvas.width, canvas.height); ctx.globalAlpha = 1; }
+function clear(){ ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+/* ===================== 回头动画：上 / 中 / 下 三段 =====================
+   每段 12 帧：从“看左边”的姿势转回正面。转向菜单时倒着播。
+   和跟随帧衔接：先在跟随帧里走到这一段的起点（anchor），再播这一段。 */
+let ret = { up: [], mid: [], low: [] }, bridge = { up: [], mid: [], low: [] }, retReady = false;
+const RET_FPS = 36, WALK_FPS = 60, SEAM_MS = 70;
+const FOLLOW = .3;   // 跟随速度（按 60 帧/秒计）：越大越跟手
+function zoneOf(k){ const n = look.length - 1; return k < n / 3 ? "up" : k < n * 2 / 3 ? "mid" : "low"; }
+
+/* 一个简单的“帧序列播放器”：每帧一张原图；标了 seam 的那一帧用 90ms 叠化接进来 */
+let seq = null;
+function playSeq(frames, onDone){ seq = { frames, start: performance.now(), onDone }; }
+function walkFrames(from, to){
+  const out = [], step = to >= from ? 1 : -1;
+  for (let k = from + step; step > 0 ? k <= to : k >= to; k += step) out.push({ img: look[k], ms: 1000 / WALK_FPS, k });
+  return out;
+}
+function retFrames(zone, reverse){
+  const clip = ret[zone].map(img => ({ img, ms: 1000 / RET_FPS }));
+  return reverse ? clip.slice().reverse() : clip;
+}
+function drawSeq(now){
+  let t = now - seq.start, i = 0;
+  while (i < seq.frames.length && t >= seq.frames[i].ms){ t -= seq.frames[i].ms; i++; }
+  seq.i = i;
+  if (i >= seq.frames.length){ const last = seq.frames[seq.frames.length - 1]; drawImg(last.img); const cb = seq.onDone; seq = null; cb && cb(last); return; }
+  const f = seq.frames[i];
+  if (f.seam && i > 0 && t < SEAM_MS){ drawImg(seq.frames[i - 1].img); drawImg(f.img, t / SEAM_MS); }
+  else drawImg(f.img);
+}
+
+// 动画进行到一半时改主意：把已经播过的部分倒着播回去，再接上新的去向
+function reverseSeq(tail, onDone){
+  const played = seq.frames.slice(0, Math.min(seq.frames.length, (seq.i ?? 0) + 1)).reverse()
+    .map(f => ({ img: f.img, ms: f.ms, k: f.k }));
+  playSeq(played.concat(tail), onDone);
+}
+
+// 跟随时只显示单张原帧（不叠化），避免头发一清一糊地闪
+let shown = 0;
+function drawLook(k){
+  const n = look.length - 1, f = Math.max(0, Math.min(n, k));
+  if (Math.abs(f - shown) > .6) shown = Math.round(f);   // 防抖：停在两帧交界处不来回跳
+  drawImg(look[shown] || look.find(Boolean));
+}
+
+/* ===================== 状态：开场扫描 → sayhi → 静止 / 跟随 ===================== */
+let phase = "load", t0 = 0, helloStart = 0, kCur = 0, kTarget = 0;
+let inZone = false, leaveTimer = 0, lookReady = false;
+const INTRO_MS = 3300;
+
+// 跟随区域：页面左边约 56%（菜单区 + 中间区域），整个高度
+function zoneFromPoint(x, y){
+  const r = main.getBoundingClientRect();
+  return x - r.left < r.width * .56 && y >= r.top && y <= r.bottom;
+}
+function kFromY(y){
+  const r = main.getBoundingClientRect();
+  const u = ((y - r.top) / r.height - .18) / .64;
+  return Math.max(0, Math.min(1, u)) * (look.length - 1);
+}
+addEventListener("pointermove", e => {
+  if (aboutOpen || window.__worksOpen) return;
+  const z = zoneFromPoint(e.clientX, e.clientY);
+  if (z){ clearTimeout(leaveTimer); inZone = true; kTarget = kFromY(e.clientY); }
+  else if (inZone){ clearTimeout(leaveTimer); leaveTimer = setTimeout(() => { inZone = false; }, 250); }
+});
+document.addEventListener("pointerleave", () => { clearTimeout(leaveTimer); inZone = false; });
+
+function setMode(m){ modeText.textContent = m; }
+const front = () => hi[hi.length - 1];
+
+// 正面 → 看菜单：倒放对应那段回头动画，接到 anchor，再走到鼠标所在的高度
+function startEnter(){
+  const kt = Math.round(kTarget), zone = zoneOf(kt), a = D.ret.anchor[zone];
+  const br = bridge[zone].slice().reverse().map(img => ({ img, ms: 1000 / RET_FPS }));
+  const clip = retFrames(zone, true);
+  if (br.length && D.ret.seam[zone]) clip[0].seam = true;
+  const frames = br.concat(clip);
+  const walk = walkFrames(a, kt);
+  frames.push({ img: look[a], ms: 1000 / WALK_FPS, seam: true, k: a });
+  phase = "enter"; setMode("TRACKING");
+  playSeq(frames.concat(walk), last => { phase = "track"; kCur = shown = last.k ?? a; });
+}
+// 看菜单 → 正面：在跟随帧里走到这一区的 anchor，再播回头动画，最后接到正面
+function startLeave(){
+  const k = shown, zone = zoneOf(k), a = D.ret.anchor[zone];
+  const frames = walkFrames(k, a);
+  const clip = retFrames(zone, false);
+  clip[0].seam = true;
+  const br = bridge[zone].map(img => ({ img, ms: 1000 / RET_FPS }));
+  if (br.length && D.ret.seam[zone]) br[0].seam = true;
+  frames.push(...clip, ...br, { img: front(), ms: 1000 / RET_FPS, seam: !br.length });
+  phase = "leave";
+  playSeq(frames, () => { phase = "rest"; setMode("ONLINE"); });
+  seq.startK = k;
+}
+
+function frame(now){
+  requestAnimationFrame(frame);
+  const _prev = frame.last; frame.last = now; frame.lastPrev = _prev;
+  if (phase === "load") return;
+  clear();
+
+  if (phase === "intro"){
+    drawImg(firstImg);
+    if (now - t0 >= INTRO_MS && hi.length && hi.every(Boolean)){ phase = "hello"; helloStart = now; }
+    return;
+  }
+  if (phase === "hello"){
+    const i = Math.floor((now - helloStart) / 1000 * D.fps);
+    if (i >= hi.length){ phase = "rest"; }
+    else { drawImg(hi[i]); return; }
+  }
+  if (phase === "rest"){
+    drawImg(front());
+    if (inZone && lookReady && retReady){
+      if (reduce){ phase = "track"; kCur = shown = Math.round(kTarget); setMode("TRACKING"); }
+      else startEnter();
+    }
+    return;
+  }
+  if (seq && !reduce){
+    // 回头回到一半，鼠标又回到左边：倒回去，直接接着看鼠标
+    if (phase === "leave" && inZone){
+      const k0 = seq.startK ?? shown, kt = Math.round(kTarget);
+      reverseSeq([{ img: look[k0], ms: 1000 / WALK_FPS, k: k0 }].concat(walkFrames(k0, kt)),
+        last => { phase = "track"; kCur = shown = last.k ?? k0; });
+      phase = "enter"; setMode("TRACKING");
+    }
+    // 转过去转到一半，鼠标又离开：倒回正面
+    else if (phase === "enter" && !inZone){
+      reverseSeq([{ img: front(), ms: 1000 / RET_FPS }], () => { phase = "rest"; setMode("ONLINE"); });
+      phase = "leave";
+    }
+  }
+  if (phase === "enter" || phase === "leave"){ if (seq) drawSeq(now); else drawImg(front()); return; }
+  if (phase === "track"){
+    const dt = Math.min(.1, (now - (frame.lastPrev || now)) / 1000);
+    kCur += (kTarget - kCur) * (reduce ? 1 : 1 - Math.pow(1 - FOLLOW, dt * 60));
+    drawLook(kCur);
+    if (!inZone){
+      if (reduce){ phase = "rest"; setMode("ONLINE"); }
+      else startLeave();
+    }
+  }
+}
+requestAnimationFrame(frame);
+
+
+/* ===================== ABOUT：转场 + 卡片 ===================== */
+const about = document.getElementById("about"), card = document.getElementById("card");
+const holo = document.getElementById("holo"), holoB = document.getElementById("holoB"), glare = document.getElementById("glare");
+let aboutOpen = false, aboutAnims = [];
+// 条形码
+(() => { const bars = document.getElementById("bars"); let seed = 7;
+  for (let i = 0; i < 46; i++){ seed = (seed * 9301 + 49297) % 233280; const b = document.createElement("i"); b.style.width = (1 + Math.floor(seed / 233280 * 3)) + "px"; bars.append(b); } })();
+
+const cardState = { rx: 4, ry: -8, vx: 0, vy: 0, baseX: 4, baseY: -8, flip: 0, x: 0, y: 0, rz: 0, s: 1, entering: false, drag: null, hover: { x: 0, y: 0 } };
+function applyCard(){
+  const c = cardState;
+  card.style.transform = `translate3d(${c.x}px,${c.y}px,0) rotateZ(${c.rz}deg) rotateX(${c.rx}deg) rotateY(${c.ry}deg) scale(${c.s})`;
+  const ang = c.ry * Math.PI / 180;
+  const k = Math.abs(Math.sin(ang));                              // 侧转越多，彩虹越明显
+  holo.style.opacity = (.18 + k * .62).toFixed(3);
+  holo.style.backgroundPosition = `${50 + c.ry * .9}% ${50 + c.rx * 2}%`;
+  holoB.style.backgroundPosition = `${50 - c.ry * .9}% ${50 - c.rx * 2}%`;
+  glare.style.setProperty("--gx", `${50 - c.ry * 2.2}%`);
+  glare.style.setProperty("--gy", `${30 + c.rx * 3}%`);
+}
+function cardLoop(){
+  if (!aboutOpen) return;
+  const c = cardState;
+  if (!c.entering && !c.drag){
+    const tx = c.baseX - c.hover.y * 8, ty = c.baseY + c.flip + c.hover.x * 14;
+    c.vx += (tx - c.rx) * .06; c.vy += (ty - c.ry) * .06;    // 弹簧回到静止角度
+    c.vx *= .78; c.vy *= .78;
+    c.rx += c.vx; c.ry += c.vy;
+  }
+  applyCard();
+  requestAnimationFrame(cardLoop);
+}
+about.addEventListener("pointermove", e => {
+  if (cardState.drag) return;
+  cardState.hover.x = e.clientX / innerWidth * 2 - 1; cardState.hover.y = e.clientY / innerHeight * 2 - 1;
+});
+card.addEventListener("pointerdown", e => {
+  if (cardState.entering) return;
+  card.setPointerCapture(e.pointerId);
+  cardState.drag = { x: e.clientX, y: e.clientY, rx: cardState.rx, ry: cardState.ry, moved: 0, lx: e.clientX, t: performance.now(), v: 0 };
+});
+card.addEventListener("pointermove", e => {
+  const d = cardState.drag; if (!d) return;
+  const dx = e.clientX - d.x, dy = e.clientY - d.y;
+  d.moved = Math.max(d.moved, Math.hypot(dx, dy));
+  cardState.ry = d.ry + dx * .45; cardState.rx = d.rx - dy * .25;
+  const now = performance.now(); d.v = (e.clientX - d.lx) / Math.max(1, now - d.t) * .45 * 16; d.lx = e.clientX; d.t = now;
+});
+function endDrag(){
+  const d = cardState.drag; if (!d) return;
+  cardState.drag = null;
+  if (d.moved < 6){ flipCard(); return; }
+  // 拖动松手：按甩出去的方向落到最近的一面
+  const c = cardState, proj = c.ry + d.v * 8 - c.baseY;
+  c.flip = Math.round(proj / 180) * 180; c.vy = d.v * .5;
+}
+card.addEventListener("pointerup", endDrag);
+card.addEventListener("pointercancel", endDrag);
+card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); flipCard(); } });
+function flipCard(){ cardState.flip += 180; }
+
+const easeOut = t => 1 - Math.pow(1 - t, 3), easeInOut = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function cardEntrance(){
+  const c = cardState, start = performance.now(), dur = reduce ? 1 : 1500;
+  c.entering = true; c.flip = 0;
+  (function step(now){
+    const u = Math.min(1, (now - start) / dur), e = easeOut(u), f = easeInOut(Math.min(1, u * 1.15));
+    c.x = (1 - e) * -innerWidth * .42; c.y = (1 - e) * 60;
+    c.rz = (1 - e) * -16; c.s = .86 + .14 * e;
+    c.ry = c.baseY + (1 - f) * (180 + 24); c.rx = c.baseX + (1 - e) * 10;
+    applyCard();
+    if (u < 1 && aboutOpen) requestAnimationFrame(step);
+    else { c.entering = false; c.vx = c.vy = 0; }
+  })(start);
+}
+
+function openAbout(){
+  if (aboutOpen) return;
+  aboutOpen = true; inZone = false;
+  aboutAnims.forEach(a => a.cancel()); aboutAnims = [];
+  about.classList.add("open"); about.setAttribute("aria-hidden", "false");
+  const D0 = reduce ? 0 : 1;
+  const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); aboutAnims.push(a); return a; };
+  A(about, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  about.querySelectorAll(".ab-name .ch").forEach((el, i) => A(el, [{ transform: "translateY(110%)" }, { transform: "translateY(0)" }], { duration: 1000, delay: 700 + i * 90, easing: "cubic-bezier(.16,1,.3,1)" }));
+  A(about.querySelector(".ab-label"), [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { delay: 900 });
+  A(about.querySelector(".rule"), [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: 800, delay: 1000 });
+  about.querySelectorAll(".ab-row").forEach((el, i) => A(el, [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { delay: 1100 + i * 90 }));
+  A(about.querySelector(".ab-bio"), [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { delay: 1500 });
+  A(about.querySelector(".ab-works"), [{ opacity: 0 }, { opacity: 1 }], { delay: 1650 });
+  A(document.getElementById("abHint"), [{ opacity: 0 }, { opacity: 1 }], { delay: 1800 });
+  cardState.x = -innerWidth; applyCard();
+  setTimeout(() => { if (aboutOpen){ cardEntrance(); requestAnimationFrame(cardLoop); } }, 500 * D0);
+  setTimeout(() => card.focus({ preventScroll: true }), 1600 * D0);
+}
+function closeAbout(then){
+  if (!aboutOpen) return;
+  aboutOpen = false;
+  aboutAnims.forEach(a => a.cancel()); aboutAnims = [];
+  const D0 = reduce ? 0 : 1;
+  const a = about.animate([{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
+  main.animate([{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
+  a.onfinish = () => { a.cancel(); about.classList.remove("open"); about.setAttribute("aria-hidden", "true"); nav.focus({ preventScroll: true }); then && then(); };
+}
+document.getElementById("abBack").addEventListener("click", () => closeAbout());
+document.getElementById("abLogo").addEventListener("click", e => { e.preventDefault(); closeAbout(); });
+document.getElementById("abWorks").addEventListener("click", () => closeAbout(() => { setIdx(MENU.findIndex(m => m.en === "WORKS")); if (window.__works) window.__works.open(); }));
+addEventListener("keydown", e => { if (e.key === "Escape" && aboutOpen) closeAbout(); });
+
+/* ===================== 加载 ===================== */
+(async () => {
+  D = await fetch("data.json").then(r => r.json());
+  if (!firstImg.complete) await new Promise(r => { firstImg.onload = r; firstImg.onerror = r; });
+  main.classList.remove("waiting");
+  void main.offsetWidth;
+  main.classList.add("go");
+  t0 = performance.now();
+  phase = reduce ? "rest" : "intro";
+
+  const hiSrc = Array.from({ length: D.hi }, (_, i) => `hi/h${String(i).padStart(2, "0")}.avif`);
+  const lookSrc = Array.from({ length: D.look }, (_, i) => `look/l${String(i).padStart(2, "0")}.avif`);
+  async function pool(list, n, each){
+    const q = list.slice(); await Promise.all(Array.from({ length: n }, async () => { while (q.length) await each(q.shift()); }));
+  }
+  hi = new Array(D.hi).fill(null);
+  if (reduce){ hi[D.hi - 1] = await loadImg(hiSrc[D.hi - 1]); hi = hi.map(x => x || hi[D.hi - 1]); }
+  else await pool(hiSrc.map((s, i) => [s, i]), 6, async ([s, i]) => { hi[i] = await loadImg(s); });
+  hi = hi.map(x => x || firstImg);
+
+  look = new Array(D.look).fill(null);
+  await pool(lookSrc.map((s, i) => [s, i]), 6, async ([s, i]) => { look[i] = await loadImg(s); });
+  look = look.map((x, i) => x || look.find(Boolean));
+  lookReady = true;
+
+  for (const z of ["mid", "up", "low"]){
+    const list = Array.from({ length: D.ret.n }, (_, i) => `ret/${z}${String(i).padStart(2, "0")}.avif`);
+    ret[z] = new Array(D.ret.n).fill(null);
+    await pool(list.map((s, i) => [s, i]), 6, async ([s, i]) => { ret[z][i] = await loadImg(s); });
+    ret[z] = ret[z].map(x => x || front());
+    bridge[z] = (await Promise.all((D.ret.bridge?.[z] || []).map(j => loadImg(`ret/c${j}.avif`)))).filter(Boolean);
+  }
+  retReady = true;
+})();
+})();
+</script>
+
+<section id="works" aria-label="作品 Works" aria-hidden="true">
+  <canvas id="wkGL" aria-label="作品视频排在一个倾斜的弧形环上，后面有一个旋转的玻璃雕塑。滚动或拖动来浏览" role="img"></canvas>
+  <div class="wk-nogl" id="wkNoGL">此浏览器不支持 WebGL · WEBGL UNAVAILABLE</div>
+
+  <div class="wk-top">
+    <a class="brand" href="#" id="wkLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <button class="ab-back" type="button" id="wkBack">← BACK · 返回</button>
+  </div>
+  <div class="wk-label">(02) — WORKS · 作品<br><span>UE SCENES / REAL-TIME</span></div>
+  <div class="wk-hint">SCROLL · DRAG<br>滚动或拖动浏览</div>
+
+  <h1 class="wk-title" id="wkTitle">Scene One</h1>
+  <div class="wk-meta">
+    <span class="name" id="wkName">[项目名称 A]</span>
+    <span id="wkTag">UE5 · [场景类型] · 2026</span>
+    <button class="wk-view" type="button" id="wkView">View project →</button>
+  </div>
+  <div class="wk-prog" aria-label="作品进度">
+    <span class="cur" id="wkNum">01</span>
+    <div class="wk-track" id="wkTrack"><i id="wkFill"></i></div>
+    <span>05</span>
+  </div>
+  <div class="wk-cursor" id="wkCursor" aria-hidden="true">DRAG</div>
+</section>
+
+<script type="importmap">
+{ "imports": {
+  "three": "./lib/three.module.min.js",
+  "three/addons/environments/RoomEnvironment.js": "./lib/RoomEnvironment.js"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+(() => {
+/* ========= 作品：替换成你的 UE 视频 ========= */
+const WORKS = [
+  { t: "Scene One",   n: "[项目名称 A]", tag: "UE5 · [场景类型] · 2026", src: "works/v1.mp4" },
+  { t: "Scene Two",   n: "[项目名称 B]", tag: "UE5 · [场景类型] · 2026", src: "works/v2.mp4" },
+  { t: "Scene Three", n: "[项目名称 C]", tag: "UE5 · [场景类型] · 2026", src: "works/v3.mp4" },
+  { t: "Scene Four",  n: "[项目名称 D]", tag: "UE5 · [场景类型] · 2026", src: "works/v4.mp4" },
+  { t: "Scene Five",  n: "[项目名称 E]", tag: "UE5 · [场景类型] · 2026", src: "works/v5.mp4" }
+];
+const R = 6;          // 弧形银幕半径
+const ARC = 0.74;     // 每块屏的弧度（越大越宽）
+const STEP = 0.86;    // 相邻屏之间的角度
+const TILT = -0.36;   // 环的倾斜：下一个从右下进，往左上走
+const EASE = 0.075;   // 跟随顺滑度：越小越“丝滑”
+
+const W = document.getElementById("works"), cv = document.getElementById("wkGL"), mainEl = document.getElementById("main");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const titleEl = document.getElementById("wkTitle"), nameEl = document.getElementById("wkName"), tagEl = document.getElementById("wkTag");
+const numEl = document.getElementById("wkNum"), fillEl = document.getElementById("wkFill"), track = document.getElementById("wkTrack"), cursorEl = document.getElementById("wkCursor");
+const n = WORKS.length;
+const wrap = (x) => ((x % n) + n) % n;
+
+WORKS.forEach((w, i) => {
+  const b = document.createElement("button"); b.type = "button";
+  b.style.left = (i / (n - 1) * 100) + "%";
+  b.setAttribute("aria-label", `${String(i + 1).padStart(2, "0")} ${w.n}`);
+  b.addEventListener("click", () => goTo(i));
+  track.append(b);
+});
+
+let renderer, scene, camera, tiltG, ring, glass, glassG, typePlane, built = false, running = false, open = false, glOK = true;
+const screens = [];
+let gesture = null, snapTo = 0;
+let pos = 0, target = 0, vel = 0, sVel = 0, prevPos = 0, lastInput = 0, openedAt = 0, shownAct = -1, drag = null;
+const mouse = { x: 0, y: 0, px: innerWidth / 2, py: innerHeight / 2 }, sm = { x: 0, y: 0 }, cur = { x: innerWidth / 2, y: innerHeight / 2, s: 1 };
+const clock = new THREE.Clock();
+const q = new THREE.Quaternion(), axisA = new THREE.Vector3(-1, -1, .3).normalize(), axisB = new THREE.Vector3(0, 1, 0);
+
+/* ========= 银幕着色器：只在滑动时出现拖影和色散，停下就干净 ========= */
+const VERT = `
+  uniform float uVel;
+  varying vec2 vUv;
+  void main(){
+    vUv = uv;
+    vec3 p = position + normal * sin(uv.x * 3.14159) * uVel * 2.2;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+  }`;
+const FRAG = `
+  uniform sampler2D uTex;
+  uniform float uVel, uDim;
+  varying vec2 vUv;
+  void main(){
+    vec2 uv = vec2(1.0 - vUv.x, vUv.y);
+    float k = clamp(abs(uVel) * 10.0, 0.0, 1.0);
+    uv.y += sin(uv.x * 3.14159) * uVel * 0.25;                 // 轻微弯曲
+    vec3 col = vec3(0.0);
+    for (int i = 0; i < 7; i++){ float o = (float(i) / 6.0 - 0.5) * uVel * 0.55; col += texture2D(uTex, uv + vec2(o, 0.0)).rgb; }
+    col /= 7.0;
+    float s = uVel * 0.07;
+    vec3 split = vec3(texture2D(uTex, uv + vec2(s, 0.0)).r, col.g, texture2D(uTex, uv - vec2(s, 0.0)).b);
+    col = mix(col, split, k);
+    float fade = mix(1.0, 0.86, k);
+    gl_FragColor = vec4(col * uDim * fade, 1.0);
+    #include <colorspace_fragment>
+  }`;
+
+/* 背景的大字（画在 canvas 上当贴图，玻璃会折射它） */
+function makeTypeTexture(){
+  const c = document.createElement("canvas"); c.width = 3000; c.height = 1800;
+  const g = c.getContext("2d");
+  const grd = g.createRadialGradient(1500, 820, 80, 1500, 900, 1700);
+  grd.addColorStop(0, "#F7F7F8"); grd.addColorStop(.55, "#EDEEF0"); grd.addColorStop(1, "#E2E3E7");
+  g.fillStyle = grd; g.fillRect(0, 0, 3000, 1800);
+  g.fillStyle = "#DCDDE2";
+  g.font = 'italic 400 760px "Instrument Serif", "Times New Roman", serif';
+  g.textAlign = "center"; g.textBaseline = "middle";
+  g.fillText("Works", 1500, 860);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+  return t;
+}
+
+function build(){
+  try { renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, powerPreference: "high-performance" }); }
+  catch (e) { glOK = false; document.getElementById("wkNoGL").style.display = "grid"; built = true; return; }
+  renderer.setPixelRatio(Math.min(1.5, devicePixelRatio || 1));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xEDEEF0);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.03).texture;
+  camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  camera.position.set(0, 0, 0.6);
+
+  typePlane = new THREE.Mesh(new THREE.PlaneGeometry(34, 20.4), new THREE.MeshBasicMaterial({ map: makeTypeTexture(), toneMapped: false }));
+  typePlane.position.set(0, 0.4, -18);
+  scene.add(typePlane);
+  document.fonts && document.fonts.ready.then(() => { typePlane.material.map.dispose(); typePlane.material.map = makeTypeTexture(); typePlane.material.needsUpdate = true; });
+
+  tiltG = new THREE.Group(); tiltG.rotation.z = TILT; scene.add(tiltG);
+  ring = new THREE.Group(); tiltG.add(ring);
+  WORKS.forEach((w, i) => {
+    const video = document.createElement("video");
+    Object.assign(video, { src: w.src, muted: true, loop: true, playsInline: true, preload: "auto" });
+    video.setAttribute("muted", ""); video.setAttribute("playsinline", "");
+    const tex = new THREE.VideoTexture(video); tex.colorSpace = THREE.SRGBColorSpace;
+    const u = { uTex: { value: tex }, uVel: { value: 0 }, uDim: { value: 1 } };
+    const geo = new THREE.CylinderGeometry(R, R, R * ARC * 9 / 16, 80, 16, true, -ARC / 2, ARC);
+    const mesh = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: u, vertexShader: VERT, fragmentShader: FRAG, side: THREE.DoubleSide, toneMapped: false }));
+    ring.add(mesh);
+    screens.push({ mesh, u, video, i, playing: false });
+  });
+
+  /* 玻璃雕塑：扭结造型，透射 + 色散 + 一点点彩虹膜 */
+  glassG = new THREE.Group(); scene.add(glassG);
+  glass = new THREE.Mesh(
+    new THREE.TorusKnotGeometry(1, 0.3, 420, 72, 2, 3),
+    new THREE.MeshPhysicalMaterial({
+      color: 0xffffff, metalness: 0, roughness: 0.03, transmission: 1, thickness: 1.6, ior: 1.52,
+      dispersion: 5, iridescence: 0.3, iridescenceIOR: 1.3, clearcoat: 1, clearcoatRoughness: 0.04,
+      attenuationColor: new THREE.Color(0xdde4ff), attenuationDistance: 4, envMapIntensity: 1.4, specularIntensity: 1
+    })
+  );
+  glassG.add(glass);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(-4, 6, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xc9d4ff, 1.4); rim.position.set(5, -2, -6); scene.add(rim);
+
+  resize(); addEventListener("resize", resize);
+  built = true;
+}
+function resize(){
+  if (!renderer) return;
+  const w = W.clientWidth || innerWidth, h = W.clientHeight || innerHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+
+/* ========= 连续滑动：滚轮/拖动都直接推动位置，停下后轻轻吸附到最近的作品 ========= */
+function goTo(i){ let d = wrap(i - Math.round(snapTo)); if (d > n / 2) d -= n; snapTo = Math.round(snapTo) + d; gesture = null; }
+W.addEventListener("wheel", (e) => {
+  e.preventDefault(); if (!open) return;
+  const d = Math.max(-140, Math.min(140, e.deltaMode === 1 ? e.deltaY * 30 : e.deltaY));
+  if (!gesture) gesture = { anchor: Math.round(target) };
+  target += d * 0.0021; lastInput = performance.now();
+}, { passive: false });
+W.addEventListener("pointermove", (e) => {
+  mouse.x = e.clientX / innerWidth - .5; mouse.y = e.clientY / innerHeight - .5; mouse.px = e.clientX; mouse.py = e.clientY;
+  cursorEl.classList.toggle("on", e.target === cv);
+  if (drag){ const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY;
+    if (!gesture) gesture = { anchor: Math.round(target) };
+    target -= (dy * 0.9 + dx * 0.55) * 0.0036; lastInput = performance.now(); }
+});
+cv.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY }; cv.setPointerCapture(e.pointerId); cursorEl.textContent = "· ·"; });
+const endDrag = () => { if (!drag) return; drag = null; cursorEl.textContent = "DRAG"; };
+cv.addEventListener("pointerup", endDrag); cv.addEventListener("pointercancel", endDrag);
+cv.addEventListener("pointerleave", () => cursorEl.classList.remove("on"));
+addEventListener("keydown", (e) => {
+  if (!open) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowRight"){ goTo(wrap(Math.round(snapTo)) + 1); e.preventDefault(); }
+  if (e.key === "ArrowUp" || e.key === "ArrowLeft"){ goTo(wrap(Math.round(snapTo)) - 1); e.preventDefault(); }
+  if (e.key === "Escape") closeWorks();
+});
+
+function setActive(a){
+  shownAct = a; const w = WORKS[a];
+  numEl.textContent = String(a + 1).padStart(2, "0");
+  nameEl.textContent = w.n; tagEl.textContent = w.tag;
+  titleEl.textContent = w.t;
+  if (!reduce) titleEl.animate([{ opacity: 0, transform: "translateY(28%) skewX(-8deg)", filter: "blur(10px)" }, { opacity: 1, transform: "none", filter: "blur(0)" }], { duration: 700, easing: "cubic-bezier(.16,1,.3,1)" });
+}
+
+/* ========= 每帧 ========= */
+function loop(){
+  if (!running) return;
+  requestAnimationFrame(loop);
+  const dt = Math.min(0.05, clock.getDelta()), now = performance.now(), t = clock.elapsedTime;
+  if (!drag && gesture && now - lastInput > 160){
+    const d = target - gesture.anchor;
+    snapTo = Math.abs(d) < 0.08 ? gesture.anchor : gesture.anchor + Math.sign(d) * Math.max(1, Math.round(Math.abs(d)));
+    gesture = null;
+  }
+  if (!drag && !gesture) target += (snapTo - target) * (1 - Math.pow(1 - 0.1, dt * 60));
+  pos += (target - pos) * (reduce ? 1 : 1 - Math.pow(1 - EASE, dt * 60));
+  vel = (pos - prevPos) / Math.max(dt * 60, 0.5); prevPos = pos;
+  sVel += (vel - sVel) * 0.25;
+  const e = Math.min(1, (now - openedAt) / (reduce ? 1 : 1700)), ee = 1 - Math.pow(1 - e, 4);
+
+  sm.x += (mouse.x - sm.x) * 0.045; sm.y += (mouse.y - sm.y) * 0.045;
+  cur.x += (mouse.px - cur.x) * 0.2; cur.y += (mouse.py - cur.y) * 0.2;
+  cur.s += ((drag ? 0.8 : 1) + Math.min(0.5, Math.abs(sVel) * 6) - cur.s) * 0.15;
+  cursorEl.style.transform = `translate(${cur.x}px,${cur.y}px) scale(${cur.s.toFixed(3)})`;
+
+  const a = wrap(Math.round(pos));
+  if (a !== shownAct) setActive(a);
+  const frac = wrap(pos) / (n - 1);
+  fillEl.style.transform = `translateX(${(Math.min(1, frac) * 160).toFixed(1)}px)`;
+  if (!glOK) return;
+
+  const v = sVel + (1 - ee) * 0.06;
+  screens.forEach((s) => {
+    let d = wrap(s.i - pos); if (d > n / 2) d -= n;
+    const ad = Math.abs(d);
+    s.mesh.rotation.y = Math.PI - d * STEP - (1 - ee) * 1.6;
+    s.mesh.visible = ad < 2.2;
+    s.u.uVel.value = v;
+    s.u.uDim.value = 1 - Math.min(ad, 1.5) * 0.22;
+    const want = ad < 1.6;
+    if (want !== s.playing){ s.playing = want; if (want){ const p = s.video.play(); if (p && p.catch) p.catch(() => {}); } else s.video.pause(); }
+  });
+  tiltG.scale.setScalar(0.78 + 0.22 * ee);
+  tiltG.rotation.x = sm.y * 0.08;
+  tiltG.rotation.y = sm.x * 0.12;
+  camera.position.x = sm.x * 0.5; camera.position.y = -sm.y * 0.35;
+  camera.lookAt(0, 0, -7);
+  typePlane.position.x = -sm.x * 1.6; typePlane.position.y = 0.4 + sm.y * 1.1;
+
+  glass.quaternion.premultiply(q.setFromAxisAngle(axisA, dt * (0.35 + Math.abs(sVel) * 18)));
+  glass.quaternion.premultiply(q.setFromAxisAngle(axisB, dt * sm.x * 0.6));
+  const gs = 1.05 + Math.min(0.12, Math.abs(sVel) * 1.5);
+  glassG.scale.setScalar(gs * (0.55 + 0.45 * ee));
+  glassG.position.set(2.1 - sm.x * 1.1 + (1 - ee) * 5, 0.75 + sm.y * 0.8 + Math.sin(t * 0.8) * 0.12 - (1 - ee) * 2, -11);
+
+  renderer.render(scene, camera);
+}
+
+/* ========= 打开 / 关闭（从左往右揭开，和 About 一致） ========= */
+let anims = [];
+function openWorks(){
+  if (open) return;
+  open = true; window.__worksOpen = true;
+  if (!built) build();
+  anims.forEach((x) => x.cancel()); anims = [];
+  W.classList.add("open"); W.setAttribute("aria-hidden", "false");
+  const D0 = reduce ? 0 : 1;
+  const A = (el, kf, o) => { const x = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 700) * D0, delay: (o.delay || 0) * D0 }); anims.push(x); return x; };
+  A(W, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 950, easing: "cubic-bezier(.77,0,.18,1)" });
+  A(mainEl, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 950, easing: "cubic-bezier(.77,0,.18,1)" });
+  [".wk-label", ".wk-hint", ".wk-meta", ".wk-prog"].forEach((s, i) => A(W.querySelector(s), [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { delay: 850 + i * 80 }));
+  shownAct = -1; openedAt = performance.now(); prevPos = pos;
+  screens.forEach((s) => { s.playing = false; });
+  if (!running){ running = true; clock.getDelta(); resize(); requestAnimationFrame(loop); }
+}
+function closeWorks(then){
+  if (!open) return;
+  open = false; window.__worksOpen = false;
+  anims.forEach((x) => x.cancel()); anims = [];
+  const D0 = reduce ? 0 : 1;
+  const x = W.animate([{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 850 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
+  mainEl.animate([{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 850 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
+  x.onfinish = () => {
+    x.cancel(); W.classList.remove("open"); W.setAttribute("aria-hidden", "true");
+    running = false; screens.forEach((s) => { s.video.pause(); s.playing = false; });
+    document.getElementById("nav").focus({ preventScroll: true }); then && then();
+  };
+}
+document.getElementById("wkBack").addEventListener("click", () => closeWorks());
+document.getElementById("wkLogo").addEventListener("click", (e) => { e.preventDefault(); closeWorks(); });
+window.__works = { open: openWorks, close: closeWorks };
+})();
+</script>
+
+</body></html>
