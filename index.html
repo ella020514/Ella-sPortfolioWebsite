@@ -461,23 +461,29 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   #about .ab-row dd small{display:inline;margin-left:8px;font-size:11px}
 }
 
-/* ===================== CHARACTERS：纯白背景 + 图像序列 + 手表光屏 + 跟随高度的影子 ===================== */
-#chars{position:fixed;inset:0;z-index:20;background:#fff;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display)}
+/* ===================== CHARACTERS：纯白背景 + 左右滑动的角色轮播 ===================== */
+#chars{position:fixed;inset:0;z-index:20;background:#fff;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+#chars.dragging{cursor:grabbing}
 #chars.open{visibility:visible}
 #chars .ab-cols span{border-left-color:rgba(17,18,22,.04)}
-.ch-stage{position:absolute;left:50%;top:52%;height:min(88vh,calc(92vw * 16 / 9));aspect-ratio:9/16;transform:translate(-50%,-50%);z-index:2}
-.ch-stage video{position:absolute;inset:0;width:100%;height:100%;display:block;mix-blend-mode:multiply;z-index:1;pointer-events:none}
-.ch-shadow{position:absolute;left:50%;top:91%;width:30%;height:3.2%;margin:0;transform:translate(-50%,-50%);border-radius:50%;z-index:0;
+#chars .ab-top{cursor:auto}
+.ch-track{position:absolute;inset:0;z-index:2}
+.ch-stage{position:absolute;left:50%;top:51%;height:min(84vh,calc(70vw * 16 / 9));aspect-ratio:9/16;transform:translate(-50%,-50%);will-change:transform,opacity}
+.ch-stage video,.ch-stage .sil{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none}
+.ch-stage video{mix-blend-mode:multiply}
+.ch-stage .sil{object-fit:contain;-webkit-user-drag:none}
+.ch-stage .soon{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#fff;background:rgba(150,155,170,.55);padding:7px 12px;border-radius:999px;white-space:nowrap}
+.ch-shadow{position:absolute;left:50%;top:91%;width:30%;height:3.2%;transform:translate(-50%,-50%);border-radius:50%;z-index:0;
   background:radial-gradient(closest-side,rgba(17,18,22,.6),rgba(17,18,22,.25) 55%,transparent);will-change:transform,opacity,filter}
+.ch-stage .ch-shadow.st{left:50%;opacity:.35;filter:blur(5px)}
 .ch-ring{position:absolute;width:0;height:0;z-index:3;pointer-events:none}
 .ch-ring i{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid var(--accent);opacity:0;box-shadow:0 0 14px rgba(59,91,253,.6)}
 .ch-holo{position:absolute;width:0;height:0;z-index:3;pointer-events:none;opacity:0}
-.ch-holo .beam{position:absolute;left:0;bottom:0;width:1px;height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.9),rgba(59,91,253,0));transform-origin:bottom;box-shadow:0 0 8px rgba(59,91,253,.8)}
-.ch-holo .cone{position:absolute;left:0;bottom:0;width:var(--pw,200px);height:var(--bh,120px);transform-origin:0 100%;
-  background:linear-gradient(to top,rgba(59,91,253,.22),rgba(59,91,253,0) 85%);clip-path:polygon(0 100%,100% 0,0 0)}
+.ch-holo .beam{position:absolute;left:0;bottom:0;width:1px;height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.9),rgba(59,91,253,0));box-shadow:0 0 8px rgba(59,91,253,.8)}
+.ch-holo .cone{position:absolute;left:0;bottom:0;width:var(--pw,200px);height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.22),rgba(59,91,253,0) 85%);clip-path:polygon(0 100%,100% 0,0 0)}
 .ch-panel{position:absolute;left:var(--px,24px);bottom:var(--bh,120px);width:var(--pw,200px);aspect-ratio:1.45;transform-origin:0 100%;
   border:1px solid rgba(59,91,253,.75);background:linear-gradient(160deg,rgba(120,150,255,.26),rgba(59,91,253,.10));border-radius:3px;
-  box-shadow:0 0 24px rgba(59,91,253,.35),inset 0 0 18px rgba(59,91,253,.18);overflow:hidden;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+  box-shadow:0 0 24px rgba(59,91,253,.35),inset 0 0 18px rgba(59,91,253,.18);overflow:hidden}
 .ch-panel::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(59,91,253,.13) 0 1px,transparent 1px 3px)}
 .ch-panel::after{content:"";position:absolute;left:0;right:0;height:30%;top:var(--scan,0%);background:linear-gradient(to bottom,transparent,rgba(170,190,255,.35),transparent)}
 .ch-panel .in{position:absolute;inset:8% 8%;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);color:#2A47E0;font-size:clamp(6px,.62vw,9.5px);letter-spacing:.14em;line-height:1.5}
@@ -486,31 +492,30 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 .ch-panel .bars{display:flex;align-items:flex-end;gap:5%;height:22%}
 .ch-panel .bars i{flex:1;background:rgba(59,91,253,.55);height:var(--v,40%)}
 .ch-panel .ft{display:flex;justify-content:space-between;color:rgba(42,71,224,.8)}
-.ch-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3}
+.ch-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3;pointer-events:none}
 .ch-label span{color:var(--ink-5)}
-.ch-name{position:absolute;left:44px;bottom:6vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;font-size:min(13vw,24vh);line-height:.85;letter-spacing:-.02em;z-index:1;color:var(--ink)}
-.ch-name small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--ink-3);margin-top:16px}
-.ch-info{position:absolute;right:48px;top:120px;width:min(300px,26vw);z-index:3}
-.ch-info .rule{height:1px;background:var(--ink)}
-.ch-info .ab-row{opacity:1}
-.ch-cap{margin:18px 0 0;font-size:12.5px;line-height:1.75;color:var(--ink-2)}
-.ch-cap span{display:block;font-family:var(--cjk);color:var(--ink);font-size:13px;margin-bottom:8px}
-.ch-tc{position:absolute;right:48px;bottom:6vh;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-align:right;line-height:1.9}
-.ch-tc b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
-.ch-tc .bar{display:block;width:180px;height:1px;background:rgba(17,18,22,.12);margin-top:8px;position:relative;margin-left:auto}
-.ch-tc .bar i{position:absolute;left:0;top:-1px;height:3px;width:3px;border-radius:50%;background:var(--accent)}
-.ch-tc .mk{position:absolute;top:-3px;width:1px;height:7px;background:var(--accent);opacity:.5}
+.ch-name{position:absolute;left:44px;bottom:6vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;font-size:min(11vw,20vh);line-height:.85;letter-spacing:-.02em;z-index:3;pointer-events:none;white-space:nowrap}
+.ch-name.soon{color:var(--ink-4);font-size:min(7vw,12vh)}
+.ch-name small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--ink-3);margin-top:14px}
+.ch-nav{position:absolute;right:48px;bottom:6vh;z-index:4;display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);cursor:auto}
+.ch-nav b{font-size:44px;font-weight:200;font-family:var(--display);font-stretch:80%;letter-spacing:0;color:var(--ink);line-height:.8;font-variant-numeric:tabular-nums}
+.ch-nav b span{font-size:15px;color:var(--ink-4)}
+.ch-nav button{width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:15px;border:1px solid rgba(17,18,22,.25);background:#fff;color:var(--ink)}
+.ch-nav button:hover,.ch-nav button:focus-visible{background:var(--ink);color:#fff;outline:none}
+.ch-dots{position:absolute;left:50%;bottom:4.5vh;transform:translateX(-50%);display:flex;gap:8px;z-index:3;pointer-events:none}
+.ch-dots i{width:6px;height:6px;border-radius:50%;background:rgba(17,18,22,.18);transition:width .3s,background .3s}
+.ch-dots i.on{width:22px;border-radius:3px;background:var(--accent)}
+.ch-hint{position:absolute;left:50%;top:120px;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-4);z-index:3;pointer-events:none}
 @media (max-width:760px){
-  #chars{overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
-  #chars .ab-cols{position:fixed}
   .ch-label{left:20px;top:84px}
-  .ch-stage{order:1;flex:none;position:relative;left:auto;top:auto;transform:none;height:auto;width:min(88vw,62vh*9/16);margin:120px auto 0}
+  .ch-hint{top:auto;bottom:calc(4.5vh + 22px)}
+  .ch-stage{top:42%;height:min(56vh,calc(76vw * 16 / 9))}
   .ch-panel .in{font-size:6.5px}
   .ch-panel .big{font-size:11px}
-  .ch-name{order:2;position:relative;left:auto;bottom:auto;font-size:24vw;margin:8px 0 0 18px}
-  .ch-info{order:3;position:relative;right:auto;top:auto;width:auto;margin:22px 20px 0}
-  .ch-tc{order:4;position:relative;right:auto;bottom:auto;margin:22px 20px 110px;text-align:left}
-  .ch-tc .bar{margin-left:0}
+  .ch-name{left:20px;bottom:auto;top:calc(42% + min(28vh,38vw*16/9/2) + 1vh);font-size:15vw}
+  .ch-nav{right:20px;bottom:auto;top:84px;gap:10px}
+  .ch-nav b{font-size:28px}
+  .ch-nav button{display:none}
 }
 </style>
 
@@ -628,39 +633,43 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   </div>
 </section>
 
-<section id="chars" aria-label="3D 角色" aria-hidden="true">
+<section id="chars" aria-label="3D 角色" aria-hidden="true" aria-roledescription="carousel">
   <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="ab-top">
     <a class="brand" href="#" id="chLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
     <button class="ab-back" type="button" id="chBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
-  <div class="ch-label">(03) — CHARACTERS · 3D 角色<br><span>CHARACTER 01 / 2026</span></div>
-  <div class="ch-stage" id="chStage">
-    <div class="ch-shadow" id="chShadow" aria-hidden="true"></div>
-    <video id="chVid" muted playsinline loop preload="auto" poster="chars/float.jpg" aria-label="角色动画：漂浮。她轻点手腕上的科技手表，弹出一块光屏"></video>
-    <div class="ch-ring" id="chRing" aria-hidden="true"><i></i><i></i></div>
-    <div class="ch-holo" id="chHolo" aria-hidden="true">
-      <div class="cone"></div><div class="beam"></div>
-      <div class="ch-panel" id="chPanel"><div class="in">
-        <div class="hd"><span>ELLA · OS</span><span>● LINK</span></div>
-        <div><div class="big">Hello, world.</div><div>SIGNAL 98% · SYNC OK</div></div>
-        <div class="bars"><i style="--v:35%"></i><i style="--v:70%"></i><i style="--v:50%"></i><i style="--v:90%"></i><i style="--v:60%"></i><i style="--v:80%"></i><i style="--v:45%"></i></div>
-        <div class="ft"><span>G9-F / 01</span><span id="chHoloT">00:00</span></div>
-      </div></div>
+  <div class="ch-label">(03) — CHARACTERS · 3D 角色<br><span>ANIMATION / 2026</span></div>
+  <div class="ch-hint" aria-hidden="true">← 左右滑动 · SWIPE →</div>
+  <div class="ch-track" id="chTrack">
+    <div class="ch-stage" id="chStage" data-name="Float" data-sub="漂浮 · CHARACTER ANIMATION">
+      <div class="ch-shadow" id="chShadow" aria-hidden="true"></div>
+      <video id="chVid" muted playsinline preload="auto" poster="chars/float.jpg" aria-label="角色动画：漂浮。她轻点手腕上的科技手表，弹出一块光屏"></video>
+      <div class="ch-ring" id="chRing" aria-hidden="true"><i></i><i></i></div>
+      <div class="ch-holo" id="chHolo" aria-hidden="true">
+        <div class="cone"></div><div class="beam"></div>
+        <div class="ch-panel" id="chPanel"><div class="in">
+          <div class="hd"><span>ELLA · OS</span><span>● LINK</span></div>
+          <div><div class="big">Hello, world.</div><div>SIGNAL 98% · SYNC OK</div></div>
+          <div class="bars"><i style="--v:35%"></i><i style="--v:70%"></i><i style="--v:50%"></i><i style="--v:90%"></i><i style="--v:60%"></i><i style="--v:80%"></i><i style="--v:45%"></i></div>
+          <div class="ft"><span>G9-F / 01</span><span id="chHoloT">00:00</span></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="ch-stage" data-name="Coming soon" data-sub="即将上线 · NEXT CHARACTER">
+      <div class="ch-shadow st" aria-hidden="true"></div>
+      <img class="sil" src="chars/sil1.png" alt="即将上线的角色（剪影）" draggable="false">
+      <span class="soon">02 · COMING SOON</span>
+    </div>
+    <div class="ch-stage" data-name="Coming soon" data-sub="即将上线 · NEXT CHARACTER">
+      <div class="ch-shadow st" aria-hidden="true" style="top:86%"></div>
+      <img class="sil" src="chars/sil2.png" alt="即将上线的角色（剪影）" draggable="false">
+      <span class="soon">03 · COMING SOON</span>
     </div>
   </div>
-  <h2 class="ch-name">Float<small>漂浮 · CHARACTER ANIMATION</small></h2>
-  <div class="ch-info">
-    <div class="rule"></div>
-    <dl style="margin:0">
-      <div class="ab-row"><dt>TITLE<small>名称</small></dt><dd>Float<small>漂浮</small></dd></div>
-      <div class="ab-row"><dt>TOOLS<small>软件</small></dt><dd>Daz Studio · Iray</dd></div>
-      <div class="ab-row"><dt>FRAMES<small>帧数</small></dt><dd>159 · 24 fps</dd></div>
-      <div class="ab-row"><dt>YEAR<small>年份</small></dt><dd>2026</dd></div>
-    </dl>
-    <p class="ch-cap"><span>她在空中慢慢漂浮，轻点手腕上的科技手表，弹出一块光屏，看完后轻轻落回地面。</span>She drifts in mid-air, taps the tech watch on her wrist to open a light screen, then settles back to the ground.</p>
-  </div>
-  <div class="ch-tc" aria-hidden="true">FRAME <b id="chFrame">010</b> / 168<span class="bar" id="chBar"><span class="mk" id="chMk"></span><i id="chDot"></i></span></div>
+  <h2 class="ch-name" id="chName">Float<small>漂浮 · CHARACTER ANIMATION</small></h2>
+  <div class="ch-nav"><button type="button" id="chPrev" aria-label="上一个角色">←</button><b><span id="chNum" style="font-size:inherit;color:inherit">01</span><span> / 03</span></b><button type="button" id="chNext" aria-label="下一个角色">→</button></div>
+  <div class="ch-dots" id="chDots" aria-hidden="true"><i></i><i></i><i></i></div>
 </section>
 
 <section id="works" tabindex="-1" aria-label="作品 Works" aria-hidden="true">
@@ -1157,52 +1166,98 @@ ctCopy.addEventListener("click", async () => {
   clearTimeout(ctCopyT); ctCopyT = setTimeout(() => { ctCopy.textContent = "COPY · 复制"; }, 2400);
 });
 
-/* ===================== CHARACTERS：图像序列 + 光屏 + 影子 ===================== */
+/* ===================== CHARACTERS：轮播 + 图像序列 + 光屏 + 影子 ===================== */
 const chars = document.getElementById("chars"), chVid = document.getElementById("chVid");
 const chShadow = document.getElementById("chShadow"), chHolo = document.getElementById("chHolo"), chPanel = document.getElementById("chPanel"), chRing = document.getElementById("chRing");
-let CH = null, chRaf = 0, chLast = -1;
-const chLoad = () => CH ? Promise.resolve(CH) : fetch("chars/float.json").then(r => r.json()).then(d => {
-  CH = d; chVid.src = "chars/float.mp4";
-  const mk = document.getElementById("chMk"); mk.style.left = (d.tap / (d.frames.length - 1) * 100) + "%";
-  return d; });
+const chStage = document.getElementById("chStage"), chSlides = [...document.querySelectorAll("#chTrack .ch-stage")], CN = chSlides.length;
+const HOLD_MS = 3000;   // 落地（最后一帧）停留 3 秒再循环
+let CH = null, chRaf = 0, chLast = -1, chHoldT = 0;
+const cs = { pos: 0, target: 0, v: 0, drag: null, shown: -1 };
+const chLoad = () => CH ? Promise.resolve(CH) : fetch("chars/float.json").then(r => r.json()).then(d => { CH = d; chVid.src = "chars/float.mp4"; return d; });
 const sm = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 function chDraw(f){
   if (!CH || f === chLast) return; chLast = f;
-  const n = CH.frames.length, F = CH.frames[f];
-  // 影子：离地越高，越小、越淡、越模糊
-  const h = F.h, k = Math.min(1, h / .14);
+  const F = CH.frames[f];
+  const k = Math.min(1, F.h / .14);
   chShadow.style.left = (F.x * 100) + "%"; chShadow.style.top = (CH.ground * 100) + "%";
   chShadow.style.transform = `translate(-50%,-50%) scale(${(1 - k * .45).toFixed(3)},${(1 - k * .3).toFixed(3)})`;
   chShadow.style.opacity = (0.95 - k * .5).toFixed(3);
   chShadow.style.filter = `blur(${(3 + k * 14).toFixed(1)}px)`;
-  // 手表：点一下出现圆环，然后光屏展开、停留、收起
   const [s0, s1] = CH.show, wx = CH.wx * 100 + "%", wy = F.wy * 100 + "%";
   chRing.style.left = chHolo.style.left = wx; chRing.style.top = chHolo.style.top = wy;
   const r = (f - CH.tap) / 10;
-  chRing.querySelectorAll("i").forEach((el, j) => { const q = r - j * .35;
-    const on = q > 0 && q < 1; el.style.opacity = on ? ((1 - q) * .9).toFixed(3) : "0"; el.style.transform = `scale(${on ? (.2 + q * 1.6).toFixed(3) : .2})`; });
-  const open = sm(s0, s0 + 7, f), close = 1 - sm(s1 - 6, s1, f), v = Math.min(open, close);
+  chRing.querySelectorAll("i").forEach((el, j) => { const q = r - j * .35, on = q > 0 && q < 1;
+    el.style.opacity = on ? ((1 - q) * .9).toFixed(3) : "0"; el.style.transform = `scale(${on ? (.2 + q * 1.6).toFixed(3) : .2})`; });
+  const v = Math.min(sm(s0, s0 + 7, f), 1 - sm(s1 - 6, s1, f));
   chHolo.style.opacity = v > 0 ? Math.min(1, v * 1.4).toFixed(3) : "0";
-  chPanel.style.transform = `scale(${(.4 + .6 * v).toFixed(3)},${(v).toFixed(3)})`;
+  chPanel.style.transform = `scale(${(.4 + .6 * v).toFixed(3)},${v.toFixed(3)})`;
   chHolo.style.setProperty("--scan", (((f - s0) * 7) % 140 - 30) + "%");
   chHolo.style.setProperty("--bh", (chStage.clientHeight * .045 * (.3 + .7 * v)).toFixed(1) + "px");
   chHolo.style.setProperty("--pw", (chStage.clientWidth * .38).toFixed(1) + "px");
   document.getElementById("chHoloT").textContent = "00:" + String(Math.max(0, f - s0)).padStart(2, "0");
-  // 时间码
-  document.getElementById("chFrame").textContent = String(f + 10).padStart(3, "0");
-  document.getElementById("chDot").style.left = (f / (n - 1) * 100) + "%";
 }
-const chStage = document.getElementById("chStage");
+// 播完停在最后一帧（她落地），停 3 秒再从头播
+chVid.addEventListener("ended", () => {
+  clearTimeout(chHoldT);
+  chHoldT = setTimeout(() => { if (!charsOpen || chActive() !== 0) return; try { chVid.currentTime = 0; } catch (e) {} const p = chVid.play(); p && p.catch(() => {}); }, HOLD_MS);
+});
+const wrapC = x => ((x % CN) + CN) % CN;
+const chActive = () => wrapC(Math.round(cs.pos));
+function chGo(d){ cs.target = Math.round(cs.target) + d; }
+function chSync(){
+  const a = chActive();
+  if (a === cs.shown) return; cs.shown = a;
+  const sl = chSlides[a], nm = document.getElementById("chName");
+  nm.innerHTML = `${sl.dataset.name}<small>${sl.dataset.sub}</small>`; nm.classList.toggle("soon", a !== 0);
+  document.getElementById("chNum").textContent = String(a + 1).padStart(2, "0");
+  document.querySelectorAll("#chDots i").forEach((el, i) => el.classList.toggle("on", i === a));
+  chSlides.forEach((el, i) => el.setAttribute("aria-hidden", i === a ? "false" : "true"));
+  if (a === 0){ if (chVid.ended || chVid.paused && chVid.currentTime >= chVid.duration - .05){ /* 停在落地帧，等 ended 计时 */ chVid.dispatchEvent(new Event("ended")); } else { const p = chVid.play(); p && p.catch(() => {}); } }
+  else { chVid.pause(); clearTimeout(chHoldT); }
+}
+function chLayout(){
+  const W = chStage.offsetWidth, gap = W * (MQ.matches ? .88 : 1.02);
+  chSlides.forEach((el, i) => {
+    let d = wrapC(i - cs.pos); if (d > CN / 2) d -= CN;
+    const ad = Math.abs(d), sc = 1 - Math.min(ad, 1.5) * .3, op = ad > 1.6 ? 0 : 1 - Math.min(ad, 1) * .35;
+    el.style.transform = `translate(calc(-50% + ${(d * gap).toFixed(1)}px),-50%) scale(${sc.toFixed(3)})`;
+    el.style.opacity = op.toFixed(3); el.style.zIndex = String(10 - Math.round(ad * 3));
+  });
+}
 function chTick(){
   if (!charsOpen){ chRaf = 0; return; }
+  if (!cs.drag){ cs.v = (cs.v + (cs.target - cs.pos) * .09) * .74; cs.pos += cs.v; if (Math.abs(cs.target - cs.pos) < .0005 && Math.abs(cs.v) < .0005) cs.pos = cs.target; }
+  chLayout(); chSync();
   if (CH && chVid.readyState >= 2) chDraw(Math.min(CH.frames.length - 1, Math.floor(chVid.currentTime * CH.fps + .02)));
   chRaf = requestAnimationFrame(chTick);
 }
+// 拖动 / 手指滑动
+chars.addEventListener("pointerdown", e => {
+  if (e.target.closest("button, a")) return;
+  cs.drag = { x: e.clientX, p: cs.pos, t: performance.now(), lx: e.clientX, v: 0, moved: 0 };
+  chars.classList.add("dragging"); chars.setPointerCapture && chars.setPointerCapture(e.pointerId);
+});
+chars.addEventListener("pointermove", e => {
+  const d = cs.drag; if (!d) return;
+  const W = chStage.offsetWidth * (MQ.matches ? .88 : 1.02), now = performance.now();
+  cs.pos = d.p - (e.clientX - d.x) / W; d.moved = Math.max(d.moved, Math.abs(e.clientX - d.x));
+  d.v = (e.clientX - d.lx) / Math.max(1, now - d.t) / W * 1000; d.lx = e.clientX; d.t = now;
+});
+const chEnd = () => { const d = cs.drag; if (!d) return; cs.drag = null; chars.classList.remove("dragging");
+  let t = Math.round(cs.pos - Math.max(-.6, Math.min(.6, d.v * .18))); if (Math.abs(t - d.p) > 1) t = d.p + Math.sign(t - d.p); cs.target = t; cs.v = 0; };
+chars.addEventListener("pointerup", chEnd); chars.addEventListener("pointercancel", chEnd);
+let chWheel = 0;
+chars.addEventListener("wheel", e => { e.preventDefault(); const now = Date.now(), dd = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  if (now - chWheel < 550 || Math.abs(dd) < 8) return; chWheel = now; chGo(dd > 0 ? 1 : -1); }, { passive: false });
+addEventListener("keydown", e => { if (!charsOpen) return; if (e.key === "ArrowRight"){ chGo(1); e.preventDefault(); } if (e.key === "ArrowLeft"){ chGo(-1); e.preventDefault(); } });
+document.getElementById("chPrev").addEventListener("click", () => chGo(-1));
+document.getElementById("chNext").addEventListener("click", () => chGo(1));
 function openChars(){
   if (charsOpen) return;
   charsOpen = true; inZone = false;
   chAnims.forEach(a => a.cancel()); chAnims = [];
-  chars.classList.add("open"); chars.setAttribute("aria-hidden", "false"); chars.scrollTop = 0;
+  chars.classList.add("open"); chars.setAttribute("aria-hidden", "false");
+  cs.pos = cs.target = 0; cs.v = 0; cs.shown = -1;
   const D0 = reduce ? 0 : 1;
   const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); chAnims.push(a); return a; };
   if (MQ.matches){
@@ -1212,16 +1267,16 @@ function openChars(){
     A(chars, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
     A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
   }
-  A(chStage, [{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: 600 });
-  [".ch-label", ".ch-name", ".ch-info", ".ch-tc"].forEach((q, i) => A(chars.querySelector(q), [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { delay: 800 + i * 120 }));
-  chLast = -1;
-  chLoad().then(() => { if (!charsOpen) return; try { chVid.currentTime = 0; } catch (e) {} const p = chVid.play(); p && p.catch(() => {}); chDraw(0); });
+  A(document.getElementById("chTrack"), [{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: 600 });
+  [".ch-label", ".ch-hint", ".ch-name", ".ch-nav", ".ch-dots"].forEach((q, i) => A(chars.querySelector(q), [{ opacity: 0 }, { opacity: 1 }], { delay: 800 + i * 100 }));
+  chLast = -1; clearTimeout(chHoldT);
+  chLoad().then(() => { if (!charsOpen) return; try { chVid.currentTime = 0; } catch (e) {} if (chActive() === 0){ const p = chVid.play(); p && p.catch(() => {}); } chDraw(0); });
   if (!chRaf) chRaf = requestAnimationFrame(chTick);
   setTimeout(() => { if (charsOpen) document.getElementById("chBack").focus({ preventScroll: true }); }, 1200 * D0);
 }
 function closeChars(then){
   if (!charsOpen) return;
-  charsOpen = false;
+  charsOpen = false; clearTimeout(chHoldT); cs.drag = null;
   chAnims.forEach(a => { const t = a.effect && a.effect.target; if (t === main || t === chars) a.cancel(); });
   const D0 = reduce ? 0 : 1, mob = MQ.matches;
   const a = chars.animate(mob ? [{ clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }]
