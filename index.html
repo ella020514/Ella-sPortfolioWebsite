@@ -164,7 +164,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 .face{position:absolute;inset:0;border-radius:14px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   box-shadow:0 30px 60px rgba(17,18,22,.22),0 6px 14px rgba(17,18,22,.12)}
 .front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.front img.alt{opacity:0;will-change:opacity}
+.front img.alt{opacity:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .front .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,transparent 22%,transparent 55%,rgba(8,10,20,.72) 100%)}
 .holo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;
   background:linear-gradient(115deg,#ff2a8a,#ff9a1f,#ffe81a,#22f0a0,#18b8ff,#7b3bff,#ff2a8a);background-size:260% 260%}
@@ -452,6 +452,14 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
     pointer-events:none;opacity:0;transition:opacity .4s;z-index:4}
   #about.open .ab-more.on{opacity:1}
 }
+
+@media (max-width:760px){
+  .bk-cn{display:none}
+  /* 信息行：英文标签和中文写在同一行，值后面跟小号中文（按视频） */
+  #about .ab-row,.ct-info .ab-row{align-items:center}
+  #about .ab-row dt small,.ct-info .ab-row dt small{display:inline;margin:0 0 0 8px;letter-spacing:.12em}
+  #about .ab-row dd small{display:inline;margin-left:8px;font-size:11px}
+}
 </style>
 
 <main id="main" class="waiting">
@@ -504,7 +512,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="ab-top">
     <a class="brand" href="#" id="abLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
-    <button class="ab-back" type="button" id="abBack">← BACK · 返回</button>
+    <button class="ab-back" type="button" id="abBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
   <div class="ab-label">(01) — ABOUT · 关于<br><span>PROFILE / 2026</span></div>
 
@@ -553,7 +561,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="ab-top">
     <a class="brand" href="#" id="ctLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
-    <button class="ab-back" type="button" id="ctBack">← BACK · 返回</button>
+    <button class="ab-back" type="button" id="ctBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
   <div class="ab-label">(05) — CONTACT · 联系<br><span>MAIL / SOCIAL</span></div>
   <h1 class="ab-name ct-name" aria-label="Contact"><span class="clip"><span class="ch">C</span></span><span class="clip"><span class="ch">o</span></span><span class="clip"><span class="ch">n</span></span><span class="clip"><span class="ch">t</span></span><span class="clip"><span class="ch">a</span></span><span class="clip"><span class="ch">c</span></span><span class="clip"><span class="ch">t</span></span></h1>
@@ -596,7 +604,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   <div class="m-swipe" aria-hidden="true">← SWIPE · 左右滑动切换 →</div>
   <div class="wk-top">
     <a class="brand" href="#" id="wkLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
-    <div class="r"><button class="ab-back" type="button" id="wkBack">← BACK · 返回</button><span>02 / 05</span></div>
+    <div class="r"><button class="ab-back" type="button" id="wkBack">← BACK<span class="bk-cn"> · 返回</span></button><span>02 / 05</span></div>
   </div>
 </section>
 
@@ -913,7 +921,8 @@ function applyCard(){
   // 光栅卡效果：正面侧转到一定角度时换成第二张照片
   const face = Math.abs((((c.ry % 360) + 540) % 360) - 180);       // 0 = 正对着看
   const u = Math.max(0, Math.min(1, (face - 18) / 32));            // 18°～50° 之间慢慢叠化过去
-  photoAlt.style.opacity = (u * u * (3 - 2 * u)).toFixed(3);
+  // 翻到背面（超过 90°）时第二张照片必须是 0：iPhone 的 Safari 会让它透到卡背上
+  photoAlt.style.opacity = face > 88 ? "0" : (u * u * (3 - 2 * u)).toFixed(3);
 }
 function cardLoop(){
   if (!aboutOpen) return;
@@ -978,8 +987,13 @@ function openAbout(){
   about.classList.add("open"); about.setAttribute("aria-hidden", "false");
   const D0 = reduce ? 0 : 1;
   const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); aboutAnims.push(a); return a; };
+  if (MQ.matches){
+    A(about, [{ clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+    A(main, [{ transform: "translateX(0)" }, { transform: "translateX(100%)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  } else {
   A(about, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
   A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  }
   about.querySelectorAll(".ab-name .ch").forEach((el, i) => A(el, [{ transform: "translateY(110%)" }, { transform: "translateY(0)" }], { duration: 1000, delay: 700 + i * 90, easing: "cubic-bezier(.16,1,.3,1)" }));
   A(about.querySelector(".ab-label"), [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { delay: 900 });
   A(about.querySelector(".rule"), [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: 800, delay: 1000 });
@@ -996,8 +1010,11 @@ function closeAbout(then){
   aboutOpen = false;
   aboutAnims.forEach(a => a.cancel()); aboutAnims = [];
   const D0 = reduce ? 0 : 1;
-  const a = about.animate([{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
-  main.animate([{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
+  const mob = MQ.matches;
+  const a = about.animate(mob ? [{ clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }]
+                          : [{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
+  main.animate(mob ? [{ transform: "translateX(100%)" }, { transform: "translateX(0)" }]
+                   : [{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
   a.onfinish = () => { a.cancel(); about.classList.remove("open"); about.setAttribute("aria-hidden", "true"); nav.focus({ preventScroll: true }); then && then(); };
 }
 document.getElementById("abBack").addEventListener("click", () => closeAbout());
@@ -1015,8 +1032,13 @@ function openContact(){
   contact.classList.add("open"); contact.setAttribute("aria-hidden", "false");
   const D0 = reduce ? 0 : 1;
   const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); ctAnims.push(a); return a; };
+  if (MQ.matches){
+    A(contact, [{ clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+    A(main, [{ transform: "translateX(0)" }, { transform: "translateX(100%)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  } else {
   A(contact, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
   A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  }
   contact.querySelectorAll(".ct-name .ch").forEach((el, i) => A(el, [{ transform: "translateY(110%)" }, { transform: "translateY(0)" }], { duration: 1000, delay: 650 + i * 70, easing: "cubic-bezier(.16,1,.3,1)" }));
   A(contact.querySelector(".ab-label"), [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { delay: 800 });
   A(contact.querySelector(".rule"), [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: 800, delay: 900 });
@@ -1029,8 +1051,11 @@ function closeContact(then){
   // 内容留在原地，只撤掉打开时的擦除和首页位移，让关闭的擦除动画盖过去
   ctAnims.forEach(a => { const t = a.effect && a.effect.target; if (t === main || t === contact) a.cancel(); });
   const D0 = reduce ? 0 : 1;
-  const a = contact.animate([{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
-  main.animate([{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
+  const mob = MQ.matches;
+  const a = contact.animate(mob ? [{ clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }]
+                          : [{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
+  main.animate(mob ? [{ transform: "translateX(100%)" }, { transform: "translateX(0)" }]
+                   : [{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
   a.onfinish = () => { a.cancel(); ctAnims.forEach(x => x.cancel()); ctAnims = []; contact.classList.remove("open"); contact.setAttribute("aria-hidden", "true"); nav.focus({ preventScroll: true }); then && then(); };
 }
 document.getElementById("ctBack").addEventListener("click", () => closeContact());
