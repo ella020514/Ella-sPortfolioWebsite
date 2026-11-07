@@ -460,6 +460,58 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   #about .ab-row dt small,.ct-info .ab-row dt small{display:inline;margin:0 0 0 8px;letter-spacing:.12em}
   #about .ab-row dd small{display:inline;margin-left:8px;font-size:11px}
 }
+
+/* ===================== CHARACTERS：纯白背景 + 图像序列 + 手表光屏 + 跟随高度的影子 ===================== */
+#chars{position:fixed;inset:0;z-index:20;background:#fff;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display)}
+#chars.open{visibility:visible}
+#chars .ab-cols span{border-left-color:rgba(17,18,22,.04)}
+.ch-stage{position:absolute;left:50%;top:52%;height:min(88vh,calc(92vw * 16 / 9));aspect-ratio:9/16;transform:translate(-50%,-50%);z-index:2}
+.ch-stage video{position:absolute;inset:0;width:100%;height:100%;display:block;mix-blend-mode:multiply;z-index:1;pointer-events:none}
+.ch-shadow{position:absolute;left:50%;top:91%;width:30%;height:3.2%;margin:0;transform:translate(-50%,-50%);border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side,rgba(17,18,22,.6),rgba(17,18,22,.25) 55%,transparent);will-change:transform,opacity,filter}
+.ch-ring{position:absolute;width:0;height:0;z-index:3;pointer-events:none}
+.ch-ring i{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid var(--accent);opacity:0;box-shadow:0 0 14px rgba(59,91,253,.6)}
+.ch-holo{position:absolute;width:0;height:0;z-index:3;pointer-events:none;opacity:0}
+.ch-holo .beam{position:absolute;left:0;bottom:0;width:1px;height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.9),rgba(59,91,253,0));transform-origin:bottom;box-shadow:0 0 8px rgba(59,91,253,.8)}
+.ch-holo .cone{position:absolute;left:0;bottom:0;width:var(--pw,200px);height:var(--bh,120px);transform-origin:0 100%;
+  background:linear-gradient(to top,rgba(59,91,253,.22),rgba(59,91,253,0) 85%);clip-path:polygon(0 100%,100% 0,0 0)}
+.ch-panel{position:absolute;left:var(--px,24px);bottom:var(--bh,120px);width:var(--pw,200px);aspect-ratio:1.45;transform-origin:0 100%;
+  border:1px solid rgba(59,91,253,.75);background:linear-gradient(160deg,rgba(120,150,255,.26),rgba(59,91,253,.10));border-radius:3px;
+  box-shadow:0 0 24px rgba(59,91,253,.35),inset 0 0 18px rgba(59,91,253,.18);overflow:hidden;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.ch-panel::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(59,91,253,.13) 0 1px,transparent 1px 3px)}
+.ch-panel::after{content:"";position:absolute;left:0;right:0;height:30%;top:var(--scan,0%);background:linear-gradient(to bottom,transparent,rgba(170,190,255,.35),transparent)}
+.ch-panel .in{position:absolute;inset:8% 8%;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);color:#2A47E0;font-size:clamp(6px,.62vw,9.5px);letter-spacing:.14em;line-height:1.5}
+.ch-panel .hd{display:flex;justify-content:space-between;border-bottom:1px solid rgba(59,91,253,.45);padding-bottom:4%}
+.ch-panel .big{font-family:var(--display);font-size:clamp(11px,1.15vw,18px);letter-spacing:.02em;font-weight:600;color:#1E37C8}
+.ch-panel .bars{display:flex;align-items:flex-end;gap:5%;height:22%}
+.ch-panel .bars i{flex:1;background:rgba(59,91,253,.55);height:var(--v,40%)}
+.ch-panel .ft{display:flex;justify-content:space-between;color:rgba(42,71,224,.8)}
+.ch-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3}
+.ch-label span{color:var(--ink-5)}
+.ch-name{position:absolute;left:44px;bottom:6vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;font-size:min(13vw,24vh);line-height:.85;letter-spacing:-.02em;z-index:1;color:var(--ink)}
+.ch-name small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--ink-3);margin-top:16px}
+.ch-info{position:absolute;right:48px;top:120px;width:min(300px,26vw);z-index:3}
+.ch-info .rule{height:1px;background:var(--ink)}
+.ch-info .ab-row{opacity:1}
+.ch-cap{margin:18px 0 0;font-size:12.5px;line-height:1.75;color:var(--ink-2)}
+.ch-cap span{display:block;font-family:var(--cjk);color:var(--ink);font-size:13px;margin-bottom:8px}
+.ch-tc{position:absolute;right:48px;bottom:6vh;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-align:right;line-height:1.9}
+.ch-tc b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.ch-tc .bar{display:block;width:180px;height:1px;background:rgba(17,18,22,.12);margin-top:8px;position:relative;margin-left:auto}
+.ch-tc .bar i{position:absolute;left:0;top:-1px;height:3px;width:3px;border-radius:50%;background:var(--accent)}
+.ch-tc .mk{position:absolute;top:-3px;width:1px;height:7px;background:var(--accent);opacity:.5}
+@media (max-width:760px){
+  #chars{overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
+  #chars .ab-cols{position:fixed}
+  .ch-label{left:20px;top:84px}
+  .ch-stage{order:1;flex:none;position:relative;left:auto;top:auto;transform:none;height:auto;width:min(88vw,62vh*9/16);margin:120px auto 0}
+  .ch-panel .in{font-size:6.5px}
+  .ch-panel .big{font-size:11px}
+  .ch-name{order:2;position:relative;left:auto;bottom:auto;font-size:24vw;margin:8px 0 0 18px}
+  .ch-info{order:3;position:relative;right:auto;top:auto;width:auto;margin:22px 20px 0}
+  .ch-tc{order:4;position:relative;right:auto;bottom:auto;margin:22px 20px 110px;text-align:left}
+  .ch-tc .bar{margin-left:0}
+}
 </style>
 
 <main id="main" class="waiting">
@@ -574,6 +626,41 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
       <div class="ab-row"><dt>INSTAGRAM<small>日常</small></dt><dd><span class="ct-handle">@ellaowo__</span><span class="sx"><a href="https://www.instagram.com/ellaowo__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="ico" style="--m:url(icons/instagram.png)" aria-hidden="true"></i><span class="tip" aria-hidden="true">INSTAGRAM</span></a></span></dd></div>
     </dl>
   </div>
+</section>
+
+<section id="chars" aria-label="3D 角色" aria-hidden="true">
+  <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="ab-top">
+    <a class="brand" href="#" id="chLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <button class="ab-back" type="button" id="chBack">← BACK<span class="bk-cn"> · 返回</span></button>
+  </div>
+  <div class="ch-label">(03) — CHARACTERS · 3D 角色<br><span>CHARACTER 01 / 2026</span></div>
+  <div class="ch-stage" id="chStage">
+    <div class="ch-shadow" id="chShadow" aria-hidden="true"></div>
+    <video id="chVid" muted playsinline loop preload="auto" poster="chars/float.jpg" aria-label="角色动画：漂浮。她轻点手腕上的科技手表，弹出一块光屏"></video>
+    <div class="ch-ring" id="chRing" aria-hidden="true"><i></i><i></i></div>
+    <div class="ch-holo" id="chHolo" aria-hidden="true">
+      <div class="cone"></div><div class="beam"></div>
+      <div class="ch-panel" id="chPanel"><div class="in">
+        <div class="hd"><span>ELLA · OS</span><span>● LINK</span></div>
+        <div><div class="big">Hello, world.</div><div>SIGNAL 98% · SYNC OK</div></div>
+        <div class="bars"><i style="--v:35%"></i><i style="--v:70%"></i><i style="--v:50%"></i><i style="--v:90%"></i><i style="--v:60%"></i><i style="--v:80%"></i><i style="--v:45%"></i></div>
+        <div class="ft"><span>G9-F / 01</span><span id="chHoloT">00:00</span></div>
+      </div></div>
+    </div>
+  </div>
+  <h2 class="ch-name">Float<small>漂浮 · CHARACTER ANIMATION</small></h2>
+  <div class="ch-info">
+    <div class="rule"></div>
+    <dl style="margin:0">
+      <div class="ab-row"><dt>TITLE<small>名称</small></dt><dd>Float<small>漂浮</small></dd></div>
+      <div class="ab-row"><dt>TOOLS<small>软件</small></dt><dd>Daz Studio · Iray</dd></div>
+      <div class="ab-row"><dt>FRAMES<small>帧数</small></dt><dd>159 · 24 fps</dd></div>
+      <div class="ab-row"><dt>YEAR<small>年份</small></dt><dd>2026</dd></div>
+    </dl>
+    <p class="ch-cap"><span>她在空中慢慢漂浮，轻点手腕上的科技手表，弹出一块光屏，看完后轻轻落回地面。</span>She drifts in mid-air, taps the tech watch on her wrist to open a light screen, then settles back to the ground.</p>
+  </div>
+  <div class="ch-tc" aria-hidden="true">FRAME <b id="chFrame">010</b> / 168<span class="bar" id="chBar"><span class="mk" id="chMk"></span><i id="chDot"></i></span></div>
 </section>
 
 <section id="works" tabindex="-1" aria-label="作品 Works" aria-hidden="true">
@@ -716,6 +803,7 @@ function enter(i){
   if (MENU[i].en === "ABOUT"){ openAbout(); return; }
   if (MENU[i].en === "WORKS"){ openWorks(); return; }
   if (MENU[i].en === "CONTACT"){ openContact(); return; }
+  if (MENU[i].en === "CHARACTERS"){ openChars(); return; }
   const t = document.getElementById("toast");
   t.textContent = `示例：这里会进入「${MENU[i].cn}」页面`;
   t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1800);
@@ -796,7 +884,7 @@ function kFromY(y){
 let ptX = -1, ptY = -1;
 function onPoint(e){
   ptX = e.clientX; ptY = e.clientY;
-  if (aboutOpen || worksOpen || contactOpen) return;
+  if (aboutOpen || worksOpen || contactOpen || charsOpen) return;
   const z = zoneFromPoint(ptX, ptY);
   if (z){ clearTimeout(leaveTimer); leaveTimer = 0; inZone = true; if (look.length) kTarget = kFromY(ptY); }
   else if (inZone && !leaveTimer){ leaveTimer = setTimeout(() => { inZone = false; leaveTimer = 0; }, 120); }
@@ -811,7 +899,7 @@ addEventListener("pointerdown", onPoint, true);
 addEventListener("wheel", onPoint, { passive: true, capture: true });
 // 鼠标停着不动时，每帧按最后位置重新算一次（看菜单的图加载好之前算出来的值无效）
 function syncPoint(){
-  if (ptX < 0 || aboutOpen || worksOpen || contactOpen || !look.length) return;
+  if (ptX < 0 || aboutOpen || worksOpen || contactOpen || charsOpen || !look.length) return;
   if (zoneFromPoint(ptX, ptY)){ inZone = true; kTarget = kFromY(ptY); }
 }
 document.addEventListener("pointerleave", e => { if (e.pointerType && e.pointerType !== "mouse") return; clearTimeout(leaveTimer); leaveTimer = 0; inZone = false; ptX = ptY = -1; });
@@ -902,7 +990,7 @@ requestAnimationFrame(frame);
 /* ===================== ABOUT：转场 + 卡片 ===================== */
 const about = document.getElementById("about"), card = document.getElementById("card");
 const holo = document.getElementById("holo"), holoB = document.getElementById("holoB"), glare = document.getElementById("glare"), photoAlt = document.getElementById("photoAlt");
-let aboutOpen = false, aboutAnims = [], contactOpen = false, ctAnims = [];
+let aboutOpen = false, aboutAnims = [], contactOpen = false, ctAnims = [], charsOpen = false, chAnims = [];
 // 条形码
 (() => { const bars = document.getElementById("bars"); let seed = 7;
   for (let i = 0; i < 46; i++){ seed = (seed * 9301 + 49297) % 233280; const b = document.createElement("i"); b.style.width = (1 + Math.floor(seed / 233280 * 3)) + "px"; bars.append(b); } })();
@@ -1020,7 +1108,7 @@ function closeAbout(then){
 document.getElementById("abBack").addEventListener("click", () => closeAbout());
 document.getElementById("abLogo").addEventListener("click", e => { e.preventDefault(); closeAbout(); });
 document.getElementById("abWorks").addEventListener("click", () => closeAbout(() => { setIdx(MENU.findIndex(m => m.en === "WORKS")); openWorks(); }));
-addEventListener("keydown", e => { if (e.key !== "Escape") return; if (lbOpen) closeLB(); else if (worksOpen) closeWorks(); else if (contactOpen) closeContact(); else if (aboutOpen) closeAbout(); });
+addEventListener("keydown", e => { if (e.key !== "Escape") return; if (lbOpen) closeLB(); else if (worksOpen) closeWorks(); else if (contactOpen) closeContact(); else if (charsOpen) closeChars(); else if (aboutOpen) closeAbout(); });
 
 /* ===================== CONTACT：转场 + 复制邮箱 ===================== */
 const contact = document.getElementById("contact"), ctMail = document.getElementById("ctMail"), ctCopy = document.getElementById("ctCopy");
@@ -1069,7 +1157,81 @@ ctCopy.addEventListener("click", async () => {
   clearTimeout(ctCopyT); ctCopyT = setTimeout(() => { ctCopy.textContent = "COPY · 复制"; }, 2400);
 });
 
-
+/* ===================== CHARACTERS：图像序列 + 光屏 + 影子 ===================== */
+const chars = document.getElementById("chars"), chVid = document.getElementById("chVid");
+const chShadow = document.getElementById("chShadow"), chHolo = document.getElementById("chHolo"), chPanel = document.getElementById("chPanel"), chRing = document.getElementById("chRing");
+let CH = null, chRaf = 0, chLast = -1;
+const chLoad = () => CH ? Promise.resolve(CH) : fetch("chars/float.json").then(r => r.json()).then(d => {
+  CH = d; chVid.src = "chars/float.mp4";
+  const mk = document.getElementById("chMk"); mk.style.left = (d.tap / (d.frames.length - 1) * 100) + "%";
+  return d; });
+const sm = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+function chDraw(f){
+  if (!CH || f === chLast) return; chLast = f;
+  const n = CH.frames.length, F = CH.frames[f];
+  // 影子：离地越高，越小、越淡、越模糊
+  const h = F.h, k = Math.min(1, h / .14);
+  chShadow.style.left = (F.x * 100) + "%"; chShadow.style.top = (CH.ground * 100) + "%";
+  chShadow.style.transform = `translate(-50%,-50%) scale(${(1 - k * .45).toFixed(3)},${(1 - k * .3).toFixed(3)})`;
+  chShadow.style.opacity = (0.95 - k * .5).toFixed(3);
+  chShadow.style.filter = `blur(${(3 + k * 14).toFixed(1)}px)`;
+  // 手表：点一下出现圆环，然后光屏展开、停留、收起
+  const [s0, s1] = CH.show, wx = CH.wx * 100 + "%", wy = F.wy * 100 + "%";
+  chRing.style.left = chHolo.style.left = wx; chRing.style.top = chHolo.style.top = wy;
+  const r = (f - CH.tap) / 10;
+  chRing.querySelectorAll("i").forEach((el, j) => { const q = r - j * .35;
+    const on = q > 0 && q < 1; el.style.opacity = on ? ((1 - q) * .9).toFixed(3) : "0"; el.style.transform = `scale(${on ? (.2 + q * 1.6).toFixed(3) : .2})`; });
+  const open = sm(s0, s0 + 7, f), close = 1 - sm(s1 - 6, s1, f), v = Math.min(open, close);
+  chHolo.style.opacity = v > 0 ? Math.min(1, v * 1.4).toFixed(3) : "0";
+  chPanel.style.transform = `scale(${(.4 + .6 * v).toFixed(3)},${(v).toFixed(3)})`;
+  chHolo.style.setProperty("--scan", (((f - s0) * 7) % 140 - 30) + "%");
+  chHolo.style.setProperty("--bh", (chStage.clientHeight * .045 * (.3 + .7 * v)).toFixed(1) + "px");
+  chHolo.style.setProperty("--pw", (chStage.clientWidth * .38).toFixed(1) + "px");
+  document.getElementById("chHoloT").textContent = "00:" + String(Math.max(0, f - s0)).padStart(2, "0");
+  // 时间码
+  document.getElementById("chFrame").textContent = String(f + 10).padStart(3, "0");
+  document.getElementById("chDot").style.left = (f / (n - 1) * 100) + "%";
+}
+const chStage = document.getElementById("chStage");
+function chTick(){
+  if (!charsOpen){ chRaf = 0; return; }
+  if (CH && chVid.readyState >= 2) chDraw(Math.min(CH.frames.length - 1, Math.floor(chVid.currentTime * CH.fps + .02)));
+  chRaf = requestAnimationFrame(chTick);
+}
+function openChars(){
+  if (charsOpen) return;
+  charsOpen = true; inZone = false;
+  chAnims.forEach(a => a.cancel()); chAnims = [];
+  chars.classList.add("open"); chars.setAttribute("aria-hidden", "false"); chars.scrollTop = 0;
+  const D0 = reduce ? 0 : 1;
+  const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); chAnims.push(a); return a; };
+  if (MQ.matches){
+    A(chars, [{ clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+    A(main, [{ transform: "translateX(0)" }, { transform: "translateX(100%)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  } else {
+    A(chars, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+    A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
+  }
+  A(chStage, [{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: 600 });
+  [".ch-label", ".ch-name", ".ch-info", ".ch-tc"].forEach((q, i) => A(chars.querySelector(q), [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { delay: 800 + i * 120 }));
+  chLast = -1;
+  chLoad().then(() => { if (!charsOpen) return; try { chVid.currentTime = 0; } catch (e) {} const p = chVid.play(); p && p.catch(() => {}); chDraw(0); });
+  if (!chRaf) chRaf = requestAnimationFrame(chTick);
+  setTimeout(() => { if (charsOpen) document.getElementById("chBack").focus({ preventScroll: true }); }, 1200 * D0);
+}
+function closeChars(then){
+  if (!charsOpen) return;
+  charsOpen = false;
+  chAnims.forEach(a => { const t = a.effect && a.effect.target; if (t === main || t === chars) a.cancel(); });
+  const D0 = reduce ? 0 : 1, mob = MQ.matches;
+  const a = chars.animate(mob ? [{ clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }]
+                             : [{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
+  main.animate(mob ? [{ transform: "translateX(100%)" }, { transform: "translateX(0)" }]
+                   : [{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
+  a.onfinish = () => { a.cancel(); chAnims.forEach(x => x.cancel()); chAnims = []; chars.classList.remove("open"); chars.setAttribute("aria-hidden", "true"); chVid.pause(); nav.focus({ preventScroll: true }); then && then(); };
+}
+document.getElementById("chBack").addEventListener("click", () => closeChars());
+document.getElementById("chLogo").addEventListener("click", e => { e.preventDefault(); closeChars(); });
 
 /* ===================== WORKS：视频环 + 石头 + 放大 ===================== */
 const works = document.getElementById("works"), ring = document.getElementById("wkRing"), ringIn = document.getElementById("wkRingIn");
@@ -1422,7 +1584,7 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
 /* ===================== 手机：音乐按钮位置 + 关于页下滑提示 ===================== */
 (() => {
   const bgm = document.getElementById("bgm"), more = document.getElementById("abMore"), about = document.getElementById("about");
-  const backs = [["about", "abBack"], ["contact", "ctBack"], ["works", "wkBack"]];
+  const backs = [["about", "abBack"], ["contact", "ctBack"], ["chars", "chBack"], ["works", "wkBack"]];
   function place(){
     bgm.style.right = bgm.style.top = "";
     if (!MQ.matches) return;
@@ -1439,7 +1601,7 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
   // 子页面是滑进来的：滑动过程中多算几次，停稳后位置就对了
   let tm = [];
   const placeSoon = () => { tm.forEach(clearTimeout); tm = [0, 300, 700, 1200, 1700].map(ms => setTimeout(place, ms)); };
-  ["about", "contact", "works"].forEach(id => new MutationObserver(placeSoon).observe(document.getElementById(id), { attributes: true, attributeFilter: ["class"] }));
+  ["about", "contact", "chars", "works"].forEach(id => new MutationObserver(placeSoon).observe(document.getElementById(id), { attributes: true, attributeFilter: ["class"] }));
   addEventListener("resize", place); MQ.addEventListener && MQ.addEventListener("change", place);
   about.addEventListener("scroll", () => more.classList.toggle("on", about.scrollTop < 30), { passive: true });
   new MutationObserver(() => { if (about.classList.contains("open")){ about.scrollTop = 0; setTimeout(() => more.classList.toggle("on", about.scrollTop < 30), 1800); } else more.classList.remove("on"); })
