@@ -472,6 +472,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 .ch-stage video,.ch-stage .sil{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none}
 .ch-stage video{mix-blend-mode:multiply}
 .ch-stage .sil{object-fit:contain;-webkit-user-drag:none}
+.ch-bgname{display:none}
 .ch-stage .soon{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#fff;background:rgba(150,155,170,.55);padding:7px 12px;border-radius:999px;white-space:nowrap}
 .ch-shadow{position:absolute;left:50%;top:91%;width:30%;height:3.2%;transform:translate(-50%,-50%);border-radius:50%;z-index:0;
   background:radial-gradient(closest-side,rgba(17,18,22,.6),rgba(17,18,22,.25) 55%,transparent);will-change:transform,opacity,filter}
@@ -509,10 +510,16 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 @media (max-width:760px){
   .ch-label{left:20px;top:84px}
   .ch-hint{top:auto;bottom:calc(4.5vh + 22px)}
-  .ch-stage{top:42%;height:min(56vh,calc(76vw * 16 / 9))}
+  .ch-stage{top:54%;height:min(74vh,calc(98vw * 16 / 9))}
   .ch-panel .in{font-size:6.5px}
   .ch-panel .big{font-size:11px}
-  .ch-name{left:20px;bottom:auto;top:calc(42% + min(28vh,38vw*16/9/2) + 1vh);font-size:15vw}
+  /* 手机：名字变成角色身后的浅灰大字背景 */
+  .ch-name,.ch-name.soon{left:50%;top:58%;bottom:auto;transform:translate(-50%,-50%);z-index:1;font-size:30vw;color:#ECEDF0;text-align:center}
+  .ch-name small{display:none}
+  .ch-name.soon{font-size:19vw;line-height:.9;white-space:normal;width:90vw}
+  .ch-name:not(.soon){display:none}
+  /* 视频是"正片叠底"，名字要放在同一个画框里才能透出来 */
+  .ch-bgname{display:block;position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);z-index:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-size:calc(min(74vh,98vw * 16 / 9) * 9 / 16 * .36);line-height:1;color:#ECEDF0;white-space:nowrap;pointer-events:none}
   .ch-nav{right:20px;bottom:auto;top:84px;gap:10px}
   .ch-nav b{font-size:28px}
   .ch-nav button{display:none}
@@ -644,6 +651,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   <div class="ch-track" id="chTrack">
     <div class="ch-stage" id="chStage" data-name="Float" data-sub="漂浮 · CHARACTER ANIMATION">
       <div class="ch-shadow" id="chShadow" aria-hidden="true"></div>
+      <div class="ch-bgname" aria-hidden="true">Float</div>
       <video id="chVid" muted playsinline preload="auto" poster="chars/float.jpg" aria-label="角色动画：漂浮。她轻点手腕上的科技手表，弹出一块光屏"></video>
       <div class="ch-ring" id="chRing" aria-hidden="true"><i></i><i></i></div>
       <div class="ch-holo" id="chHolo" aria-hidden="true">
