@@ -1,8 +1,7 @@
-<!doctype html>
-<html lang="zh-CN">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Portfolio Home</title>
+<title>WEN STUDIO · Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap">
@@ -23,7 +22,7 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--displa
 a{color:var(--accent)}a:hover{color:#1F3BD1}
 
 main{position:relative;width:100%;height:100%;min-height:760px;overflow:hidden;
-  background:radial-gradient(85% 80% at 70% 42%,#F8F8F9 0%,#EAEBEE 50%,#D8DADF 100%)}
+  background:radial-gradient(115% 105% at 56% 47%,#FDFDFE 0%,#F5F6F7 20%,#EAEBEE 46%,#D6D9DE 74%,#B9BDC5 100%)}
 .grid-bg{position:absolute;inset:0;pointer-events:none;
   background-image:linear-gradient(rgba(17,18,22,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(17,18,22,.045) 1px,transparent 1px);background-size:120px 120px}
 
@@ -60,7 +59,7 @@ main{position:relative;width:100%;height:100%;min-height:760px;overflow:hidden;
 .dot{width:6px;height:6px;border-radius:50%;align-self:center;background:var(--accent)}
 
 /* header */
-header{position:absolute;left:0;right:0;top:0;padding:32px 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}
+
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
 .brand .glyph{width:26px;height:26px;border:1.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .brand .glyph i{width:8px;height:8px;border-radius:50%;background:var(--ink)}
@@ -69,8 +68,7 @@ header{position:absolute;left:0;right:0;top:0;padding:32px 48px;display:flex;jus
 .meta-top{display:flex;gap:48px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3)}
 .meta-top .col{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
 .meta-top .col span:last-child{color:var(--ink)}
-.lang{display:flex;gap:6px}
-.lang a{text-decoration:none;color:var(--ink-3)}.lang a[aria-current="true"]{color:var(--ink);font-weight:500}
+
 
 /* left rail */
 .ticks{position:absolute;left:48px;top:18%;bottom:18%;width:10px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
@@ -113,9 +111,8 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 
 @media (max-width:760px){
   .fig{right:-35%;opacity:.55;max-width:none}
-  .hud,.meta-top{display:none}
+  .hud,#topbar .meta-top{display:none}
   nav{left:24px}
-  header{padding:24px}
   footer{left:24px;right:24px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -284,7 +281,6 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   border:1px solid var(--ink);border-radius:999px;padding:18px 30px;display:inline-flex;align-items:center;gap:14px;cursor:pointer;transition:background .3s,color .3s}
 #gateBtn i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(59,91,253,.5);animation:g-ping 1.6s ease-out infinite}
 #gateBtn:hover,#gateBtn:focus-visible{background:var(--ink);color:#fff;outline:none}
-#gateBtn[disabled]{cursor:progress;opacity:.55}
 #gateBtn[disabled] i{animation:none;background:var(--ink-4)}
 @keyframes g-ping{to{box-shadow:0 0 0 12px rgba(59,91,253,0)}}
 .g-bar{width:220px;height:1px;background:rgba(17,18,22,.14);position:relative;overflow:hidden}
@@ -398,7 +394,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 .m-swipe{display:none}
 
 /* ===================== 手机：进入页 / 关于页 / 音乐按钮（按参考视频） ===================== */
-.gm-top,.gm-rings,.gm-title,.gm-sub,.gm-prog,.gm-stat,.gm-sound,.ab-more,.ab-hint .m{display:none}
+.gm-top,.gm-rings,.gm-sub,.gm-prog,.gm-stat,.gm-sound,.ab-more,.ab-hint .m{display:none}
 @media (max-width:760px){
   #gate{background:radial-gradient(90% 60% at 50% 40%,#F7F8F9 0%,#ECEDF0 55%,#DCDEE3 100%)}
   #gate::before{-webkit-mask-image:none;mask-image:none;background-size:64px 64px;opacity:.7}
@@ -410,11 +406,6 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   .gm-rings i:nth-child(1){width:150vw;height:150vw;border:1px solid rgba(17,18,22,.08)}
   .gm-rings i:nth-child(2){width:118vw;height:118vw;border:1px dashed rgba(59,91,253,.16)}
   .g-in{gap:0;width:calc(100% - 64px);margin-top:-8vh}
-  .g-mark,.g-bar,.g-meta{display:none}
-  .gm-title{display:flex;align-items:center;gap:14px;justify-content:center}
-  .gm-title .glyph{width:34px;height:34px;border:1.5px solid var(--ink);border-radius:50%;position:relative;flex:none}
-  .gm-title .glyph::after{content:"";position:absolute;inset:10px;border-radius:50%;background:var(--ink)}
-  .gm-title span:last-child{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(34px,10.4vw,46px);letter-spacing:-.02em;line-height:1}
   .gm-sub{display:block;margin-top:14px;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--ink-2)}
   .gm-prog{display:flex;align-items:center;gap:12px;width:100%;margin-top:64px;font-family:var(--mono);font-size:10px;letter-spacing:.14em}
   .gm-prog b{font-weight:500;color:var(--ink);min-width:28px;text-align:left}
@@ -426,9 +417,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   .gm-stat .rd{color:var(--accent);opacity:0;transition:opacity .4s;display:inline-flex;align-items:center;gap:6px}
   .gm-stat .rd i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
   #gate.ready .gm-stat .rd{opacity:1}
-  #gateBtn{margin-top:40px;padding:16px 28px;font-size:11px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .5s,transform .5s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
-  #gate.ready #gateBtn{opacity:1;transform:none;pointer-events:auto}
-  #gate:not(.ready) #gateBtn{opacity:0!important}
+  #gateBtn{margin-top:40px;padding:16px 28px;font-size:11px}
   .gm-sound{display:inline-flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%);bottom:max(40px,calc(env(safe-area-inset-bottom) + 20px));white-space:nowrap;
     padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.75);box-shadow:0 8px 24px rgba(17,18,22,.08);font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink)}
   .gm-sound .eq{display:flex;align-items:flex-end;gap:2px;height:12px}
@@ -462,67 +451,283 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 }
 
 /* ===================== CHARACTERS：纯白背景 + 左右滑动的角色轮播 ===================== */
-#chars{position:fixed;inset:0;z-index:20;background:#fff;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+#chars{position:fixed;inset:0;z-index:20;color:var(--ink);visibility:hidden;clip-path:inset(0 100% 0 0);overflow:hidden;font-family:var(--display);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;
+  background:radial-gradient(64% 58% at 50% 50%,#F8F9FA 0%,#EDEEF1 48%,#DEE0E5 100%)}
+/* 背景跟首页一个语言：浅冷灰 + 120px 细网格；中间留一块"打光区"，网格在那里淡出 */
+#chars::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(17,18,22,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(17,18,22,.05) 1px,transparent 1px);background-size:120px 120px;background-position:50% 0;
+  -webkit-mask-image:radial-gradient(52% 62% at 50% 50%,transparent 0%,rgba(0,0,0,.35) 55%,#000 100%);mask-image:radial-gradient(52% 62% at 50% 50%,transparent 0%,rgba(0,0,0,.35) 55%,#000 100%)}
+#chars::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;pointer-events:none;background:linear-gradient(to bottom,rgba(17,18,22,0),rgba(17,18,22,.055))}
 #chars.dragging{cursor:grabbing}
 #chars.open{visibility:visible}
-#chars .ab-cols span{border-left-color:rgba(17,18,22,.04)}
 #chars .ab-top{cursor:auto}
 .ch-track{position:absolute;inset:0;z-index:2}
-.ch-stage{position:absolute;left:50%;top:51%;height:min(84vh,calc(70vw * 16 / 9));aspect-ratio:9/16;transform:translate(-50%,-50%);will-change:transform,opacity}
-.ch-stage video,.ch-stage .sil{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none}
-.ch-stage video{mix-blend-mode:multiply}
-.ch-stage .sil{object-fit:contain;-webkit-user-drag:none}
-.ch-bgname{display:none}
-.ch-stage .soon{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#fff;background:rgba(150,155,170,.55);padding:7px 12px;border-radius:999px;white-space:nowrap}
-.ch-shadow{position:absolute;left:50%;top:91%;width:30%;height:3.2%;transform:translate(-50%,-50%);border-radius:50%;z-index:0;
-  background:radial-gradient(closest-side,rgba(17,18,22,.6),rgba(17,18,22,.25) 55%,transparent);will-change:transform,opacity,filter}
-.ch-stage .ch-shadow.st{left:50%;opacity:.35;filter:blur(5px)}
-.ch-ring{position:absolute;width:0;height:0;z-index:3;pointer-events:none}
-.ch-ring i{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid var(--accent);opacity:0;box-shadow:0 0 14px rgba(59,91,253,.6)}
-.ch-holo{position:absolute;width:0;height:0;z-index:3;pointer-events:none;opacity:0}
-.ch-holo .beam{position:absolute;left:0;bottom:0;width:1px;height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.9),rgba(59,91,253,0));box-shadow:0 0 8px rgba(59,91,253,.8)}
-.ch-holo .cone{position:absolute;left:0;bottom:0;width:var(--pw,200px);height:var(--bh,120px);background:linear-gradient(to top,rgba(59,91,253,.22),rgba(59,91,253,0) 85%);clip-path:polygon(0 100%,100% 0,0 0)}
-.ch-panel{position:absolute;left:var(--px,24px);bottom:var(--bh,120px);width:var(--pw,200px);aspect-ratio:1.45;transform-origin:0 100%;
-  border:1px solid rgba(59,91,253,.75);background:linear-gradient(160deg,rgba(120,150,255,.26),rgba(59,91,253,.10));border-radius:3px;
-  box-shadow:0 0 24px rgba(59,91,253,.35),inset 0 0 18px rgba(59,91,253,.18);overflow:hidden}
-.ch-panel::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(59,91,253,.13) 0 1px,transparent 1px 3px)}
-.ch-panel::after{content:"";position:absolute;left:0;right:0;height:30%;top:var(--scan,0%);background:linear-gradient(to bottom,transparent,rgba(170,190,255,.35),transparent)}
-.ch-panel .in{position:absolute;inset:8% 8%;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);color:#2A47E0;font-size:clamp(6px,.62vw,9.5px);letter-spacing:.14em;line-height:1.5}
-.ch-panel .hd{display:flex;justify-content:space-between;border-bottom:1px solid rgba(59,91,253,.45);padding-bottom:4%}
-.ch-panel .big{font-family:var(--display);font-size:clamp(11px,1.15vw,18px);letter-spacing:.02em;font-weight:600;color:#1E37C8}
-.ch-panel .bars{display:flex;align-items:flex-end;gap:5%;height:22%}
-.ch-panel .bars i{flex:1;background:rgba(59,91,253,.55);height:var(--v,40%)}
-.ch-panel .ft{display:flex;justify-content:space-between;color:rgba(42,71,224,.8)}
+.ch-stage{position:absolute;left:50%;top:50%;height:min(88vh,calc(60vw * 5 / 4));aspect-ratio:4/5;transform:translate(-50%,-50%);will-change:transform,opacity}
+.ch-stage canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+/* 光盘底座：正圆画好，再整体压扁成俯视的椭圆，所以盘面上的字和反光都带着透视 */
+.cd{position:absolute;left:50%;top:88.75%;width:73.44%;aspect-ratio:1;z-index:1;transform:translate(-50%,-50%) scaleY(.27);pointer-events:none}
+.cd>*{position:absolute;inset:0;border-radius:50%}
+.cd-shadow{inset:-5%;background:radial-gradient(closest-side,rgba(17,18,22,.5),rgba(17,18,22,.22) 62%,rgba(17,18,22,0) 100%);filter:blur(12px);transform:translateY(13%)}
+.cd-edge{background:linear-gradient(90deg,#7c8088,#d9dce1 18%,#9da1a9 38%,#f6f7f9 56%,#a4a8b0 74%,#e3e5e9 88%,#7c8088);transform:translateY(3%)}
+.cd-face{overflow:hidden;background:#e3e4e7}
+.cd-face>*{position:absolute;inset:0;border-radius:50%}
+.cd-base{background:conic-gradient(from 18deg,#d9dadd,#fbfbfc 26deg,#cfd1d4 58deg,#f1f1f3 92deg,#c6c8cc 128deg,#f8f8f9 166deg,#d4d5d9 200deg,#fcfcfd 228deg,#cbcdd1 262deg,#eff0f2 298deg,#c4c6ca 334deg,#d9dadd)}
+/* 会动的那层光：两道白色高光 + 两道彩虹（参考图里光盘的虹彩），只在当前这张播放时慢慢转 */
+.cd-light{background:
+  conic-gradient(from -8deg,rgba(255,255,255,0) 0 6deg,rgba(120,215,255,.6) 12deg,rgba(175,250,205,.55) 17deg,rgba(255,248,165,.6) 22deg,rgba(255,180,195,.6) 28deg,rgba(255,255,255,0) 36deg 186deg,rgba(255,180,195,.6) 194deg,rgba(255,248,165,.6) 200deg,rgba(175,250,205,.55) 205deg,rgba(120,215,255,.6) 210deg,rgba(255,255,255,0) 216deg 360deg),
+  conic-gradient(from 60deg,rgba(255,255,255,0) 0 20deg,rgba(255,255,255,.85) 44deg,rgba(255,255,255,0) 70deg 200deg,rgba(255,255,255,.8) 224deg,rgba(255,255,255,0) 250deg 360deg);
+  animation:cdSpin var(--spin,16s) linear infinite paused}
+.ch-stage.on .cd-light{animation-play-state:running}
+.cd.rev .cd-light{animation-direction:reverse}
+@keyframes cdSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.cd-light{animation:none}}
+.cd-print{width:100%;height:100%;overflow:visible}
+.cd-name{font-family:"Archivo",sans-serif;font-stretch:62%;font-weight:800;font-size:118px;letter-spacing:.08em;fill:#24262c}
+.cd-name .t{font-weight:500;font-size:60px;letter-spacing:.16em;fill:#5c6069}
+.cd-meta{font-family:var(--mono);font-size:26px;letter-spacing:.3em;fill:#7b7f88}
+.ch-load{position:absolute;left:50%;top:99%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-3);white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none}
+.ch-stage.wait .ch-load{opacity:1}
 .ch-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3;pointer-events:none}
 .ch-label span{color:var(--ink-5)}
-.ch-name{position:absolute;left:44px;bottom:6vh;margin:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;font-size:min(11vw,20vh);line-height:.85;letter-spacing:-.02em;z-index:3;pointer-events:none;white-space:nowrap}
-.ch-name.soon{color:var(--ink-4);font-size:min(7vw,12vh)}
-.ch-name small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--ink-3);margin-top:14px}
+/* 两块解说：左下 = 角色档案（名字 + 背景故事），右上 = 制作说明（分步骤切换） */
+.ch-info{position:absolute;z-index:4;cursor:auto;font-size:clamp(11px,1.5vh,12.5px);line-height:1.75;color:var(--ink-2)}
+.ch-info .k{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;line-height:1;color:var(--ink-3)}
+.ch-info .k::before{content:"";width:18px;height:1px;background:var(--accent)}
+.ch-info .k b{font-weight:400;color:var(--ink-5);margin-left:auto}
+.ch-info p{margin:0}
+#chProfile{left:48px;bottom:6vh;width:min(27vw,400px)}
+#chProfile h2{margin:0 0 4px -4px;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-weight:400;font-size:min(4.7vw,8.2vh);line-height:.95;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+#chProfile .sub{margin:0 0 14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;line-height:1.4;color:var(--ink-3)}
+#chProfile .lead{margin:0 0 9px;padding-left:12px;border-left:1px solid rgba(17,18,22,.22);color:var(--ink-3)}
+#chMaking{right:48px;top:118px;width:min(26vw,372px)}
+.ch-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.ch-specs span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;line-height:1;padding:5px 8px;border:1px solid rgba(17,18,22,.18);border-radius:999px;color:var(--ink-2);background:rgba(255,255,255,.5);white-space:nowrap}
+.ch-tabs{display:flex;gap:16px;margin:0 0 10px;border-bottom:1px solid rgba(17,18,22,.13)}
+.ch-tabs button{position:relative;font:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.1em;line-height:1;color:var(--ink-4);background:none;border:0;padding:7px 0 9px;cursor:pointer;white-space:nowrap}
+.ch-tabs button i{font-style:normal;color:var(--ink-5);margin-right:5px}
+.ch-tabs button:hover,.ch-tabs button:focus-visible{color:var(--ink);outline:none}
+.ch-tabs button[aria-selected="true"]{color:var(--ink)}
+.ch-tabs button[aria-selected="true"] i{color:var(--accent)}
+.ch-tabs button[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--accent)}
+#chProfile .ch-tabs{margin-top:12px}
+.ch-more{display:none}
+.ch-sheet{display:none}
 .ch-nav{position:absolute;right:48px;bottom:6vh;z-index:4;display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);cursor:auto}
 .ch-nav b{font-size:44px;font-weight:200;font-family:var(--display);font-stretch:80%;letter-spacing:0;color:var(--ink);line-height:.8;font-variant-numeric:tabular-nums}
 .ch-nav b span{font-size:15px;color:var(--ink-4)}
-.ch-nav button{width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:15px;border:1px solid rgba(17,18,22,.25);background:#fff;color:var(--ink)}
+.ch-nav button{width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:15px;border:1px solid rgba(17,18,22,.25);background:rgba(255,255,255,.7);color:var(--ink)}
 .ch-nav button:hover,.ch-nav button:focus-visible{background:var(--ink);color:#fff;outline:none}
 .ch-dots{position:absolute;left:50%;bottom:4.5vh;transform:translateX(-50%);display:flex;gap:8px;z-index:3;pointer-events:none}
 .ch-dots i{width:6px;height:6px;border-radius:50%;background:rgba(17,18,22,.18);transition:width .3s,background .3s}
 .ch-dots i.on{width:22px;border-radius:3px;background:var(--accent)}
-.ch-hint{position:absolute;left:50%;top:120px;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-4);z-index:3;pointer-events:none}
 @media (max-width:760px){
   .ch-label{left:20px;top:84px}
-  .ch-hint{top:auto;bottom:calc(4.5vh + 22px)}
-  .ch-stage{top:54%;height:min(74vh,calc(98vw * 16 / 9))}
-  .ch-panel .in{font-size:6.5px}
-  .ch-panel .big{font-size:11px}
-  /* 手机：名字变成角色身后的浅灰大字背景 */
-  .ch-name,.ch-name.soon{left:50%;top:58%;bottom:auto;transform:translate(-50%,-50%);z-index:1;font-size:30vw;color:#ECEDF0;text-align:center}
-  .ch-name small{display:none}
-  .ch-name.soon{font-size:19vw;line-height:.9;white-space:normal;width:90vw}
-  .ch-name:not(.soon){display:none}
-  /* 视频是"正片叠底"，名字要放在同一个画框里才能透出来 */
-  .ch-bgname{display:block;position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);z-index:0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-size:calc(min(74vh,98vw * 16 / 9) * 9 / 16 * .36);line-height:1;color:#ECEDF0;white-space:nowrap;pointer-events:none}
+  .ch-stage{top:47%;height:min(64vh,128vw)}
   .ch-nav{right:20px;bottom:auto;top:84px;gap:10px}
   .ch-nav b{font-size:28px}
   .ch-nav button{display:none}
+  /* 手机放不下两块解说：只留名字，其余收进"详情"抽屉 */
+  #chMaking{display:none}
+  #chProfile{left:20px;right:20px;width:auto;bottom:calc(4.5vh + 26px);display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+  #chProfile .k,#chProfile .lead,#chProfile .body,#chProfile .ch-tabs,#chProfile .pane{display:none}
+  #chProfile h2{font-size:46px;margin:0 0 6px -2px}
+  #chProfile .sub{margin:0}
+  .ch-more{display:inline-flex;align-items:center;gap:8px;flex:none;font:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1;color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(17,18,22,.25);border-radius:999px;padding:11px 14px;cursor:pointer}
+  .ch-more i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ch-sheet{display:block;position:absolute;left:0;right:0;bottom:0;max-height:80%;z-index:8;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;cursor:auto;
+    background:rgba(246,247,249,.97);border-top:1px solid rgba(17,18,22,.14);border-radius:18px 18px 0 0;box-shadow:0 -18px 50px rgba(17,18,22,.14);padding:18px 20px 34px;
+    font-size:13px;line-height:1.8;color:var(--ink-2);transform:translateY(104%);transition:transform .45s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+  .ch-sheet.open{transform:none;visibility:visible}
+  .ch-sheet .x{position:sticky;top:0;float:right;font:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink);background:#fff;border:1px solid rgba(17,18,22,.25);border-radius:999px;padding:9px 13px;cursor:pointer}
+  .ch-sheet h3{margin:0 0 2px;font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-size:44px;line-height:1;color:var(--ink)}
+  .ch-sheet h4{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;color:var(--ink-3)}
+  .ch-sheet h4::before{content:"";width:18px;height:1px;background:var(--accent)}
+  .ch-sheet h5{margin:14px 0 2px;font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.12em;color:var(--ink)}
+  .ch-sheet h5 i{font-style:normal;color:var(--accent);margin-right:6px}
+  .ch-sheet p{margin:0 0 8px}
+  .ch-sheet .sub{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-3)}
+  .ch-sheet .lead{padding-left:12px;border-left:1px solid rgba(17,18,22,.22);color:var(--ink-3)}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.ch-sheet{transition:none}}
+/* ===================== WEN STUDIO 标志（Rubik 80s Fade，只内嵌了这 8 个字母） ===================== */
+@font-face{font-family:"Rubik 80s Fade";font-display:block;src:url(data:font/woff;base64,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) format("woff")}
+.wen{font-family:"Rubik 80s Fade","Archivo",sans-serif;font-weight:400;font-style:normal;letter-spacing:.03em;line-height:1;white-space:nowrap;color:var(--ink)}
+.brand .wen{font-size:34px;display:block}
+
+/* ===================== 首页顶部导航条：灰色渐变，顶上最深 ===================== */
+#topbar{position:absolute;left:0;right:0;top:0;z-index:6;height:76px;padding:0 48px 12px;display:flex;align-items:center;justify-content:flex-start;gap:0;
+  background:linear-gradient(to bottom,rgba(112,117,127,.62) 0%,rgba(150,155,164,.38) 42%,rgba(190,194,201,.14) 78%,rgba(215,218,223,0) 100%)}
+#topbar::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:rgba(17,18,22,.35)}
+.tb-nav{display:flex;align-items:center;gap:6px;margin-left:44px;font-family:var(--mono);font-size:11px;letter-spacing:.18em}
+.tb-nav button{all:unset;cursor:pointer;position:relative;padding:10px 12px;color:var(--ink-2);transition:color .25s}
+.tb-nav button::after{content:"";position:absolute;left:12px;right:calc(12px + .18em);bottom:4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tb-nav button:hover,.tb-nav button:focus-visible,.tb-nav button.cur{color:var(--ink)}
+.tb-nav button:hover::after,.tb-nav button:focus-visible::after{transform:scaleX(1)}
+.tb-nav button.cur::after{transform:scaleX(1);background:var(--accent)}
+.tb-nav s{text-decoration:none;color:rgba(17,18,22,.3)}
+#topbar .meta-top{margin-left:auto;align-items:center}
+#topbar .meta-top .col{gap:4px}
+.lang{display:flex;align-items:center;gap:4px;margin-left:44px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3)}
+.lang button{all:unset;cursor:pointer;padding:8px 6px;color:var(--ink-3);font-family:var(--cjk);font-size:12px;transition:color .25s}
+.lang button:hover,.lang button:focus-visible{color:var(--ink)}
+.lang button[aria-pressed="true"]{color:var(--ink);font-weight:700;box-shadow:inset 0 -1px 0 var(--accent)}
+@media (max-width:1180px){#topbar .meta-top{display:none}.lang{margin-left:auto}}
+@media (max-width:760px){
+  #topbar{height:64px;padding:0 78px 6px 22px;background:linear-gradient(to bottom,rgba(112,117,127,.5),rgba(190,194,201,0))}
+  .tb-nav{display:none}
+  .brand .wen{font-size:24px}
+}
+
+/* ===================== 音乐按钮：电脑上竖着放在右侧中间 ===================== */
+@media (min-width:761px){
+  #bgm{left:auto;right:44px;top:55%;transform:translateY(-50%);flex-direction:column;gap:12px;padding:16px 10px 18px}
+  #bgm .t{writing-mode:vertical-rl;letter-spacing:.26em}
+  /* 进了子页面：缩成贴着右边缘的小按钮，不挡内容 */
+  body:has(#about.open) #bgm,body:has(#works.open) #bgm,body:has(#chars.open) #bgm,body:has(#contact.open) #bgm{right:7px;padding:12px 9px;gap:0}
+  body:has(#about.open) #bgm .t,body:has(#works.open) #bgm .t,body:has(#chars.open) #bgm .t,body:has(#contact.open) #bgm .t{display:none}
+  footer .f-right{margin-left:auto}
+}
+
+/* ===================== 进入页：标志 + 进度条 + 声音图标，依次入场 ===================== */
+.g-in{gap:0}
+.g-logo{margin:0;font-size:clamp(34px,4.3vw,66px);letter-spacing:.03em}
+.g-logo i{display:inline-block;font-style:normal}
+.g-logo i.sp{width:.34em}
+.g-sub{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--ink-3);padding-left:.3em}
+.g-bar{margin-top:46px;width:min(360px,60vw)}
+#gateBtn{margin-top:34px;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .6s,transform .7s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
+#gate.ready #gateBtn{opacity:1;transform:none;pointer-events:auto}
+.g-meta{margin-top:30px}
+.snd{width:28px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.snd .sp{fill:currentColor;stroke-width:1.2}
+.snd .w{animation:sndWave 1.8s ease-in-out infinite}
+.snd .w2{animation-delay:.22s}.snd .w3{animation-delay:.44s}
+@keyframes sndWave{0%,100%{opacity:.18}45%{opacity:1}}
+/* 入场：字母像被"印"出来一样自上而下显影、从模糊到清晰，一个接一个；然后副标题收拢、进度条从中间向两边画开、声音图标浮上来 */
+@keyframes gLet{0%{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(-.18em) scale(1.08);filter:blur(12px)}55%{opacity:1;filter:blur(0)}100%{opacity:1;clip-path:inset(-10% -10% -10% -10%);transform:none;filter:blur(0)}}
+@keyframes gSub{from{opacity:0;letter-spacing:.7em}to{opacity:1;letter-spacing:.3em}}
+@keyframes gBar{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@keyframes gUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.g-logo i:not(.sp){animation:gLet 1.05s cubic-bezier(.16,1,.3,1) calc(.25s + var(--i) * 70ms) both}
+/* 字母里的噪点条纹：一直在细微地变（明暗只差一点点的条带缓慢错位 + 很淡的扫描线） */
+#gate .g-logo i:not(.sp){color:transparent;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:repeating-linear-gradient(to bottom,rgba(255,255,255,0) 0 6px,rgba(255,255,255,.26) 6px 7px),
+    linear-gradient(to bottom,#111216 0 13%,#2b2e35 13% 18%,#111216 18% 34%,#3a3d45 34% 39%,#17181d 39% 58%,#111216 58% 74%,#30333a 74% 79%,#111216 79% 91%,#202228 91%);
+  background-size:100% 23px,100% 270%;
+  animation:gLet 1.05s cubic-bezier(.16,1,.3,1) calc(.25s + var(--i) * 70ms) both,gNoise calc(1.5s + var(--i) * 110ms) steps(1) calc(var(--i) * -310ms) infinite}
+@keyframes gNoise{
+  0%{background-position:0 0,0 0}
+  17%{background-position:0 4px,0 31%}
+  33%{background-position:0 9px,0 74%}
+  50%{background-position:0 13px,0 18%}
+  67%{background-position:0 17px,0 57%}
+  83%{background-position:0 20px,0 92%}}
+.g-sub{animation:gSub 1.1s cubic-bezier(.16,1,.3,1) 1.15s both}
+.g-bar{animation:gBar .9s cubic-bezier(.65,0,.35,1) 1.45s both}
+.g-meta{animation:gUp .8s cubic-bezier(.16,1,.3,1) 1.9s both}
+@media (max-width:760px){
+  .g-logo{font-size:clamp(28px,8.6vw,40px)}
+  .g-sub,.g-bar,.g-meta{display:none}
+  .gm-sub{margin:0 0 18px;animation:gUp .8s cubic-bezier(.16,1,.3,1) .1s both}
+  .gm-prog{animation:gUp .8s cubic-bezier(.16,1,.3,1) 1.25s both}
+  .gm-stat{animation:gUp .8s cubic-bezier(.16,1,.3,1) 1.4s both}
+  .gm-sound{animation:gUp .8s cubic-bezier(.16,1,.3,1) 1.7s both}
+  .gm-top{animation:gUp .8s cubic-bezier(.16,1,.3,1) .1s both}
+}
+
+/* ===================== 进入页 → 首页：芯片方块从标志两侧扩散 ===================== */
+.g-in{z-index:2}
+.g-chip{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+#gate.leaving{background:none}
+#gate.leaving::before{display:none}
+.g-logo{will-change:transform}
+main.hin #topbar .brand{animation:none!important}
+
+/* ===================== 首页背景的细微动态：中间那团亮光缓慢漂移、呼吸；网格线上有一道很淡的光慢慢扫过 ===================== */
+main::before{content:"";position:absolute;inset:-25%;pointer-events:none;
+  background:radial-gradient(30% 28% at 50% 50%,rgba(255,255,255,.75) 0%,rgba(255,255,255,.28) 45%,rgba(255,255,255,0) 72%);
+  animation:hGlow 24s ease-in-out infinite alternate}
+@keyframes hGlow{0%{transform:translate(5%,-2%) scale(1);opacity:.85}35%{transform:translate(-4%,2%) scale(1.1);opacity:1}70%{transform:translate(1%,5%) scale(.95);opacity:.8}100%{transform:translate(-2%,-3%) scale(1.05);opacity:.95}}
+.grid-bg{-webkit-mask-image:linear-gradient(105deg,rgba(0,0,0,.5) 38%,#000 50%,rgba(0,0,0,.5) 62%);mask-image:linear-gradient(105deg,rgba(0,0,0,.5) 38%,#000 50%,rgba(0,0,0,.5) 62%);
+  -webkit-mask-size:300% 100%;mask-size:300% 100%;animation:gridSweep 16s linear infinite}
+@keyframes gridSweep{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@media (prefers-reduced-motion:reduce){main::before,.grid-bg{animation:none}}
+
+/* ===================== ARTBOOK 画册：一排立着的画，中间那张转正、往前挑出来 ===================== */
+#album{position:fixed;inset:0;z-index:20;visibility:hidden;overflow:hidden;color:var(--ink);font-family:var(--display);touch-action:none;user-select:none;-webkit-user-select:none;
+  background:radial-gradient(120% 110% at 50% 46%,#FFFFFF 0%,#FFFFFF 26%,#F7F8F9 50%,#ECEEF1 78%,#DEE1E6 100%)}
+#album::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(17,18,22,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(17,18,22,.03) 1px,transparent 1px);background-size:120px 120px;background-position:50% 0;
+  -webkit-mask-image:radial-gradient(60% 60% at 50% 46%,transparent 20%,#000 100%);mask-image:radial-gradient(60% 60% at 50% 46%,transparent 20%,#000 100%)}
+#album.open{visibility:visible}
+#album .ab-top{z-index:6}
+.al-label{position:absolute;left:48px;top:120px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-2);z-index:3;pointer-events:none}
+.al-label span{color:var(--ink-5)}
+.al-stage{position:absolute;inset:0;perspective:1800px;perspective-origin:50% 45%;cursor:grab}
+#album.drag .al-stage{cursor:grabbing}
+.al-track{position:absolute;left:50%;top:46%;width:0;height:0;transform-style:preserve-3d}
+.al-card{position:absolute;left:0;top:0;border-radius:12px;overflow:hidden;background:#f4f4f5;transform-origin:50% 50%;backface-visibility:hidden;
+  box-shadow:0 24px 50px -26px rgba(17,18,22,.3),0 0 0 1px rgba(17,18,22,.05)}
+.al-card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .5s}
+.al-card img.ok{opacity:1}
+.al-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(17,18,22,var(--sa,0)),rgba(17,18,22,calc(var(--sa,0) * .25)) 70%)}
+.al-card.cur{cursor:zoom-in;box-shadow:0 40px 80px -32px rgba(17,18,22,.38),0 0 0 1px rgba(17,18,22,.05)}
+.al-cap{position:absolute;left:50%;bottom:calc(6vh + 26px);transform:translateX(-50%);display:flex;align-items:baseline;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-3);z-index:3;white-space:nowrap;pointer-events:none}
+.al-n b{font-family:var(--display);font-weight:300;font-size:30px;letter-spacing:0;color:var(--ink);font-variant-numeric:tabular-nums}
+.al-n span{color:var(--ink-4)}
+.al-scrub{position:absolute;left:50%;bottom:6vh;width:min(420px,60vw);height:18px;transform:translateX(-50%);z-index:3;cursor:pointer}
+.al-scrub::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(17,18,22,.2)}
+.al-scrub i{position:absolute;top:50%;left:0;width:28px;height:3px;margin:-1.5px 0 0 -14px;border-radius:2px;background:var(--accent)}
+.al-hint{position:absolute;right:48px;bottom:6vh;font-family:var(--mono);font-size:10px;letter-spacing:.16em;line-height:1.9;color:var(--ink-4);text-align:right;z-index:3;pointer-events:none}
+.al-hint span{display:block}
+.al-lb{position:absolute;inset:0;z-index:8;display:grid;place-items:center;background:rgba(252,252,253,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s;cursor:zoom-out}
+.al-lb.open{opacity:1;visibility:visible}
+.al-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:26px}
+.al-lb img{max-width:min(88vw,1600px);max-height:68vh;width:auto;height:auto;border-radius:10px;box-shadow:0 40px 90px -30px rgba(17,18,22,.5);transform:scale(.94);transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.al-lb.open img{transform:none}
+.al-lb .ab-back{position:absolute;right:48px;top:32px;background:rgba(255,255,255,.7)}
+.al-fig figcaption{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;max-width:min(80vw,620px)}
+.al-lb-q{margin:0;font-family:var(--cjk),var(--display);font-size:clamp(16px,1.6vw,20px);line-height:1.6;letter-spacing:.04em;color:var(--ink)}
+.al-lb-q::before,.al-lb-q::after{color:var(--accent);font-family:"Instrument Serif",serif;font-size:1.4em;line-height:0;vertical-align:-.28em}
+.al-lb-q::before{content:"“";margin-right:.25em}.al-lb-q::after{content:"”";margin-left:.25em}
+.al-lb-e{margin:-4px 0 0;font-family:"Instrument Serif","Times New Roman",serif;font-style:italic;font-size:clamp(15px,1.4vw,18px);line-height:1.5;color:var(--ink-3)}
+.al-lb-cap{margin-top:4px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-4);white-space:nowrap}
+@media (max-width:760px){
+  .al-label{left:20px;top:84px}
+  .al-track{top:44%}
+  .al-hint{display:none}
+  .al-cap{bottom:calc(5vh + 26px)}
+  .al-scrub{bottom:5vh}
+  .al-lb .ab-back{right:76px;top:24px}
+  .al-lb img{max-height:60vh}
+  .al-fig{gap:18px}
+  #album .ab-top .ab-back{margin-right:56px}   /* 手机上右上角是音乐按钮，返回键往左让一点 */
+}
+
+/* ===================== 首页入场：各部分错开出现（只在从进入页进来时播一次） ===================== */
+@keyframes hDown{from{opacity:0;translate:0 -100%}to{opacity:1;translate:0 0}}
+@keyframes hFade{from{opacity:0}}
+@keyframes hRise{from{opacity:0;translate:0 14px}}
+@keyframes hLeft{from{opacity:0;translate:-46px 0;filter:blur(8px)}}
+@keyframes hRight{from{opacity:0;translate:60px 0}}
+@keyframes hTick{from{opacity:0;translate:-14px 0}}
+@keyframes hLine{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+main.hin #topbar{animation:hDown .9s cubic-bezier(.16,1,.3,1) .1s both}
+main.hin #topbar .brand{animation:hRise .7s cubic-bezier(.16,1,.3,1) .45s both}
+main.hin .tb-nav>*{animation:hRise .6s cubic-bezier(.16,1,.3,1) calc(.6s + var(--n) * 45ms) both}
+main.hin #topbar .meta-top .col{animation:hRise .6s cubic-bezier(.16,1,.3,1) 1.05s both}
+main.hin #topbar .meta-top .col+.col{animation-delay:1.13s}
+main.hin #topbar .lang{animation:hRise .6s cubic-bezier(.16,1,.3,1) 1.21s both}
+main.hin .fig{animation:hFade 1.1s ease .15s both}
+main.hin .mid-line{animation:hLine 1s cubic-bezier(.65,0,.35,1) .55s both}
+main.hin .rail-mark{animation:hTick .6s cubic-bezier(.16,1,.3,1) 1.5s both}
+main.hin .ticks span{animation:hTick .5s cubic-bezier(.16,1,.3,1) calc(.7s + var(--n) * 28ms) both}
+main.hin nav .item{animation:hLeft .85s cubic-bezier(.16,1,.3,1) calc(.85s + var(--n) * 95ms) both}
+main.hin footer .legend{animation:hRise .6s cubic-bezier(.16,1,.3,1) 1.7s both}
+main.hin footer .legend+.legend{animation-delay:1.8s}
+main.hin .m-hint{animation:hFade .8s ease 1.6s both}
+body.hin #bgm{animation:hRight .8s cubic-bezier(.16,1,.3,1) 1.55s both}
+@media (prefers-reduced-motion:reduce){
+  .g-logo i,.g-sub,.g-bar,.g-meta,.gm-sub,.gm-prog,.gm-stat,.gm-sound,.gm-top,.snd .w,main.hin *,body.hin #bgm{animation:none!important}
 }
 </style>
 
@@ -538,20 +743,21 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
     </div>
     <div class="xr-line" aria-hidden="true"><span>◂ RENDER · MESH ▸</span></div>
 
-    <div class="hud" aria-hidden="true">
+    <div class="hud" aria-hidden="true" hidden>
       <div class="row"><span style="width:48px;height:1px;background:var(--ink-4)"></span><span>SUBJECT</span><span class="val">ANDROID / <span id="hudNum">02</span></span></div>
       <div class="row"><span>LAYER</span><span class="val swap"><span class="xr-out">MESH → SKIN</span><span class="xr-in">SKIN · FINAL</span></span></div>
       <div class="row"><span>MODE</span><span class="mode swap"><span class="xr-out">DIGITIZING</span><span class="xr-in" id="modeText">ONLINE</span></span><span class="dot pulse"></span></div>
     </div>
   </div>
 
-  <header>
-    <a class="brand" href="#" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+  <header id="topbar">
+    <a class="brand" href="#" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
+    <div class="tb-nav" role="navigation" aria-label="页面导航" id="tbNav"></div>
     <div class="meta-top">
       <div class="col"><span>INDEX</span><span id="idxText">02 / 05</span></div>
       <div class="col"><span>RENDER</span><span>DAZ G9 · IRAY</span></div>
-      <div class="lang"><a href="#" aria-current="true">中</a><span>/</span><a href="#">EN</a></div>
     </div>
+    <div class="lang" id="lang" role="group" aria-label="简体 / 繁體"><button type="button" data-lang="s" aria-pressed="true">简</button><span aria-hidden="true">/</span><button type="button" data-lang="t" aria-pressed="false">繁</button></div>
   </header>
 
   <div class="ticks" aria-hidden="true" id="ticks"></div>
@@ -564,7 +770,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   <div class="toast" id="toast" role="status"></div>
 
   <footer>
-    <div class="f-left"><span class="mouse" aria-hidden="true"><i class="pulse"></i></span><span>SCROLL · 滚动选择</span><span style="color:var(--ink-5)">/</span><span>CLICK · 进入</span></div>
+    <div class="f-left" hidden><span class="mouse" aria-hidden="true"><i class="pulse"></i></span><span>SCROLL · 滚动选择</span><span style="color:var(--ink-5)">/</span><span>CLICK · 进入</span></div>
     <div class="f-right">
       <span class="legend"><span class="sw render"></span>RENDER</span>
       <span class="legend"><span class="sw mesh xr-grid"></span>MESH</span>
@@ -575,7 +781,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 <section id="about" aria-label="关于 Ella" aria-hidden="true">
   <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="ab-top">
-    <a class="brand" href="#" id="abLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <a class="brand" href="#" id="abLogo" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
     <button class="ab-back" type="button" id="abBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
   <div class="ab-label">(01) — ABOUT · 关于<br><span>PROFILE / 2026</span></div>
@@ -624,7 +830,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 <section id="contact" aria-label="联系 Ella" aria-hidden="true">
   <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   <div class="ab-top">
-    <a class="brand" href="#" id="ctLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <a class="brand" href="#" id="ctLogo" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
     <button class="ab-back" type="button" id="ctBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
   <div class="ab-label">(05) — CONTACT · 联系<br><span>MAIL / SOCIAL</span></div>
@@ -640,44 +846,43 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   </div>
 </section>
 
-<section id="chars" aria-label="3D 角色" aria-hidden="true" aria-roledescription="carousel">
-  <div class="ab-cols" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<section id="album" aria-label="画册" aria-hidden="true" aria-roledescription="carousel">
   <div class="ab-top">
-    <a class="brand" href="#" id="chLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <a class="brand" href="#" id="alLogo" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
+    <button class="ab-back" type="button" id="alBack">← BACK<span class="bk-cn"> · 返回</span></button>
+  </div>
+  <div class="al-label">(04) — ARTBOOK · 画册<br><span>2D ILLUSTRATION / 2021–2026</span></div>
+  <div class="al-stage" id="alStage"><div class="al-track" id="alTrack"></div></div>
+  <div class="al-cap"><div class="al-k">PLATE</div><div class="al-n" aria-live="polite"><b id="alNum">01</b><span id="alTot"> / 41</span></div><div class="al-size" id="alSize"></div></div>
+  <div class="al-scrub" id="alScrub" aria-hidden="true"><i id="alThumb"></i></div>
+  <div class="al-hint">SCROLL / DRAG · 滚动或拖动翻页<span>CLICK · 点击看大图和说明</span></div>
+  <div class="al-lb" id="alLb" role="dialog" aria-label="作品大图" aria-hidden="true"><figure class="al-fig"><img id="alLbImg" alt=""><figcaption><p class="al-lb-q" id="alLbQ"></p><p class="al-lb-e" id="alLbE" lang="en"></p><span class="al-lb-cap" id="alLbCap"></span></figcaption></figure><button type="button" class="ab-back" id="alLbX">CLOSE · 关闭</button></div>
+</section>
+<section id="chars" aria-label="3D 角色" aria-hidden="true" aria-roledescription="carousel">
+  <div class="ab-top">
+    <a class="brand" href="#" id="chLogo" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
     <button class="ab-back" type="button" id="chBack">← BACK<span class="bk-cn"> · 返回</span></button>
   </div>
-  <div class="ch-label">(03) — CHARACTERS · 3D 角色<br><span>ANIMATION / 2026</span></div>
-  <div class="ch-hint" aria-hidden="true">← 左右滑动 · SWIPE →</div>
+  <div class="ch-label">(03) — CHARACTERS · 3D 角色<br><span>TURNTABLE + ANIMATION / 2026</span></div>
   <div class="ch-track" id="chTrack">
-    <div class="ch-stage" id="chStage" data-name="Float" data-sub="漂浮 · CHARACTER ANIMATION">
-      <div class="ch-shadow" id="chShadow" aria-hidden="true"></div>
-      <div class="ch-bgname" aria-hidden="true">Float</div>
-      <video id="chVid" muted playsinline preload="auto" poster="chars/float.jpg" aria-label="角色动画：漂浮。她轻点手腕上的科技手表，弹出一块光屏"></video>
-      <div class="ch-ring" id="chRing" aria-hidden="true"><i></i><i></i></div>
-      <div class="ch-holo" id="chHolo" aria-hidden="true">
-        <div class="cone"></div><div class="beam"></div>
-        <div class="ch-panel" id="chPanel"><div class="in">
-          <div class="hd"><span>ELLA · OS</span><span>● LINK</span></div>
-          <div><div class="big">Hello, world.</div><div>SIGNAL 98% · SYNC OK</div></div>
-          <div class="bars"><i style="--v:35%"></i><i style="--v:70%"></i><i style="--v:50%"></i><i style="--v:90%"></i><i style="--v:60%"></i><i style="--v:80%"></i><i style="--v:45%"></i></div>
-          <div class="ft"><span>G9-F / 01</span><span id="chHoloT">00:00</span></div>
-        </div></div>
-      </div>
+    <div class="ch-stage" data-tt="yoyo">
+      <div class="cd" aria-hidden="true"></div>
+      <canvas width="768" height="960" role="img" aria-label="Yoyo：角色站在一张光盘上，抬膝、双臂交叉、缓缓漂浮再落下"></canvas>
     </div>
-    <div class="ch-stage" data-name="Coming soon" data-sub="即将上线 · NEXT CHARACTER">
-      <div class="ch-shadow st" aria-hidden="true"></div>
-      <img class="sil" src="chars/sil1.png" alt="即将上线的角色（剪影）" draggable="false">
-      <span class="soon">02 · COMING SOON</span>
+    <div class="ch-stage" data-tt="laura">
+      <div class="cd rev" aria-hidden="true"></div>
+      <canvas width="768" height="960" role="img" aria-label="Laura：角色以坐姿在一张光盘上 360 度旋转"></canvas>
     </div>
-    <div class="ch-stage" data-name="Coming soon" data-sub="即将上线 · NEXT CHARACTER">
-      <div class="ch-shadow st" aria-hidden="true" style="top:86%"></div>
-      <img class="sil" src="chars/sil2.png" alt="即将上线的角色（剪影）" draggable="false">
-      <span class="soon">03 · COMING SOON</span>
+    <div class="ch-stage" data-tt="vela">
+      <div class="cd" aria-hidden="true"></div>
+      <canvas width="768" height="960" role="img" aria-label="Vela：角色手持环形长枪站在一张光盘上转身"></canvas>
     </div>
   </div>
-  <h2 class="ch-name" id="chName">Float<small>漂浮 · CHARACTER ANIMATION</small></h2>
+  <div class="ch-info" id="chMaking"></div>
+  <div class="ch-info" id="chProfile"></div>
   <div class="ch-nav"><button type="button" id="chPrev" aria-label="上一个角色">←</button><b><span id="chNum" style="font-size:inherit;color:inherit">01</span><span> / 03</span></b><button type="button" id="chNext" aria-label="下一个角色">→</button></div>
   <div class="ch-dots" id="chDots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="ch-sheet" id="chSheet" role="dialog" aria-label="角色详情" aria-hidden="true"></div>
 </section>
 
 <section id="works" tabindex="-1" aria-label="作品 Works" aria-hidden="true">
@@ -707,7 +912,7 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
   </div>
   <div class="m-swipe" aria-hidden="true">← SWIPE · 左右滑动切换 →</div>
   <div class="wk-top">
-    <a class="brand" href="#" id="wkLogo" aria-label="返回首页"><span class="glyph" aria-hidden="true"><i></i></span><span><b>PORTFOLIO</b><small>作品集 · 2026</small></span></a>
+    <a class="brand" href="#" id="wkLogo" aria-label="WEN STUDIO · 返回首页"><span class="wen" aria-hidden="true">WEN STUDIO</span></a>
     <div class="r"><button class="ab-back" type="button" id="wkBack">← BACK<span class="bk-cn"> · 返回</span></button><span>02 / 05</span></div>
   </div>
 </section>
@@ -723,16 +928,16 @@ footer{position:absolute;left:48px;right:48px;bottom:32px;display:flex;justify-c
 </div>
 
 <div id="gate" role="dialog" aria-label="进入作品集">
-  <div class="gm-top" aria-hidden="true"><span>PORTFOLIO<i>作品集 · 2026</i></span><span>DAZ G9 · IRAY<i>UE5 · REAL-TIME</i></span></div>
+  <div class="gm-top" aria-hidden="true"><span>WEN STUDIO<i>作品集 · 2026</i></span><span>DAZ G9 · IRAY<i>UE5 · REAL-TIME</i></span></div>
   <div class="gm-rings" aria-hidden="true"><i></i><i></i></div>
   <div class="g-in">
-    <div class="gm-title"><span class="glyph" aria-hidden="true"></span><span>Ella’s portfolio</span></div>
-    <div class="gm-sub">3D CHARACTER ART + REAL-TIME SCENES</div>
+    <div class="gm-sub">WEN · DIGITAL ARTIST · PORTFOLIO</div>
+    <h1 class="g-logo wen" aria-label="WEN STUDIO"><span aria-hidden="true"><i style="--i:0">W</i><i style="--i:1">E</i><i style="--i:2">N</i><i class="sp"> </i><i style="--i:4">S</i><i style="--i:5">T</i><i style="--i:6">U</i><i style="--i:7">D</i><i style="--i:8">I</i><i style="--i:9">O</i></span></h1>
+    <div class="g-sub">WEN · DIGITAL ARTIST · PORTFOLIO</div>
+    <div class="g-bar" aria-hidden="true"><i id="gateBar"></i></div>
     <div class="gm-prog" aria-hidden="true"><b id="gmNum">000</b><span class="trk"><i id="gmFill"></i><em id="gmKnob"></em></span><span class="max">100</span></div>
     <div class="gm-stat" aria-live="polite"><span id="gmStat">LOADING · 加载中</span><span class="rd">READY<i></i></span></div>
-    <div class="g-mark"><span class="glyph" aria-hidden="true"></span><span><b>PORTFOLIO</b><small>ELLA · DIGITAL ARTIST · 2026</small></span></div>
     <button id="gateBtn" type="button" disabled><i aria-hidden="true"></i><span id="gateTxt">LOADING · 加载中</span></button>
-    <div class="g-bar" aria-hidden="true"><i id="gateBar"></i></div>
     <div class="g-meta"><span>♪ SOUND ON · 建议开启声音</span><span id="gatePct">0%</span></div>
   </div>
   <div class="gm-sound" aria-hidden="true"><span class="eq"><i></i><i></i><i></i><i></i></span>建议打开声音 · SOUND ON</div>
@@ -751,7 +956,7 @@ const MENU = [
   { en: "ABOUT",      cn: "关于",    meta: "PROFILE · 个人简介" },
   { en: "WORKS",      cn: "作品",    meta: "SELECTED PROJECTS · 2024–2026" },
   { en: "CHARACTERS", cn: "3D 角色", meta: "3D CHARACTER DESIGN" },
-  { en: "MOTION",     cn: "动态",    meta: "ANIMATION · REEL" },
+  { en: "ARTBOOK",    cn: "画册",    meta: "2D ILLUSTRATION · 41 PLATES" },
   { en: "CONTACT",    cn: "联系",    meta: "MAIL · SOCIAL" }
 ];
 const nav = document.getElementById("nav");
@@ -790,8 +995,18 @@ function layout(){
   const t = String(idx + 1).padStart(2, "0");
   document.getElementById("idxText").textContent = `${t} / 05`;
   document.getElementById("hudNum").textContent = t;
+  const tb = document.getElementById("tbNav"); tb && tb.querySelectorAll("button").forEach(b => b.classList.toggle("cur", b.dataset.en === MENU[idx].en));
 }
 function setIdx(i){ idx = (i + MENU.length) % MENU.length; layout(); }
+// 顶部导航条：点哪个就把左边菜单转到哪个并进入
+const tbNav = document.getElementById("tbNav");
+["WORKS", "ABOUT", "CHARACTERS", "ARTBOOK", "CONTACT"].forEach((en, j) => {
+  if (j){ const sp = document.createElement("s"); sp.textContent = "/"; sp.style.setProperty("--n", j * 2 - 1); sp.setAttribute("aria-hidden", "true"); tbNav.append(sp); }
+  const b = document.createElement("button"); b.type = "button"; b.textContent = en; b.dataset.en = en; b.style.setProperty("--n", j * 2);
+  b.addEventListener("click", () => { const i = MENU.findIndex(m => m.en === en); if (i < 0) return; setIdx(i); enter(i); });
+  tbNav.append(b);
+});
+els.forEach((e, i) => e.item.style.setProperty("--n", i));
 layout();
 MQ.addEventListener && MQ.addEventListener("change", layout);
 // 手机：在首页上下滑动切换菜单
@@ -802,7 +1017,7 @@ MQ.addEventListener && MQ.addEventListener("change", layout);
   addEventListener("pointerup", () => { y0 = null; }); addEventListener("pointercancel", () => { y0 = null; });
 })();
 const ticks = document.getElementById("ticks");
-for (let i = 0; i < 21; i++) ticks.append(document.createElement("span"));
+for (let i = 0; i < 21; i++){ const sp = document.createElement("span"); sp.style.setProperty("--n", i); ticks.append(sp); }
 let lastWheel = 0;
 main.addEventListener("wheel", e => {
   e.preventDefault();
@@ -821,6 +1036,7 @@ function enter(i){
   if (MENU[i].en === "WORKS"){ openWorks(); return; }
   if (MENU[i].en === "CONTACT"){ openContact(); return; }
   if (MENU[i].en === "CHARACTERS"){ openChars(); return; }
+  if (MENU[i].en === "ARTBOOK"){ openAlbum(); return; }
   const t = document.getElementById("toast");
   t.textContent = `示例：这里会进入「${MENU[i].cn}」页面`;
   t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1800);
@@ -901,7 +1117,7 @@ function kFromY(y){
 let ptX = -1, ptY = -1;
 function onPoint(e){
   ptX = e.clientX; ptY = e.clientY;
-  if (aboutOpen || worksOpen || contactOpen || charsOpen) return;
+  if (aboutOpen || worksOpen || contactOpen || charsOpen || albumOpen) return;
   const z = zoneFromPoint(ptX, ptY);
   if (z){ clearTimeout(leaveTimer); leaveTimer = 0; inZone = true; if (look.length) kTarget = kFromY(ptY); }
   else if (inZone && !leaveTimer){ leaveTimer = setTimeout(() => { inZone = false; leaveTimer = 0; }, 120); }
@@ -916,7 +1132,7 @@ addEventListener("pointerdown", onPoint, true);
 addEventListener("wheel", onPoint, { passive: true, capture: true });
 // 鼠标停着不动时，每帧按最后位置重新算一次（看菜单的图加载好之前算出来的值无效）
 function syncPoint(){
-  if (ptX < 0 || aboutOpen || worksOpen || contactOpen || charsOpen || !look.length) return;
+  if (ptX < 0 || aboutOpen || worksOpen || contactOpen || charsOpen || albumOpen || !look.length) return;
   if (zoneFromPoint(ptX, ptY)){ inZone = true; kTarget = kFromY(ptY); }
 }
 document.addEventListener("pointerleave", e => { if (e.pointerType && e.pointerType !== "mouse") return; clearTimeout(leaveTimer); leaveTimer = 0; inZone = false; ptX = ptY = -1; });
@@ -1125,7 +1341,7 @@ function closeAbout(then){
 document.getElementById("abBack").addEventListener("click", () => closeAbout());
 document.getElementById("abLogo").addEventListener("click", e => { e.preventDefault(); closeAbout(); });
 document.getElementById("abWorks").addEventListener("click", () => closeAbout(() => { setIdx(MENU.findIndex(m => m.en === "WORKS")); openWorks(); }));
-addEventListener("keydown", e => { if (e.key !== "Escape") return; if (lbOpen) closeLB(); else if (worksOpen) closeWorks(); else if (contactOpen) closeContact(); else if (charsOpen) closeChars(); else if (aboutOpen) closeAbout(); });
+addEventListener("keydown", e => { if (e.key !== "Escape") return; if (lbOpen) closeLB(); else if (worksOpen) closeWorks(); else if (contactOpen) closeContact(); else if (alLbOpen) alLb(false); else if (albumOpen) closeAlbum(); else if (charsOpen) closeChars(); else if (aboutOpen) closeAbout(); });
 
 /* ===================== CONTACT：转场 + 复制邮箱 ===================== */
 const contact = document.getElementById("contact"), ctMail = document.getElementById("ctMail"), ctCopy = document.getElementById("ctCopy");
@@ -1174,88 +1390,171 @@ ctCopy.addEventListener("click", async () => {
   clearTimeout(ctCopyT); ctCopyT = setTimeout(() => { ctCopy.textContent = "COPY · 复制"; }, 2400);
 });
 
-/* ===================== CHARACTERS：轮播 + 图像序列 + 光屏 + 影子 ===================== */
-const chars = document.getElementById("chars"), chVid = document.getElementById("chVid");
-const chShadow = document.getElementById("chShadow"), chHolo = document.getElementById("chHolo"), chPanel = document.getElementById("chPanel"), chRing = document.getElementById("chRing");
-const chStage = document.getElementById("chStage"), chSlides = [...document.querySelectorAll("#chTrack .ch-stage")], CN = chSlides.length;
-const HOLD_MS = 3000;   // 落地（最后一帧）停留 3 秒再循环
-let CH = null, chRaf = 0, chLast = -1, chHoldT = 0;
-const cs = { pos: 0, target: 0, v: 0, drag: null, shown: -1 };
-const chLoad = () => CH ? Promise.resolve(CH) : fetch("chars/float.json").then(r => r.json()).then(d => { CH = d; chVid.src = "chars/float.mp4"; return d; });
-const sm = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
-function chDraw(f){
-  if (!CH || f === chLast) return; chLast = f;
-  const F = CH.frames[f];
-  const k = Math.min(1, F.h / .14);
-  chShadow.style.left = (F.x * 100) + "%"; chShadow.style.top = (CH.ground * 100) + "%";
-  chShadow.style.transform = `translate(-50%,-50%) scale(${(1 - k * .45).toFixed(3)},${(1 - k * .3).toFixed(3)})`;
-  chShadow.style.opacity = (0.95 - k * .5).toFixed(3);
-  chShadow.style.filter = `blur(${(3 + k * 14).toFixed(1)}px)`;
-  const [s0, s1] = CH.show, wx = CH.wx * 100 + "%", wy = F.wy * 100 + "%";
-  chRing.style.left = chHolo.style.left = wx; chRing.style.top = chHolo.style.top = wy;
-  const r = (f - CH.tap) / 10;
-  chRing.querySelectorAll("i").forEach((el, j) => { const q = r - j * .35, on = q > 0 && q < 1;
-    el.style.opacity = on ? ((1 - q) * .9).toFixed(3) : "0"; el.style.transform = `scale(${on ? (.2 + q * 1.6).toFixed(3) : .2})`; });
-  const v = Math.min(sm(s0, s0 + 7, f), 1 - sm(s1 - 6, s1, f));
-  chHolo.style.opacity = v > 0 ? Math.min(1, v * 1.4).toFixed(3) : "0";
-  chPanel.style.transform = `scale(${(.4 + .6 * v).toFixed(3)},${v.toFixed(3)})`;
-  chHolo.style.setProperty("--scan", (((f - s0) * 7) % 140 - 30) + "%");
-  chHolo.style.setProperty("--bh", (chStage.clientHeight * .045 * (.3 + .7 * v)).toFixed(1) + "px");
-  chHolo.style.setProperty("--pw", (chStage.clientWidth * .38).toFixed(1) + "px");
-  document.getElementById("chHoloT").textContent = "00:" + String(Math.max(0, f - s0)).padStart(2, "0");
+/* ===================== CHARACTERS：轮播 + 光盘展台 + 两块解说 ===================== */
+const chars = document.getElementById("chars");
+const chSlides = [...document.querySelectorAll("#chTrack .ch-stage")], CN = chSlides.length, chStage = chSlides[0];
+const CH_FPS = 24 * .75;        // 渲染是 24 帧/秒，按 0.75 倍速播放
+const SPECS = ["DAZ STUDIO 4.24", "GENESIS 9", "NVIDIA IRAY", "24 FPS · ALPHA"];
+// 每个角色：名字、解说文字，以及序列帧的数据（m：帧数 n、每帧脚底高度 bottom、脚的水平位置 cx，单位是 1280×1600 的画布坐标；off：每一帧在 .pack.webp 文件里的字节位置）
+const CH = [
+  { id: "yoyo", name: "Yoyo", title: "Float", cn: "漂浮", lead: "近未来，一间安静的研发实验室。深夜，主机的指示灯一盏盏亮起，她第一次被完整唤醒。", body: "Yoyo 是一个仿生类人原型。她身上的白色测试服带有传感层，两侧的半透明镶片让内部结构隐约可见，工程师靠它们记录每一次关节的运动数据。她的手臂上戴着一串叠戴的手镯，是主工程师在出厂前亲手给她戴上的。这串手镯不在任何设计图里，也是她身上唯一不属于测试配置的东西。", steps: [["概述", "本作品是我的第一件角色动画作品，使用 Daz Studio 4.24 制作，角色基于 Genesis 9 人模，使用 NVIDIA Iray 物理渲染器完成渲染。作为首次完整的角色动画实践，我完成了从角色造型、材质设置、关键帧动作到透明背景渲染的全流程。"], ["造型 · 材质", "在 Genesis 9 基础上调整面部与体型，搭配短卷金发。服装为白色高光泽连体短装，用高反射材质表现乳胶般的质感，两侧的肤色镶片单独设置半透明与透光参数，与主体形成对比。手臂的串珠手镯、手环和白色厚底鞋也分别设置了材质与细节。"], ["动作", "通过时间轴关键帧搭建动作序列：静立、抬膝、双臂交叉、回到静立。首尾姿态保持一致，方便循环播放，并调整关键帧插值，让动作有停顿，也有爆发。"], ["灯光 · 输出", "采用 Iray 物理光照，以柔和的主光配合环境光，突出白色高光材质的反射与立体感，同时避免高光过曝。输出时启用 Alpha 通道，渲染为透明背景的逐帧序列，便于后期合成。将逐帧序列合成为最终视频。"]],
+    m: {"n":158,"bottom":[1414,1415,1416,1418,1419,1420,1420,1421,1421,1420,1419,1417,1415,1412,1408,1404,1399,1394,1388,1382,1376,1370,1364,1358,1352,1347,1342,1338,1335,1333,1332,1331,1332,1332,1333,1334,1336,1338,1340,1343,1345,1347,1350,1352,1354,1356,1358,1359,1361,1362,1362,1362,1362,1361,1360,1359,1357,1354,1352,1349,1345,1342,1338,1334,1330,1325,1321,1316,1312,1307,1303,1299,1295,1292,1289,1286,1283,1280,1278,1276,1274,1272,1271,1269,1268,1267,1265,1264,1263,1262,1260,1259,1257,1255,1253,1251,1249,1249,1252,1257,1265,1276,1288,1300,1312,1324,1335,1345,1354,1363,1371,1379,1386,1380,1384,1388,1392,1395,1395,1395,1396,1398,1401,1403,1406,1408,1410,1411,1408,1403,1404,1409,1412,1413,1413,1413,1413,1414,1416,1418,1420,1421,1423,1423,1423,1422,1422,1422,1422,1422,1422,1421,1420,1419,1417,1416,1415,1414],"cx":[678,676,674,672,670,667,665,662,659,655,652,647,643,637,632,625,619,612,604,597,590,583,577,571,565,561,558,557,556,558,560,563,565,568,569,570,569,568,567,566,564,563,562,561,560,559,558,557,556,556,555,555,554,554,553,553,552,552,552,551,551,551,551,550,550,550,549,549,549,549,548,548,548,548,548,549,549,549,550,551,551,552,553,554,554,555,556,557,557,558,558,558,558,558,557,556,556,556,557,560,564,569,576,585,595,605,616,626,637,647,656,665,672,679,684,684,681,676,668,660,651,644,640,640,641,641,641,639,638,636,634,633,633,635,638,642,645,649,653,657,662,666,671,675,679,683,686,689,692,693,694,694,693,691,688,686,683,680],"off":[0,37740,76152,114624,153506,192442,231442,271124,311112,351528,391958,432516,473598,514882,556494,598314,640488,683056,725824,768624,812002,855718,899646,943932,988458,1033258,1078282,1123200,1167910,1212886,1257410,1302240,1346936,1391434,1435968,1480290,1524682,1568992,1613384,1657632,1701730,1745916,1789986,1833694,1877420,1920924,1964394,2007720,2051038,2094230,2137460,2180382,2223032,2265204,2307052,2348758,2389876,2431030,2471690,2512596,2552942,2593072,2633158,2672910,2712352,2751574,2790826,2829730,2868060,2906412,2944388,2981962,3019332,3056378,3092102,3126466,3160436,3194252,3227844,3261260,3294634,3327828,3361216,3394032,3426896,3459616,3492072,3524680,3557162,3589774,3623942,3658336,3692464,3726448,3760302,3794064,3827812,3861380,3894998,3928458,3962330,3996416,4030884,4065332,4100286,4135250,4170440,4206178,4242224,4278586,4315154,4351788,4388476,4425514,4462802,4500372,4538186,4576312,4614432,4653066,4692070,4731114,4770452,4809584,4849258,4888642,4928362,4968064,5007656,5047126,5086814,5126770,5166864,5207222,5247712,5288362,5329292,5370380,5411272,5452562,5493842,5535208,5576554,5617862,5659490,5701226,5742938,5784560,5826388,5867740,5909108,5950256,5991186,6031680,6071230,6110050,6148346,6186550,6224350],"ground":1423} },
+  { id: "laura", name: "Laura", title: "Sit", cn: "坐姿", lead: "深夜，演出结束后的后台通道。喧嚣散去，人群离场，只剩下她一个人坐在角落，等一通迟迟没有来的电话。", body: "劳拉（Laura）是一支地下乐队的节奏吉他手，也是乐队里最不爱说话的一个。她习惯用外表武装自己：皮夹克、铆钉、战靴、带着银色挑染的深色卷发，都是她与外界保持距离的方式。但在没人看到的时候，她会不自觉地撩起头发，抬头望向某个方向，那是她思考、等待或想念某个人时的小动作。", steps: [["概述", "本作品使用 Daz Studio 4.24 制作，角色基于 Genesis 9 人模，使用 NVIDIA Iray 物理渲染器完成渲染。"], ["造型 · 材质", "在 Genesis 9 基础上调整面部与体型，搭配黑色波浪发型。服装部分包括皮夹克、短上衣、破洞牛仔裤与系带战靴，并对皮革、织物、金属铆钉与扣件分别设置材质，用 Iray 的反射与粗糙度区分各类材质的质感，让皮夹克有光泽感、牛仔布偏哑光。"], ["动作", "设置坐姿，手部撩发、头部微仰的姿势来传达情绪。动画部分，用 24 FPS，共 100 帧。通过时间轴关键帧让角色在约 6 秒内完成从正面到侧面、背面再回到正面的旋转，首尾姿态一致，便于循环播放。"], ["灯光 · 输出", "采用 Iray 物理光照，以柔和的主光和环境光塑造立体感，兼顾皮夹克的高光和深色牛仔裤的暗部细节。输出时启用 Alpha 通道，渲染为透明背景的逐帧序列，方便后期合成。将逐帧序列合成为最终视频。"]],
+    m: {"n":98,"bottom":[1505,1503,1500,1497,1493,1489,1484,1486,1493,1499,1502,1501,1497,1490,1481,1471,1462,1452,1444,1440,1437,1433,1430,1426,1422,1419,1418,1416,1413,1407,1400,1393,1389,1386,1382,1379,1375,1372,1368,1364,1360,1357,1353,1349,1346,1342,1339,1336,1334,1332,1330,1329,1327,1330,1332,1335,1338,1341,1344,1348,1352,1356,1360,1364,1368,1372,1377,1382,1386,1391,1396,1401,1406,1412,1419,1426,1433,1439,1446,1452,1458,1464,1470,1475,1480,1485,1490,1494,1497,1501,1503,1506,1507,1508,1509,1509,1508,1507],"cx":[690,710,726,740,750,755,758,759,761,765,770,779,790,804,820,837,854,869,882,894,904,912,920,926,932,937,941,944,945,946,946,944,940,935,929,921,911,899,886,871,855,838,820,801,782,762,742,721,700,680,659,638,617,596,576,556,536,516,497,478,460,443,426,410,396,382,371,361,353,346,341,339,337,338,340,344,349,356,364,373,384,396,410,424,440,457,475,492,509,526,541,555,570,585,602,622,643,667],"off":[0,31982,63670,95542,127540,159938,192512,225366,258616,291814,325332,358276,391042,423854,456512,488662,520860,553032,584602,615294,644916,672524,698974,725130,750684,776270,802036,827890,853914,880084,906318,933242,961598,990856,1020092,1049338,1078408,1107810,1137088,1165938,1194386,1222676,1250660,1278288,1305436,1332148,1358506,1384178,1409380,1434266,1458980,1483500,1507660,1531874,1556272,1580432,1605014,1629576,1654154,1679242,1704364,1729996,1755608,1781492,1807630,1833960,1860668,1887364,1914170,1940982,1967652,1994582,2021404,2047542,2072794,2098436,2124224,2150176,2176710,2203642,2231328,2259596,2288226,2317946,2349002,2381250,2413934,2446460,2478830,2511120,2543272,2575486,2607712,2639980,2672290,2705030,2737452,2769778,2801874],"spin":1} },
+  { id: "vela", name: "Vela", title: "Superpowers", cn: "超能力", lead: "", body: "薇拉（Vela）是第三代觉醒者里少有的稳定个体。她拥有对共振能量的高精度操控力，能将散逸的能量压缩、导向并瞬间释放。但这种能力一旦失控，会直接冲击使用者的神经系统。为此，她的装备里的每一件都是针对她的体质专门定制的。", gear: [["环形长枪", "枪头的环状结构是“谐振环”，作用是稳定和放大她的能量输出，枪身则是导引通道。枪身上缠绕的金色编绳，是她导师留下的信物，也是她没有被系统完全磨平个性的证明。"], ["战术作战服", "深色基底、银色装甲片，紫色发光纹路是能量导管，能量越活跃，亮度越高。"], ["头戴耳机", "既是通讯设备，也是神经稳定器，用来屏蔽过载信号，保持她的专注。"]], steps: [["概述", "本作品使用 Daz Studio 4.24 制作，角色基于 Genesis 9 人模，使用 NVIDIA Iray 物理渲染器完成渲染。"], ["造型 · 材质", "以 Genesis 9 为基础，调整面部与体型形态，搭配短发、头戴耳机与未来战术服装，并对装甲、织物和金属部件的材质参数做了单独调整，使金属反射、织物质感和发光纹路各自有区分。"], ["动作", "通过 Daz 时间轴为角色设置关键帧，控制全身骨骼的姿态过渡，并调整关键帧插值，使动作自然、衔接平滑，同时同步处理手持长枪的位置与角度，保证转身时武器与手部始终稳定贴合。"], ["灯光 · 输出", "采用 Iray 的物理光照，以柔和的主光配合环境光建立角色的立体感，突出金属与发光材质的质感。输出时启用 Alpha 通道，渲染为带透明背景的逐帧序列，便于后期合成。将逐帧序列合成为最终视频。"]],
+    m: {"n":117,"bottom":[1447,1446,1444,1443,1442,1441,1440,1438,1437,1435,1431,1430,1429,1428,1427,1426,1425,1424,1423,1422,1421,1420,1421,1421,1422,1423,1424,1425,1426,1426,1427,1428,1428,1429,1429,1430,1430,1430,1430,1430,1430,1430,1431,1431,1431,1431,1431,1431,1431,1431,1431,1430,1430,1430,1430,1430,1430,1431,1431,1432,1432,1432,1432,1432,1432,1432,1432,1431,1431,1430,1430,1429,1428,1427,1426,1425,1424,1423,1422,1421,1420,1418,1417,1416,1416,1415,1414,1414,1414,1414,1413,1413,1413,1413,1415,1417,1419,1422,1425,1428,1430,1433,1435,1437,1439,1440,1441,1442,1442,1442,1442,1441,1441,1440,1440,1439,1440],"cx":[574,573,573,573,578,582,588,593,600,606,612,618,624,629,634,639,645,650,656,662,668,674,681,688,695,702,709,717,724,731,739,746,753,760,768,775,782,789,796,801,806,809,811,813,813,813,813,813,813,814,814,815,815,815,814,812,810,806,801,796,790,784,777,771,763,756,748,740,732,724,715,707,698,690,682,674,666,659,652,645,639,633,628,623,619,615,612,609,606,604,603,601,601,600,600,600,601,601,601,602,601,600,599,597,595,593,591,589,588,587,586,585,584,584,580,577,575],"off":[0,36936,76060,116664,158642,201596,245298,290014,336912,384370,432612,480412,528828,577776,627340,677350,728544,780086,831964,884550,937916,991716,1045778,1099504,1153016,1205686,1257134,1306040,1357246,1409408,1461376,1513630,1565808,1617048,1667854,1717774,1765666,1812544,1856470,1899678,1941584,1980676,2019896,2059140,2098446,2137480,2176602,2215770,2255306,2294544,2333790,2372956,2412256,2451288,2490220,2529176,2568124,2607184,2646862,2687276,2728734,2770886,2813688,2856610,2900364,2944238,2988296,3032750,3077500,3122192,3167344,3212510,3258088,3303998,3350116,3396250,3443084,3490170,3537274,3584680,3632428,3680504,3728604,3776484,3824456,3872510,3920280,3967862,4015260,4062440,4109198,4155738,4201954,4248010,4294238,4340960,4388380,4435940,4483632,4530276,4575436,4621444,4667360,4712664,4757020,4800808,4844282,4887276,4930382,4972462,5014554,5056898,5098704,5139884,5180128,5219626,5257952,5295632],"shadowR":1.7} }
+];
+// 所有角色共用同一张画布规格和同一个地面中心：光盘圆心 (640,1420)，盘面椭圆半径 470×127
+const LW = 1280, CD = { cx: 640, cy: 1420, rx: 470, ry: 127 };
+const cdHTML = (c, i) => `<div class="cd-shadow"></div><div class="cd-edge"></div><div class="cd-face"><div class="cd-base"></div><div class="cd-light"></div>
+<svg class="cd-print" viewBox="0 0 1000 1000"><defs>
+  <path id="cdA${i}" d="M 42,500 A 458,458 0 0 0 958,500"/><path id="cdB${i}" d="M 95,500 A 405,405 0 0 1 905,500"/>
+  <radialGradient id="cdH${i}"><stop offset=".55" stop-color="#b9bcc3"/><stop offset=".8" stop-color="#eceef1"/><stop offset="1" stop-color="#a2a6ae"/></radialGradient></defs>
+  <circle cx="500" cy="500" r="497" fill="none" stroke="rgba(110,114,122,.6)" stroke-width="4"/>
+  <circle cx="500" cy="500" r="484" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3"/>
+  <circle cx="500" cy="500" r="206" fill="none" stroke="rgba(110,114,122,.35)" stroke-width="2"/>
+  <circle cx="500" cy="500" r="182" fill="rgba(240,241,243,.9)"/>
+  <circle cx="500" cy="500" r="138" fill="url(#cdH${i})"/>
+  <circle cx="500" cy="500" r="98" fill="#eef0f2" stroke="rgba(110,114,122,.45)" stroke-width="2"/>
+  <circle cx="500" cy="500" r="58" fill="#dfe1e5" stroke="rgba(110,114,122,.6)" stroke-width="3"/>
+  <text class="cd-meta"><textPath href="#cdB${i}" startOffset="50%" text-anchor="middle">CHARACTER 0${i + 1} — DAZ STUDIO 4.24 · GENESIS 9 · NVIDIA IRAY — 2026</textPath></text>
+  <text class="cd-name"><textPath href="#cdA${i}" startOffset="50%" text-anchor="middle">${c.name.toUpperCase()} <tspan class="t">· ${c.title.toUpperCase()}</tspan></textPath></text>
+</svg></div>`;
+const TT = {};
+chSlides.forEach((el, i) => { const c = CH[i], cv = el.querySelector("canvas"), cd = el.querySelector(".cd");
+  cd.innerHTML = cdHTML(c, i);
+  const off = document.createElement("canvas"); off.width = cv.width; off.height = cv.height;
+  const dur = c.m.n / CH_FPS;
+  // 转台（Laura）：盘面的光跟她一起转一圈；其余两个慢慢转
+  cd.style.setProperty("--spin", (c.m.spin ? dur : 16).toFixed(2) + "s");
+  el.insertAdjacentHTML("beforeend", `<div class="ch-load" aria-hidden="true"></div>`);
+  TT[c.id] = { id: c.id, i, el, ld: el.querySelector(".ch-load"), ready: false, p: 0, loading: null, cv, c: cv.getContext("2d"), off, o: off.getContext("2d"), d: c.m, imgs: new Array(c.m.n).fill(null), ok: [], last: -1, t0: 0, dec: -1 }; });
+function ttDraw(t, k){
+  if (k === t.last) return;
+  const im = t.imgs[k]; if (!im || !t.ok[k]) return;
+  t.last = k;
+  const d = t.d, W = t.cv.width, H = t.cv.height, S = W / LW, c = t.c, o = t.o;
+  // ax = 地面（盘面）的高度。漂浮：地面固定，脚离地多高 = lift（升起来时影子变淡变大）；其余：脚底就是地面
+  const ax = (d.ground || d.bottom[k]) * S, lift = Math.max(0, ax - d.bottom[k] * S), fx = d.cx[k] * S;
+  c.clearRect(0, 0, W, H);
+  // 盘面上的倒影
+  o.globalCompositeOperation = "source-over"; o.clearRect(0, 0, W, H);
+  o.save(); o.translate(0, ax * 2); o.scale(1, -1); o.drawImage(im, 0, 0, W, H); o.restore();
+  o.globalCompositeOperation = "destination-in";
+  const g = o.createLinearGradient(0, ax, 0, ax + 80); g.addColorStop(0, "rgba(0,0,0,.3)"); g.addColorStop(1, "rgba(0,0,0,0)");
+  o.fillStyle = g; o.fillRect(0, 0, W, H);
+  c.save(); c.beginPath(); c.ellipse(CD.cx * S, CD.cy * S, CD.rx * S, CD.ry * S, 0, 0, Math.PI * 2); c.clip(); c.drawImage(t.off, 0, 0);
+  // 脚下接触阴影（也只落在盘面上）
+  const R = 74 * (d.shadowR || 1) * (1 + lift / 120), A = .42 / (1 + lift / 44);
+  const sg = c.createRadialGradient(fx, ax - 2, 0, fx, ax - 2, R);
+  sg.addColorStop(0, `rgba(30,32,40,${A.toFixed(3)})`); sg.addColorStop(1, "rgba(30,32,40,0)");
+  c.translate(fx, ax - 2); c.scale(1, .22); c.translate(-fx, -(ax - 2)); c.fillStyle = sg; c.fillRect(fx - R - 10, ax - R - 10, R * 2 + 20, R * 2 + 20); c.restore();
+  c.drawImage(im, 0, 0, W, H);
 }
-// 播完停在最后一帧（她落地），停 3 秒再从头播
-chVid.addEventListener("ended", () => {
-  clearTimeout(chHoldT);
-  chHoldT = setTimeout(() => { if (!charsOpen || chActive() !== 0) return; try { chVid.currentTime = 0; } catch (e) {} const p = chVid.play(); p && p.catch(() => {}); }, HOLD_MS);
+// 只有正中间这一个在播（0.75 倍速，从第一帧开始）；左右两个停在第一帧。还没下载完的角色先停在第一帧并显示进度，下载完再播，保证一播就是流畅的
+function ttTick(t, now, on){
+  const wait = on && !t.ready;
+  if (wait !== t.waiting){ t.waiting = wait; t.el.classList.toggle("wait", wait); }
+  if (wait){ const tx = `LOADING · ${Math.round(t.p * 100)}%`; if (tx !== t.ldTx) t.ld.textContent = t.ldTx = tx; }
+  if (!on || reduce || !t.ready){ t.t0 = 0; ttDraw(t, 0); return; }
+  if (!t.t0) t.t0 = now;
+  const n = t.d.n, k = Math.floor((now - t.t0) / 1000 * CH_FPS) % n;
+  if (k !== t.dec){ t.dec = k;   // 提前把后面几帧解码好，播放时不卡
+    for (let j = 1; j <= 3; j++){ const im = t.imgs[(k + j) % n]; im && im.decode && im.decode().catch(() => {}); } }
+  ttDraw(t, k);
+}
+// 每个角色的所有帧打成一个包（chars/<id>.pack.webp）：一次请求下完，边下边按 off 里的字节位置切回一张张图。
+// 以前是三百多张图各发一次请求，网络慢的时候会卡在加载页很久
+const packFrame = (t, k, bytes) => loadImg(URL.createObjectURL(new Blob([bytes], { type: "image/webp" }))).then(im => { if (!im) return; t.imgs[k] = im; t.ok[k] = true; if (k === 0){ t.last = -1; ttDraw(t, 0); } });
+function ttPack(id, onPart){
+  const t = TT[id]; if (t.loading) return t.loading;
+  return t.loading = (async () => {
+    const off = t.d.off, n = t.d.n, total = off[n], jobs = [];
+    try {
+      const r = await fetch(`chars/${id}.pack.webp`); if (!r.ok) throw 0;
+      const buf = new Uint8Array(total); let have = 0, kf = 0;
+      const feed = chunk => { const m = Math.min(chunk.length, total - have); if (m <= 0) return;
+        buf.set(m === chunk.length ? chunk : chunk.subarray(0, m), have); have += m;
+        while (kf < n && off[kf + 1] <= have){ jobs.push(packFrame(t, kf, buf.slice(off[kf], off[kf + 1]))); kf++; }
+        t.p = have / total; onPart && onPart(m / total); };
+      if (r.body && r.body.getReader){ const rd = r.body.getReader(); for (;;){ const { done, value } = await rd.read(); if (done) break; feed(value); } }
+      else feed(new Uint8Array(await r.arrayBuffer()));
+      await Promise.all(jobs);
+    } catch (e) {}
+    t.ready = t.ok.filter(Boolean).length === n;
+    if (!t.ready) t.loading = null;   // 没下完（断网之类）：下次打开角色页时重试
+  })();
+}
+const ttFirst = id => loadImg(`chars/${id}.first.webp`).then(im => { const t = TT[id]; if (im && !t.ok[0]){ t.imgs[0] = im; t.ok[0] = true; t.last = -1; ttDraw(t, 0); } });
+let charsReady = false;
+/* 解说文字 */
+const esc = x => x.replace(/[&<>]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[m]));
+const tabsHTML = (list, sel, grp) => `<div class="ch-tabs" role="tablist">${list.map((x, j) => `<button type="button" role="tab" data-grp="${grp}" data-j="${j}" aria-selected="${j === sel}"><i>${String(j + 1).padStart(2, "0")}</i>${esc(x[0])}</button>`).join("")}</div>`;
+const chSel = { step: 0, gear: 0 };
+function chInfo(a, fade){
+  const c = CH[a], no = String(a + 1).padStart(2, "0"), mk = document.getElementById("chMaking"), pf = document.getElementById("chProfile");
+  mk.innerHTML = `<div class="k">MAKING OF · 制作说明</div><div class="ch-specs">${SPECS.map(x => `<span>${x}</span>`).join("")}</div>${tabsHTML(c.steps, chSel.step, "step")}<p class="pane" role="tabpanel">${esc(c.steps[chSel.step][1])}</p>`;
+  pf.innerHTML = `<div class="tx"><div class="k">PROFILE · 角色档案<b>${no} / 0${CN}</b></div><h2>${esc(c.name)}</h2><div class="sub">${c.title.toUpperCase()} · ${esc(c.cn)}</div>${c.lead ? `<p class="lead">${esc(c.lead)}</p>` : ""}<p class="body">${esc(c.body)}</p>${c.gear ? `${tabsHTML(c.gear, chSel.gear, "gear")}<p class="pane" role="tabpanel">${esc(c.gear[chSel.gear][1])}</p>` : ""}</div><button type="button" class="ch-more" id="chMore"><i aria-hidden="true"></i>详情 · INFO</button>`;
+  document.getElementById("chSheet").innerHTML = `<button type="button" class="x" id="chSheetX">CLOSE · 关闭</button><h3>${esc(c.name)}</h3><div class="sub">${c.title.toUpperCase()} · ${esc(c.cn)}</div>
+    <h4>PROFILE · 角色档案</h4>${c.lead ? `<p class="lead">${esc(c.lead)}</p>` : ""}<p>${esc(c.body)}</p>${(c.gear || []).map((x, j) => `<h5><i>${String(j + 1).padStart(2, "0")}</i>${esc(x[0])}</h5><p>${esc(x[1])}</p>`).join("")}
+    <h4>MAKING OF · 制作说明</h4><div class="ch-specs">${SPECS.map(x => `<span>${x}</span>`).join("")}</div>${c.steps.map((x, j) => `<h5><i>${String(j + 1).padStart(2, "0")}</i>${esc(x[0])}</h5><p>${esc(x[1])}</p>`).join("")}`;
+  if (fade && !reduce && charsOpen) [mk, pf.firstElementChild].forEach((el, j) => el.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: j * 70, easing: "cubic-bezier(.2,.8,.2,1)", fill: "backwards" }));
+}
+function chSheet(open){ const sh = document.getElementById("chSheet"); sh.classList.toggle("open", open); sh.setAttribute("aria-hidden", open ? "false" : "true"); if (open) sh.scrollTop = 0; }
+chars.addEventListener("click", e => {
+  const tb = e.target.closest(".ch-tabs button");
+  if (tb){ chSel[tb.dataset.grp] = +tb.dataset.j; chInfo(cs.shown < 0 ? 0 : cs.shown, false);
+    const nb = chars.querySelector(`.ch-info .ch-tabs button[data-grp="${tb.dataset.grp}"][data-j="${tb.dataset.j}"]`); nb && nb.focus({ preventScroll: true });
+    const pn = nb && nb.parentNode.nextElementSibling; if (pn && !reduce) pn.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260 }); return; }
+  if (e.target.closest("#chMore")) chSheet(true);
+  else if (e.target.closest("#chSheetX")) chSheet(false);
 });
+const cs = { pos: 0, target: 0, v: 0, drag: null, shown: -1 };
+let chRaf = 0;
 const wrapC = x => ((x % CN) + CN) % CN;
 const chActive = () => wrapC(Math.round(cs.pos));
 function chGo(d){ cs.target = Math.round(cs.target) + d; }
 function chSync(){
   const a = chActive();
-  if (a === cs.shown) return; cs.shown = a;
-  const sl = chSlides[a], nm = document.getElementById("chName");
-  nm.innerHTML = `${sl.dataset.name}<small>${sl.dataset.sub}</small>`; nm.classList.toggle("soon", a !== 0);
+  if (a === cs.shown) return; const first = cs.shown < 0; cs.shown = a;
+  chSel.step = 0; chSel.gear = 0; chInfo(a, !first); chSheet(false);
   document.getElementById("chNum").textContent = String(a + 1).padStart(2, "0");
   document.querySelectorAll("#chDots i").forEach((el, i) => el.classList.toggle("on", i === a));
-  chSlides.forEach((el, i) => el.setAttribute("aria-hidden", i === a ? "false" : "true"));
-  if (a === 0){ if (chVid.ended || chVid.paused && chVid.currentTime >= chVid.duration - .05){ /* 停在落地帧，等 ended 计时 */ chVid.dispatchEvent(new Event("ended")); } else { const p = chVid.play(); p && p.catch(() => {}); } }
-  else { chVid.pause(); clearTimeout(chHoldT); }
+  chSlides.forEach((el, i) => { el.setAttribute("aria-hidden", i === a ? "false" : "true"); el.classList.toggle("on", i === a); });
 }
+// 中间的大；左边那个略高、右边那个略低，正好让出左下和右上两块解说的位置
 function chLayout(){
-  const W = chStage.offsetWidth, gap = W * (MQ.matches ? .88 : 1.02);
+  const mob = MQ.matches, W = chStage.offsetWidth, H = chStage.offsetHeight, gap = W * (mob ? .6 : .66);
   chSlides.forEach((el, i) => {
     let d = wrapC(i - cs.pos); if (d > CN / 2) d -= CN;
-    const ad = Math.abs(d), sc = 1 - Math.min(ad, 1.5) * .3, op = ad > 1.6 ? 0 : 1 - Math.min(ad, 1) * .35;
-    el.style.transform = `translate(calc(-50% + ${(d * gap).toFixed(1)}px),-50%) scale(${sc.toFixed(3)})`;
+    const ad = Math.abs(d), sc = 1 - Math.min(ad, 1.5) * .42, op = 1 - Math.min(ad, 1) * .45, dd = Math.max(-1, Math.min(1, d)), ty = mob ? 0 : dd * H * (dd < 0 ? .2 : .165);
+    el.style.transform = `translate(calc(-50% + ${(d * gap).toFixed(1)}px),calc(-50% + ${ty.toFixed(1)}px)) scale(${sc.toFixed(3)})`;
     el.style.opacity = op.toFixed(3); el.style.zIndex = String(10 - Math.round(ad * 3));
   });
 }
-function chTick(){
+function chTick(now){
   if (!charsOpen){ chRaf = 0; return; }
   if (!cs.drag){ cs.v = (cs.v + (cs.target - cs.pos) * .09) * .74; cs.pos += cs.v; if (Math.abs(cs.target - cs.pos) < .0005 && Math.abs(cs.v) < .0005) cs.pos = cs.target; }
   chLayout(); chSync();
-  if (CH && chVid.readyState >= 2) chDraw(Math.min(CH.frames.length - 1, Math.floor(chVid.currentTime * CH.fps + .02)));
+  const act = chActive(); for (const id in TT) ttTick(TT[id], now, TT[id].i === act);
   chRaf = requestAnimationFrame(chTick);
 }
-// 拖动 / 手指滑动
 chars.addEventListener("pointerdown", e => {
-  if (e.target.closest("button, a")) return;
-  cs.drag = { x: e.clientX, p: cs.pos, t: performance.now(), lx: e.clientX, v: 0, moved: 0 };
+  if (e.target.closest("button, a, .ch-sheet")) return;
+  cs.drag = { x: e.clientX, p: cs.pos, t: performance.now(), lx: e.clientX, v: 0 };
   chars.classList.add("dragging"); chars.setPointerCapture && chars.setPointerCapture(e.pointerId);
 });
 chars.addEventListener("pointermove", e => {
   const d = cs.drag; if (!d) return;
   const W = chStage.offsetWidth * (MQ.matches ? .88 : 1.02), now = performance.now();
-  cs.pos = d.p - (e.clientX - d.x) / W; d.moved = Math.max(d.moved, Math.abs(e.clientX - d.x));
+  cs.pos = d.p - (e.clientX - d.x) / W;
   d.v = (e.clientX - d.lx) / Math.max(1, now - d.t) / W * 1000; d.lx = e.clientX; d.t = now;
 });
 const chEnd = () => { const d = cs.drag; if (!d) return; cs.drag = null; chars.classList.remove("dragging");
   let t = Math.round(cs.pos - Math.max(-.6, Math.min(.6, d.v * .18))); if (Math.abs(t - d.p) > 1) t = d.p + Math.sign(t - d.p); cs.target = t; cs.v = 0; };
 chars.addEventListener("pointerup", chEnd); chars.addEventListener("pointercancel", chEnd);
 let chWheel = 0;
-chars.addEventListener("wheel", e => { e.preventDefault(); const now = Date.now(), dd = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+chars.addEventListener("wheel", e => { if (e.target.closest(".ch-sheet")) return; e.preventDefault(); const now = Date.now(), dd = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
   if (now - chWheel < 550 || Math.abs(dd) < 8) return; chWheel = now; chGo(dd > 0 ? 1 : -1); }, { passive: false });
 addEventListener("keydown", e => { if (!charsOpen) return; if (e.key === "ArrowRight"){ chGo(1); e.preventDefault(); } if (e.key === "ArrowLeft"){ chGo(-1); e.preventDefault(); } });
 document.getElementById("chPrev").addEventListener("click", () => chGo(-1));
@@ -1266,6 +1565,7 @@ function openChars(){
   chAnims.forEach(a => a.cancel()); chAnims = [];
   chars.classList.add("open"); chars.setAttribute("aria-hidden", "false");
   cs.pos = cs.target = 0; cs.v = 0; cs.shown = -1;
+  for (const id in TT){ TT[id].t0 = 0; TT[id].last = -1; if (!TT[id].ready) ttPack(id); }
   const D0 = reduce ? 0 : 1;
   const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); chAnims.push(a); return a; };
   if (MQ.matches){
@@ -1275,26 +1575,156 @@ function openChars(){
     A(chars, [{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)" }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
     A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(8%)", opacity: .6 }], { duration: 900, easing: "cubic-bezier(.77,0,.18,1)" });
   }
-  A(document.getElementById("chTrack"), [{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: 600 });
-  [".ch-label", ".ch-hint", ".ch-name", ".ch-nav", ".ch-dots"].forEach((q, i) => A(chars.querySelector(q), [{ opacity: 0 }, { opacity: 1 }], { delay: 800 + i * 100 }));
-  chLast = -1; clearTimeout(chHoldT);
-  chLoad().then(() => { if (!charsOpen) return; try { chVid.currentTime = 0; } catch (e) {} if (chActive() === 0){ const p = chVid.play(); p && p.catch(() => {}); } chDraw(0); });
+  A(document.getElementById("chTrack"), [{ opacity: 0 }, { opacity: 1 }], { duration: 700, delay: 350 });
+  [".ch-label", "#chMaking", "#chProfile", ".ch-nav", ".ch-dots"].forEach((q, i) => A(chars.querySelector(q), [{ opacity: 0 }, { opacity: 1 }], { delay: 700 + i * 100 }));
   if (!chRaf) chRaf = requestAnimationFrame(chTick);
   setTimeout(() => { if (charsOpen) document.getElementById("chBack").focus({ preventScroll: true }); }, 1200 * D0);
 }
 function closeChars(then){
   if (!charsOpen) return;
-  charsOpen = false; clearTimeout(chHoldT); cs.drag = null;
+  charsOpen = false; cs.drag = null;
   chAnims.forEach(a => { const t = a.effect && a.effect.target; if (t === main || t === chars) a.cancel(); });
   const D0 = reduce ? 0 : 1, mob = MQ.matches;
   const a = chars.animate(mob ? [{ clipPath: "inset(0 0 0 0)", transform: "translateX(0)" }, { clipPath: "inset(0 0 0 0)", transform: "translateX(-100%)" }]
                              : [{ clipPath: "inset(0 0 0 0%)" }, { clipPath: "inset(0 0 0 100%)" }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)", fill: "both" });
   main.animate(mob ? [{ transform: "translateX(100%)" }, { transform: "translateX(0)" }]
                    : [{ transform: "translateX(-6%)", opacity: .6 }, { transform: "translateX(0)", opacity: 1 }], { duration: 800 * D0, easing: "cubic-bezier(.77,0,.18,1)" });
-  a.onfinish = () => { a.cancel(); chAnims.forEach(x => x.cancel()); chAnims = []; chars.classList.remove("open"); chars.setAttribute("aria-hidden", "true"); chVid.pause(); nav.focus({ preventScroll: true }); then && then(); };
+  a.onfinish = () => { a.cancel(); chAnims.forEach(x => x.cancel()); chAnims = []; chars.classList.remove("open"); chars.setAttribute("aria-hidden", "true"); nav.focus({ preventScroll: true }); then && then(); };
 }
 document.getElementById("chBack").addEventListener("click", () => closeChars());
 document.getElementById("chLogo").addEventListener("click", e => { e.preventDefault(); closeChars(); });
+
+/* ===================== ARTBOOK 画册 =====================
+   42 张画按原始比例排成一排：正中间那张转正、放大、往前"挑"出来，两边的斜着立成一叠（像 Cover Flow）。
+   滚轮 / 拖动 / 方向键翻页，点两边的跳过去，点中间那张看大图。
+   从首页进来：画册的底色从右往左擦进来，同时整排画从右边一路滑进来，第一张停在中间挑出来。 */
+const album = document.getElementById("album"), alTrack = document.getElementById("alTrack");
+const AL_CAP = ["洞洞鞋", "正在吃美味的芝士蛋糕", "当时在听我超喜欢的女团的歌", "喵喵咪咪", "画了一个喜欢的博主，她还评论我了w", "酷酷的拳击手", "（这幅画删掉）", "不会上颜色", "好看的OOTD", "So Sad", "这才是真正的音乐🎵", "会动", "颜色搭配真神奇呢", "大学宿舍阳台", "有点像我自己呢哈哈", "兔子", "人", "小公主", "只有色块但效果不错呢", "这一张是临摹的", "非常浮夸的色彩搭配", "临摹的", "不知道想啥画出来的", "biubiu", "我的狗宝", "某一天的云朵很饱满", "动物（也是临摹的吧", "沙弥海", "blackpink咪咪", "应该抱着一只狗吧", "可爱的女孩子", "盯", "树叶透光了", "蝴蝶", "蜻蜓 我还挺喜欢这种感觉呢", "女孩纸", "酷酷的女孩纸", "很唯美呢", "草稿 有画面感了呢", "临摹的哦", "头发不错", "就没了吗 就没了"], AL_EN = ["Crocs.", "Enjoying a delicious cheesecake.", "Drawn while listening to my favourite girl group.", "Meow meow, kitty kitty.", "A creator I love — and she commented on it!", "A cool boxer.", "", "I don't know how to colour yet.", "A great OOTD.", "So sad.", "Now this is real music 🎵", "It moves.", "Such a magical colour combination.", "My university dorm balcony.", "Looks a bit like me, haha.", "Bunny.", "People.", "Little princess.", "Just blocks of colour, but it works.", "This one is a study copy.", "A wildly over-the-top colour palette.", "A study copy.", "No idea what I was thinking — this is what came out.", "Biu biu!", "My doggo.", "The clouds were so full and fluffy one day.", "Animals (also a study copy, I think).", "Shamiumi.", "BLACKPINK kitty.", "She should be holding a dog.", "A cute girl.", "Staring.", "Light shining through the leaves.", "Butterfly.", "Dragonfly — I really like this feeling.", "Girl.", "A cool girl.", "So dreamy.", "A rough sketch, but the picture is there.", "A study copy!", "Nice hair.", "That's it? That's it."];   // 每张画的一句话说明，中文 + 英文（按画册顺序）
+const AL_SKIP = new Set([6]);            // 第 07 张不放
+const AL = [[2360,1640],[2360,1640],[2360,1640],[2360,1640],[2048,2048],[2048,2048],[2360,1640],[1226,1887],[1640,2360],[2360,1640],[1640,2360],[1920,1080],[1640,2360],[2360,1640],[1640,2360],[1640,2360],[1640,2360],[2048,2048],[1640,2360],[1194,1473],[2360,1668],[1668,2360],[1640,2360],[1326,1643],[2048,2048],[1770,2360],[1640,2360],[2048,2048],[2048,2048],[2048,2048],[2048,2048],[2360,1640],[1640,2360],[2048,2048],[2048,2048],[2048,2048],[1640,2360],[2360,1640],[2360,1640],[1640,2360],[1640,2360],[1640,2360]].map(([w, h], f) => ({ w, h, r: w / h, f, cap: AL_CAP[f], en: AL_EN[f] })).filter(a => !AL_SKIP.has(a.f)).map((a, i) => (a.i = i, a));
+const ALN = AL.length;
+let albumOpen = false, alLbOpen = false, alAnims = [], alRaf = 0, alLast = 0, alBusy = false, alLoaded = false;
+const al = { pos: 0, target: 0, drag: null, snapT: 0, shown: -1, step: 50, vis: 11 };
+document.getElementById("alTot").textContent = " / " + String(ALN).padStart(2, "0");
+AL.forEach(a => {
+  const el = document.createElement("div"); el.className = "al-card"; el.dataset.i = a.i;
+  const im = document.createElement("img"); im.alt = `插画 ${a.i + 1}`; im.decoding = "async"; im.onload = () => im.classList.add("ok");
+  el.append(im); alTrack.append(el); a.el = el; a.img = im;
+});
+const alSrc = (i, t) => `album/${String(AL[i].f).padStart(2, "0")}${t}.webp`;   // 文件名用原来的编号
+function alPreload(){ if (alLoaded) return; alLoaded = true; AL.forEach(a => { a.img.src = alSrc(a.i, "s"); }); }
+// 尺寸：中间那张高约 58% 屏高，太宽的按宽度收；每张都保持原图比例
+function alDims(){
+  const vw = innerWidth, vh = innerHeight, mob = MQ.matches;
+  const H = mob ? vh * .42 : vh * .58, MW = mob ? vw * .78 : vw * .46;
+  AL.forEach(a => { let h = H, w = h * a.r; if (w > MW){ w = MW; h = w / a.r; }
+    a.cw = w; a.ch = h; a.el.style.width = w + "px"; a.el.style.height = h + "px"; a.el.style.marginLeft = -w / 2 + "px"; a.el.style.marginTop = -h / 2 + "px"; });
+  al.step = mob ? Math.max(18, vw * .05) : Math.min(64, Math.max(34, vw * .036));
+  al.vis = mob ? 7 : 11;
+}
+function alLayout(){
+  const p = al.pos, f = Math.floor(p), fr = p - f;
+  const ca = AL[Math.max(0, Math.min(ALN - 1, f))], cb = AL[Math.max(0, Math.min(ALN - 1, f + 1))];
+  const half = (ca.cw * (1 - fr) + cb.cw * fr) / 2;          // 当前中间那张的一半宽（翻页时平滑过渡）
+  const ROT = MQ.matches ? 62 : 58;
+  for (const a of AL){
+    const d = a.i - p, ad = Math.abs(d), sg = Math.sign(d) || 1, e = Math.min(ad, 1), ee = e * e * (3 - 2 * e);
+    if (ad > al.vis + 1){ if (a.vis !== false){ a.el.style.visibility = "hidden"; a.vis = false; } continue; }
+    if (a.vis !== true){ a.el.style.visibility = ""; a.vis = true; }
+    const x = sg * (ee * (half + 26) + Math.max(0, ad - 1) * al.step);
+    const z = (1 - ee) * 140 - ad * 28;
+    const rot = -sg * ee * ROT, sc = 1 - ee * .1;
+    const fade = ad > al.vis - 1 ? Math.max(0, al.vis + 1 - ad) / 2 : 1;
+    a.el.style.transform = `translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
+    a.el.style.opacity = fade.toFixed(3);
+    a.el.style.setProperty("--sa", (ee * .34 + Math.min(ad, 6) * .03).toFixed(3));
+    a.el.style.zIndex = String(500 - Math.round(ad * 10));
+  }
+  const c = Math.max(0, Math.min(ALN - 1, Math.round(p)));
+  if (c !== al.shown){ al.shown = c;
+    AL.forEach(a => a.el.classList.toggle("cur", a.i === c));
+    document.getElementById("alNum").textContent = String(c + 1).padStart(2, "0");
+    document.getElementById("alSize").textContent = `${AL[c].w} × ${AL[c].h} PX`; }
+  document.getElementById("alThumb").style.left = (Math.max(0, Math.min(1, p / (ALN - 1))) * 100).toFixed(2) + "%";
+}
+function alTick(now){
+  const dt = Math.min(50, now - (alLast || now)); alLast = now;
+  if (!alBusy){ const k = 1 - Math.pow(1 - .13, dt / 16.7); al.pos += (al.target - al.pos) * k; if (Math.abs(al.target - al.pos) < .0004) al.pos = al.target; }
+  alLayout();
+  alRaf = albumOpen || alBusy ? requestAnimationFrame(alTick) : 0;
+}
+const alClamp = v => Math.max(0, Math.min(ALN - 1, v));
+function alGo(i){ al.target = alClamp(Math.round(i)); }
+// 打开：画册从右往左擦进来，首页往左让开；整排画从右边一路滑进来，第一张停在中间挑出来
+function openAlbum(){
+  if (albumOpen) return;
+  albumOpen = true; inZone = false; alPreload(); alDims();
+  alAnims.forEach(a => a.cancel()); alAnims = [];
+  album.classList.add("open"); album.setAttribute("aria-hidden", "false");
+  const D0 = reduce ? 0 : 1, EZ = "cubic-bezier(.77,0,.18,1)";
+  const A = (el, kf, o) => { const a = el.animate(kf, { fill: "both", easing: "cubic-bezier(.2,.8,.2,1)", ...o, duration: (o.duration || 600) * D0, delay: (o.delay || 0) * D0 }); alAnims.push(a); return a; };
+  A(album, [{ clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)" }], { duration: 950, easing: EZ });
+  A(main, [{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(-7%)", opacity: .55 }], { duration: 950, easing: EZ });
+  [[".al-label", "translateY(10px)", "none"], [".al-cap", "translate(-50%,10px)", "translate(-50%,0)"], [".al-scrub", "translate(-50%,10px)", "translate(-50%,0)"], [".al-hint", "translateY(10px)", "none"]]
+    .forEach(([q, f, t], i) => A(album.querySelector(q), [{ opacity: 0, transform: f }, { opacity: 1, transform: t }], { delay: 950 + i * 90 }));
+  al.target = 0; al.shown = -1;
+  if (reduce) al.pos = 0;
+  else {
+    // 位置从 -13 一路走到 0：每张画都会从右边进场、经过中间，越接近终点越慢
+    alBusy = true; al.pos = -13; const t0 = performance.now(), DUR = 1700, DEL = 160;
+    const run = now => { const t = Math.max(0, Math.min(1, (now - t0 - DEL) / DUR)), e = 1 - Math.pow(1 - t, 4);
+      al.pos = -13 + 13 * e; if (t < 1 && albumOpen) requestAnimationFrame(run); else { if (albumOpen) al.pos = 0; alBusy = false; } };
+    requestAnimationFrame(run);
+  }
+  if (!alRaf){ alLast = 0; alRaf = requestAnimationFrame(alTick); }
+  setTimeout(() => { if (albumOpen) document.getElementById("alBack").focus({ preventScroll: true }); }, 1300 * D0);
+}
+// 关闭：整排画往左滑走，画册从左往右收掉，首页回来
+function closeAlbum(){
+  if (!albumOpen) return;
+  albumOpen = false; al.drag = null; alLb(false);
+  alAnims.forEach(a => { const t = a.effect && a.effect.target; if (t === main || t === album) a.cancel(); });
+  const D0 = reduce ? 0 : 1, EZ = "cubic-bezier(.77,0,.18,1)";
+  if (!reduce){ alBusy = true; const p0 = al.pos, t0 = performance.now();
+    const run = now => { const t = Math.min(1, (now - t0) / 850), e = t * t * (3 - 2 * t); al.pos = p0 + 9 * e; alLayout(); if (t < 1) requestAnimationFrame(run); };
+    requestAnimationFrame(run); }
+  const a = album.animate([{ clipPath: "inset(0 0 0 0)" }, { clipPath: "inset(0 100% 0 0)" }], { duration: 850 * D0, delay: 120 * D0, easing: EZ, fill: "both" });
+  const m = main.animate([{ transform: "translateX(-7%)", opacity: .55 }, { transform: "translateX(0)", opacity: 1 }], { duration: 850 * D0, delay: 120 * D0, easing: EZ, fill: "both" });
+  a.onfinish = () => { a.cancel(); m.cancel(); alAnims.forEach(x => x.cancel()); alAnims = []; alBusy = false; album.classList.remove("open"); album.setAttribute("aria-hidden", "true"); al.pos = al.target; nav.focus({ preventScroll: true }); };
+}
+document.getElementById("alBack").addEventListener("click", () => closeAlbum());
+document.getElementById("alLogo").addEventListener("click", e => { e.preventDefault(); closeAlbum(); });
+addEventListener("resize", () => { if (albumOpen) alDims(); });
+// 大图
+const alLbEl = document.getElementById("alLb"), alLbImg = document.getElementById("alLbImg");
+function alLb(open, i){
+  if (open){ const a = AL[i]; alLbImg.src = alSrc(i, "s"); const big = new Image(); big.onload = () => { if (alLbOpen && alLbEl.dataset.i == i) alLbImg.src = big.src; }; big.src = alSrc(i, "l");
+    alLbEl.dataset.i = i; document.getElementById("alLbQ").textContent = a.cap; document.getElementById("alLbE").textContent = a.en;
+    document.getElementById("alLbCap").textContent = `PLATE ${String(i + 1).padStart(2, "0")} / ${ALN} · ${a.w} × ${a.h} PX`; }
+  alLbOpen = !!open; alLbEl.classList.toggle("open", alLbOpen);
+  if (alLbOpen && !reduce) document.querySelectorAll("#alLbQ, #alLbE").forEach((el, j) => el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 600, delay: 220 + j * 90, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards" })); alLbEl.setAttribute("aria-hidden", alLbOpen ? "false" : "true");
+  if (alLbOpen) document.getElementById("alLbX").focus({ preventScroll: true });
+}
+alLbEl.addEventListener("click", () => alLb(false));
+// 滚轮 / 拖动 / 点击 / 方向键
+album.addEventListener("wheel", e => { if (alLbOpen || alBusy) return; e.preventDefault();
+  const dd = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  al.target = alClamp(al.target + dd * (e.deltaMode === 1 ? .12 : .0042));
+  clearTimeout(al.snapT); al.snapT = setTimeout(() => alGo(al.target), 150); }, { passive: false });
+const alStage = document.getElementById("alStage");
+alStage.addEventListener("pointerdown", e => { if (alBusy || alLbOpen) return; al.drag = { x: e.clientX, t: al.target, moved: 0 }; alStage.setPointerCapture(e.pointerId); });
+alStage.addEventListener("pointermove", e => { const d = al.drag; if (!d) return; const dx = e.clientX - d.x; d.moved = Math.max(d.moved, Math.abs(dx));
+  if (d.moved > 6){ album.classList.add("drag"); al.target = alClamp(d.t - dx / (MQ.matches ? innerWidth * .28 : Math.max(90, al.step * 2.2))); } });
+alStage.addEventListener("pointerup", e => { const d = al.drag; if (!d) return; al.drag = null; album.classList.remove("drag");
+  if (d.moved > 6){ alGo(al.target); return; }
+  const hit = document.elementsFromPoint(e.clientX, e.clientY).find(el => el.classList && el.classList.contains("al-card")); if (!hit) return;
+  const i = +hit.dataset.i; if (i === Math.round(al.pos)) alLb(true, i); else alGo(i); });
+alStage.addEventListener("pointercancel", () => { if (al.drag){ al.drag = null; album.classList.remove("drag"); alGo(al.target); } });
+const alScrub = document.getElementById("alScrub");
+alScrub.addEventListener("pointerdown", e => { const r = alScrub.getBoundingClientRect(); alGo((e.clientX - r.left) / r.width * (ALN - 1)); });
+addEventListener("keydown", e => { if (!albumOpen || alLbOpen || alBusy) return;
+  if (e.key === "ArrowRight"){ alGo(al.target + 1); e.preventDefault(); }
+  else if (e.key === "ArrowLeft"){ alGo(al.target - 1); e.preventDefault(); } });
 
 /* ===================== WORKS：视频环 + 石头 + 放大 ===================== */
 const works = document.getElementById("works"), ring = document.getElementById("wkRing"), ringIn = document.getElementById("wkRingIn");
@@ -1671,18 +2101,58 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
     .observe(about, { attributes: true, attributeFilter: ["class"] });
 })();
 
+/* ===================== 简体 / 繁體 切换 =====================
+   网站上的中文是固定的那几百个字，所以直接带一张"简→繁"对照表：先按词换（发型→髮型 这类一字多义的），再逐字换。
+   切回简体时把原文放回去。之后页面上新出现的文字（比如切换角色时的解说）也会自动转换。 */
+(() => {
+  const WORDS = { "卷发": "捲髮", "金发": "金髮", "短发": "短髮", "撩发": "撩髮", "头发": "頭髮", "发型": "髮型", "联系": "聯繫", "系带": "繫帶", "制作": "製作", "复制": "複製", "定制": "定製" };
+  const S = "册听欢团还评论删颜学阳块临夸宝云饱满弥应该树叶纸吗台与专业东两个为乐习于亲从们会传体侧关内冲击则别动劳势区单厂压参双发叠号后启哑唤嚣围图场声处备复头夹实对导将层属师带帧并开张录态惯战拥择换据数时术机来构枪标档没泽测滚滩灯点爱状独环现画盏盘础离种稳简类约纹细织终经结绕给统绪绳缓编缠缩网职联肤胶脑艺节衔装裤见观视觉计让议讯记设证试话详说请调谐质贴跃践车转轴轻载输达过运这进连迟选邮采释里针钉铆银键镜镯镶长门闭间队隐静页项顾顿频飞验着电";
+  const T = "冊聽歡團還評論刪顏學陽塊臨誇寶雲飽滿彌應該樹葉紙嗎臺與專業東兩個為樂習於親從們會傳體側關內衝擊則別動勞勢區單廠壓參雙發疊號後啟啞喚囂圍圖場聲處備複頭夾實對導將層屬師帶幀並開張錄態慣戰擁擇換據數時術機來構槍標檔沒澤測滾灘燈點愛狀獨環現畫盞盤礎離種穩簡類約紋細織終經結繞給統緒繩緩編纏縮網職聯膚膠腦藝節銜裝褲見觀視覺計讓議訊記設證試話詳說請調諧質貼躍踐車轉軸輕載輸達過運這進連遲選郵採釋裡針釘鉚銀鍵鏡鐲鑲長門閉間隊隱靜頁項顧頓頻飛驗著電";
+  const MAP = new Map(); [...S].forEach((c, i) => MAP.set(c, [...T][i]));
+  const WRE = new RegExp(Object.keys(WORDS).join("|"), "g"), CJK = /[一-鿿]/;
+  const toT = x => x.replace(WRE, m => WORDS[m]).replace(/[一-鿿]/g, c => MAP.get(c) || c);
+  const orig = new WeakMap(), seen = new Set(), box = document.getElementById("lang");
+  let mode = "s";
+  try { if (localStorage.getItem("lang") === "t") mode = "t"; } catch (e) {}
+  function conv(node){
+    if (node.nodeType === 3){
+      const p = node.parentNode; if (!p || p.nodeName === "SCRIPT" || p.nodeName === "STYLE" || (p.closest && p.closest("#lang"))) return;
+      const o = orig.get(node); if (o && o.t === node.data) return;      // 已经转过
+      if (!CJK.test(node.data)) return;
+      const t = toT(node.data); if (t === node.data) return;
+      orig.set(node, { s: node.data, t }); seen.add(node); node.data = t;
+    } else if (node.nodeType === 1 && node.nodeName !== "SCRIPT" && node.nodeName !== "STYLE"){
+      const w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT); const list = []; while (w.nextNode()) list.push(w.currentNode); list.forEach(conv);
+    }
+  }
+  const mo = new MutationObserver(recs => { if (mode !== "t") return;
+    for (const r of recs){ if (r.type === "characterData") conv(r.target); else r.addedNodes.forEach(conv); } });
+  function apply(m){
+    mode = m;
+    if (m === "t"){ conv(document.body); mo.observe(document.body, { subtree: true, childList: true, characterData: true }); }
+    else { mo.disconnect(); seen.forEach(n => { const o = orig.get(n); if (o && n.isConnected && n.data === o.t) n.data = o.s; }); seen.clear(); }
+    document.documentElement.lang = m === "t" ? "zh-Hant" : "zh-Hans";
+    box.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === m ? "true" : "false"));
+    try { localStorage.setItem("lang", m); } catch (e) {}
+  }
+  box.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; apply(b.dataset.lang === mode ? (mode === "t" ? "s" : "t") : b.dataset.lang); });
+  if (mode === "t") apply("t");
+})();
+
 /* ===================== 加载 ===================== */
 (async () => {
   D = await fetch("data.json").then(r => r.json());
   if (!firstImg.complete) await new Promise(r => { firstImg.onload = r; firstImg.onerror = r; });
   const gate = document.getElementById("gate"), gBtn = document.getElementById("gateBtn");
-  const total = D.hi + D.look; let got = 0;
-  window.__gateTick = () => { got++; };
+  const CHW = 100, total = D.hi + D.look + CHW; let got = 0;   // 第一个角色（Yoyo）的序列帧也算进进度，占 100 格：下完才放行，进角色页就能流畅播放
+  window.__gateTick = (x = 1) => { got += x; };
+  // 一开始就同时下载 Yoyo 的帧包，不用排在首页图片后面
+  const yoyoPack = ttPack("yoyo", f => window.__gateTick(f * CHW)); ttFirst("laura"); ttFirst("vela");
   // 进度条动画：就算图片已经在缓存里，也完整走一遍加载过程（至少约 2.6 秒），真实加载慢的话就等真实进度
   const gBar = document.getElementById("gateBar"), gPct = document.getElementById("gatePct"), GMIN = reduce ? 600 : 2600, gT0 = performance.now();
   let gShown = 0;
   (function gateAnim(now){
-    const real = lookReady ? 1 : Math.min(.99, got / total);
+    const real = (lookReady && charsReady) ? 1 : Math.min(.99, got / total);
     const timeCap = Math.min(1, (now - gT0) / GMIN);
     const tgt = Math.min(real, 1 - Math.pow(1 - timeCap, 2.2));
     gShown += (tgt - gShown) * .12; if (tgt >= 1 && gShown > .995) gShown = 1;
@@ -1694,11 +2164,88 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
     requestAnimationFrame(gateAnim);
   })(performance.now());
   new Promise(res => gBtn.addEventListener("click", res, { once: true })).then(() => {
-    const done = () => { gate.remove(); };
-    if (reduce) done(); else gate.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "scale(1.04)" }], { duration: 700, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }).onfinish = done;
-    main.classList.remove("waiting");
-    void main.offsetWidth;
-    main.classList.add("go");
+    // 首页开始入场（人物扫描显影 + 各部分错开出现）
+    const startHome = () => {
+      main.classList.remove("waiting"); void main.offsetWidth; main.classList.add("go");
+      if (!reduce){ main.classList.add("hin"); document.body.classList.add("hin"); setTimeout(() => { main.classList.remove("hin"); document.body.classList.remove("hin"); }, 4200); }
+      t0 = performance.now(); phase = reduce ? "rest" : "intro";
+    };
+    if (reduce){ gate.remove(); startHome(); return; }
+    /* 转场：
+       点进入后，从 WEN STUDIO 两侧开始，一格格带网点纹理的蓝色小方块往外扩散（先沿标志那一行横向跑开，再向上下铺开）。
+       方块扫过的地方，进入页就没了，露出后面已经开始入场的首页；蓝色方块自己也由密变疏消失。扩散完就是首页。
+       同时 WEN STUDIO 缩小飞到左上角导航条里，落定后换成导航条上的标志。
+       做法：把进入页的背景画到一张画布上，点击那一帧起用画布顶替进入页背景，再在画布上一格格挖空。 */
+    const logo = gate.querySelector(".g-logo"), brand = document.querySelector("#topbar .wen"), brandBox = brand.closest(".brand");
+    gBtn.disabled = true; gBtn.blur();
+    logo.getAnimations({ subtree: true }).forEach(a => { if (a.animationName !== "gNoise") a.finish(); });
+    [...gate.querySelectorAll(".g-in > *, .gm-top, .gm-sound, .gm-rings")].forEach(el => { if (el === logo) return;
+      el.getAnimations().forEach(a => a.finish());
+      el.animate([{ opacity: getComputedStyle(el).opacity }, { opacity: 0 }], { duration: 240, easing: "ease-in", fill: "forwards" }); });
+    const lr = logo.getBoundingClientRect(), tr = brand.getBoundingClientRect();
+    const vw = innerWidth, vh = innerHeight, dpr = Math.min(2, devicePixelRatio || 1), mob = MQ.matches;
+    const C = mob ? 14 : 20, P = Math.round(C * dpr);
+    const mkC = () => { const c = document.createElement("canvas"); c.width = Math.ceil(vw * dpr); c.height = Math.ceil(vh * dpr); const x = c.getContext("2d"); x.setTransform(dpr, 0, 0, dpr, 0, 0); return [c, x]; };
+    const [cv, g] = mkC(); cv.className = "g-chip"; gate.append(cv);
+    // 进入页背景（和 CSS 里的一样：径向渐变 + 120px 细网格，网格往四周淡出）
+    const [bgc, b] = mkC();
+    const GR = mob ? { x: .5, y: .4, rx: .9, ry: .6, st: [[0, "#F7F8F9"], [.55, "#ECEDF0"], [1, "#DCDEE3"]] }
+                   : { x: .6, y: .48, rx: 1.2, ry: 1.1, st: [[0, "#fff"], [.24, "#fff"], [.44, "#eef0f3"], [.7, "#c9ced6"], [1, "#7b818b"]] };
+    b.save(); b.translate(GR.x * vw, GR.y * vh); b.scale(1, GR.ry * vh / (GR.rx * vw));
+    const rg = b.createRadialGradient(0, 0, 0, 0, 0, GR.rx * vw); GR.st.forEach(([o, c]) => rg.addColorStop(o, c)); b.fillStyle = rg; b.fillRect(-1e4, -1e5, 2e4, 2e5); b.restore();
+    { const [gc, x] = mkC(), step = mob ? 64 : 120; x.fillStyle = `rgba(17,18,22,${mob ? .035 : .05})`;
+      for (let X = 0; X < vw; X += step) x.fillRect(X, 0, 1, vh); for (let Y = 0; Y < vh; Y += step) x.fillRect(0, Y, vw, 1);
+      if (!mob){ x.globalCompositeOperation = "destination-in"; x.save(); x.translate(vw / 2, vh / 2); x.scale(1, vh / vw);
+        const m = x.createRadialGradient(0, 0, 0, 0, 0, vw / 2); m.addColorStop(0, "#000"); m.addColorStop(1, "rgba(0,0,0,0)"); x.fillStyle = m; x.fillRect(-1e4, -1e5, 2e4, 2e5); x.restore(); }
+      b.setTransform(1, 0, 0, 1, 0, 0); b.drawImage(gc, 0, 0); }
+    // 蓝色方块纹理：3 种色调 × 6 级密度 × 5 种变体
+    const LV = 6, VAR = 5, LF = [.22, .4, .58, .76, .92, 1], AC = "59,91,253";
+    const TONE = [{ base: .14, dot: .55, den: .62 }, { base: .26, dot: .85, den: .86 }, { base: .95, dot: 0, den: .4 }];
+    const T = TONE.map(o => Array.from({ length: LV }, (_, L) => Array.from({ length: VAR }, () => {
+      const c = document.createElement("canvas"); c.width = c.height = P; const x = c.getContext("2d"), p = P / 5;
+      x.fillStyle = `rgba(${AC},${(o.base * (.35 + .65 * L / (LV - 1))).toFixed(3)})`; x.fillRect(0, 0, P, P);
+      x.fillStyle = o.dot ? `rgba(${AC},${o.dot})` : "rgba(255,255,255,.55)";
+      const skip = Math.random() < .35 ? (Math.random() * 5) | 0 : -1;
+      for (let r = 0; r < 5; r++){ if (r === skip) continue;
+        for (let k = 0; k < 5; k++){ const rad = p * .5 * o.den * LF[L] * (.72 + Math.random() * .56); if (rad < .35) continue;
+          x.beginPath(); x.arc((k + .5) * p, (r + .5) * p, Math.min(rad, p * .6), 0, 6.2832); x.fill(); } }
+      return c; })));
+    const hs = (a, b) => { const v = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return v - Math.floor(v); };
+    const lcy = (lr.top + lr.bottom) / 2, hh = lr.height / 2, cols = Math.ceil(vw / C), rows = Math.ceil(vh / C);
+    const APP = 420, cells = []; let END = 0;
+    for (let r = 0; r < rows; r++){ const lane = hs(r, 7) < .3;              // 一部分行是"总线"，横向跑得更快
+      for (let c = 0; c < cols; c++){
+        const x = c * C, y = r * C, mx = x + C / 2, my = y + C / 2, n = hs(c, r), n1 = hs(c / 3 | 0, r / 2 | 0);
+        const dx = Math.max(0, lr.left - mx, mx - lr.right), dy = Math.max(0, Math.abs(my - lcy) - hh), band = dy === 0;
+        const tone = n > .955 ? 2 : (n1 > .62 || (band && n1 > .35)) ? 1 : 0;
+        const on = dx === 0 && dy === 0 ? 30 + n * 140 : 70 + dx / vw * (lane ? 420 : 760) + dy / vh * 1050 + n * 150 + (band ? 0 : 110);
+        cells.push({ x, y, tone, on, v: (n * VAR) | 0 });
+        if (on + APP > END) END = on + APP; } }
+    cells.sort((a, b) => a.on - b.on);
+    let st = 0, flying = false, flown = false;
+    const fly = () => {   // 标志飞到左上角
+      flying = true; const sc = tr.width / lr.width; logo.style.transformOrigin = "0 0";
+      logo.animate([{ transform: "none" }, { transform: `translate(${(tr.left - lr.left).toFixed(2)}px,${(tr.top - lr.top).toFixed(2)}px) scale(${sc.toFixed(5)})` }],
+        { duration: 1100, easing: "cubic-bezier(.7,0,.2,1)", fill: "both" }).onfinish = () => { brandBox.style.visibility = ""; logo.style.visibility = "hidden"; flown = true; };
+    };
+    brandBox.style.visibility = "hidden";
+    const frame = now => {
+      const first = !st; if (first) st = now; const t = now - st;
+      g.globalCompositeOperation = "source-over"; g.clearRect(0, 0, vw, vh); g.drawImage(bgc, 0, 0, vw, vh);
+      // 方块扫过的地方挖空 → 露出首页
+      g.globalCompositeOperation = "destination-out"; g.beginPath(); let i = 0;
+      for (; i < cells.length && cells[i].on <= t; i++) g.rect(cells[i].x, cells[i].y, C, C);
+      g.fill(); g.globalCompositeOperation = "source-over";
+      // 正在扩散的那一圈：蓝色网点方块，由密变疏消失
+      for (let j = 0; j < i; j++){ const k = cells[j], p = (t - k.on) / APP; if (p >= 1) continue;
+        const L = LV - 1 - Math.min(LV - 1, (p * p * LV) | 0); if (Math.random() < .35) k.v = (Math.random() * VAR) | 0;
+        g.globalAlpha = p < .75 ? 1 : (1 - p) * 4; g.drawImage(T[k.tone][L][k.v], k.x, k.y, C, C); }
+      g.globalAlpha = 1;
+      if (first){ gate.classList.add("leaving"); startHome(); }      // 画布已经顶替了进入页背景，同一帧去掉真正的背景并开始首页入场
+      if (!flying && t >= 160) fly();
+      if (t < END || !flown) requestAnimationFrame(frame); else gate.remove();
+    };
+    requestAnimationFrame(frame);
     t0 = performance.now();
     phase = reduce ? "rest" : "intro";
   });
@@ -1717,6 +2264,9 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
   await pool(lookSrc.map((s, i) => [s, i]), 6, async ([s, i]) => { look[i] = await loadImg(s); window.__gateTick(); });
   look = look.map((x, i) => x || look.find(Boolean));
   lookReady = true;
+  // 等 Yoyo 下完（最多再等 40 秒，实在太慢就先放行）；另外两个角色放行后在后台接着下
+  await Promise.race([yoyoPack, new Promise(r => setTimeout(r, 40000))]); charsReady = true;
+  ttPack("laura").then(() => ttPack("vela")).then(() => alPreload());
 
 
   for (const z of ["mid", "up", "low"]){
@@ -1730,3 +2280,5 @@ addEventListener("resize", () => { if (!lbOpen) return; const T = lbTarget(); Ob
 })();
 })();
 </script>
+
+</body></html>
